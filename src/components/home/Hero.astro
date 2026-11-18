@@ -1,0 +1,153 @@
+---
+import QRCode from 'qrcode';
+import { site } from '../../config/site';
+import PlayBadge from '../PlayBadge.astro';
+import PhoneMockup from '../PhoneMockup.astro';
+
+const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
+  type: 'svg',
+  margin: 0,
+  color: { dark: '#2a2318', light: '#0000' },
+});
+---
+
+<section id="top">
+  <div class="aura" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="copy">
+      <span class="pill">Offline speech to text for Android</span>
+      <h1>Say it once.<br />Echo writes it down.</h1>
+      <p class="lead">
+        Meetings, lectures and voice notes become text, summaries and tasks on your phone. No internet, no uploads,
+        powered by Whisper Large V3 Turbo.
+      </p>
+      <div class="actions">
+        <PlayBadge size="lg" placement="hero" />
+        <div class="qr-wrap">
+          <div class="qr" role="img" aria-label="QR code linking to Echo on Google Play" set:html={qrSvg} />
+          <span class="qr-note">Or scan with your Android phone</span>
+        </div>
+      </div>
+      <p class="note">Free to download · No account</p>
+    </div>
+    <div class="phone-col">
+      <PhoneMockup />
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 24px 96px;
+  }
+  .aura {
+    position: absolute;
+    right: -160px;
+    top: -120px;
+    width: 900px;
+    height: 900px;
+    border-radius: 50%;
+    background: var(--aura-grad);
+  }
+  .inner {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 56px;
+  }
+  .copy {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--sage-soft);
+    color: var(--success);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.04;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .lead {
+    margin: 0;
+    max-width: 560px;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    padding-top: 4px;
+  }
+  .qr-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  /* Fixed light backing so the code stays scannable in dark mode. */
+  .qr {
+    width: 64px;
+    height: 64px;
+    flex: none;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: var(--hairline-strong);
+    padding: 6px;
+  }
+  .qr :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+  .qr-note {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-2);
+    max-width: 96px;
+  }
+  .note {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .phone-col {
+    flex: 0 1 360px;
+    min-width: min(300px, 100%);
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 700px) {
+    section {
+      padding: 48px 20px 64px;
+    }
+    .inner {
+      gap: 48px;
+    }
+  }
+  /* Scanning only makes sense from a desktop screen. */
+  @media (max-width: 700px), (pointer: coarse) {
+    .qr-wrap {
+      display: none;
+    }
+  }
+</style>

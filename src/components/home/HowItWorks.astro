@@ -1,0 +1,82 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+
+const steps = [
+  { title: 'Record or import', text: 'Tap the mic, or open an audio file you already have.' },
+  { title: 'Echo does the work', text: 'The transcript fills in line by line. Speakers, a summary and tasks follow.' },
+  { title: 'Read, listen, share', text: 'Tap any line to hear it. Your edits never overwrite the original.' },
+];
+---
+
+<section id="how">
+  <div class="inner">
+    <SectionHeading eyebrow="How it works" title="Three steps, nothing to set up" />
+    <ol>
+      {
+        steps.map((s, i) => (
+          <li>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 0 24px 104px;
+  }
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 16px;
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 28px;
+    border-radius: 18px;
+    background: var(--cream);
+  }
+  .num {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--icon-accent);
+    font-variant-numeric: tabular-nums;
+  }
+  h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-ctl);
+  }
+  @media (max-width: 700px) {
+    section {
+      padding: 0 20px 72px;
+    }
+    .inner {
+      gap: 36px;
+    }
+  }
+</style>

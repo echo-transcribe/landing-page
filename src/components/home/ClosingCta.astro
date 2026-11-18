@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../../assets/echo-mark.png';
+import PlayBadge from '../PlayBadge.astro';
+---
+
+<section>
+  <div class="panel">
+    <div class="glow" aria-hidden="true"></div>
+    <Image class="mark" src={mark} alt="" width={72} height={70} densities={[1, 2]} loading="lazy" />
+    <h2>Your next meeting, written down.</h2>
+    <div class="badge"><PlayBadge size="lg" placement="cta" /></div>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 0 24px 104px;
+  }
+  .panel {
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 28px;
+    background: var(--inverse);
+    color: #fffdf5;
+    padding: clamp(40px, 6vw, 80px) 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  .glow {
+    position: absolute;
+    left: 50%;
+    top: -260px;
+    width: 720px;
+    height: 520px;
+    margin-left: -360px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(212, 163, 115, 0.22), rgba(212, 163, 115, 0));
+  }
+  .panel :global(.mark) {
+    position: relative;
+    object-fit: contain;
+  }
+  h2 {
+    position: relative;
+    margin: 0;
+    font-size: clamp(32px, 4.4vw, 52px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    max-width: 720px;
+  }
+  .badge {
+    position: relative;
+  }
+  @media (max-width: 700px) {
+    section {
+      padding: 0 20px 72px;
+    }
+  }
+</style>

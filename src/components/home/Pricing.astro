@@ -1,0 +1,219 @@
+---
+import { site } from '../../config/site';
+import SectionHeading from '../SectionHeading.astro';
+
+const { prices } = site;
+const eur = (n: number) => `€${n}`;
+const perMonth = (prices.yearly / 12).toFixed(2);
+const savePercent = Math.round((1 - prices.yearly / (prices.monthly * 12)) * 100);
+
+const plans = [
+  {
+    id: 'free',
+    name: 'Free',
+    price: eur(0),
+    unit: '',
+    sub: 'Forever',
+    features: ['First 2 minutes of every note', 'Summary and tasks included', 'Unlimited notes'],
+    cta: 'Download free',
+  },
+  {
+    id: 'pro-monthly',
+    name: 'Pro monthly',
+    price: eur(prices.monthly),
+    unit: '/ month',
+    sub: 'Cancel anytime',
+    features: ['No time limit', 'Summary and tasks from the whole recording', 'Full-length imports'],
+    cta: 'Get Pro monthly',
+  },
+  {
+    id: 'pro-yearly',
+    name: 'Pro yearly',
+    price: eur(prices.yearly),
+    unit: '/ year',
+    sub: `€${perMonth} a month · save ${savePercent}% vs monthly`,
+    features: ['Everything in Pro', 'Billed once a year'],
+    cta: 'Get Pro yearly',
+    featured: true,
+  },
+  {
+    id: 'pro-lifetime',
+    name: 'Pro lifetime',
+    price: eur(prices.lifetime),
+    unit: 'once',
+    sub: 'No renewals',
+    features: ['Everything in Pro', 'Future updates included'],
+    cta: 'Get Pro lifetime',
+  },
+];
+---
+
+<section id="pricing">
+  <div class="inner">
+    <SectionHeading eyebrow="Pricing" title="Start free. Go Pro when notes get long." center>
+      <p>Pro removes the 2-minute limit. Everything else is the same.</p>
+    </SectionHeading>
+    <div class="grid">
+      {
+        plans.map((p) => (
+          <div class:list={['plan', { featured: p.featured }]}>
+            {p.featured && <span class="best">Best value</span>}
+            <div class="head">
+              <h3>{p.name}</h3>
+              <div class="price">
+                <span class="amount">{p.price}</span>
+                {p.unit && <span class="unit">{p.unit}</span>}
+              </div>
+              <span class="sub">{p.sub}</span>
+            </div>
+            <ul>
+              {p.features.map((f) => (
+                <li>
+                  <span class="check">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+                  </span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a class="btn" href={site.playUrl} data-event="pricing_click" data-plan={p.id}>
+              {p.cta}
+            </a>
+          </div>
+        ))
+      }
+    </div>
+    <p class="fine">
+      Prices in euros, VAT included. Billed through Google Play, which may show your local currency. Subscriptions renew
+      until you cancel them in Google Play.
+    </p>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 104px 24px;
+    background: var(--cream);
+  }
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 16px;
+    align-items: stretch;
+  }
+  .plan {
+    position: relative;
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline), 0 1px 2px rgba(58, 49, 37, 0.06);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .plan.featured {
+    background: var(--raised);
+    box-shadow: inset 0 0 0 2px #d4a373, 0 8px 24px -6px rgba(58, 49, 37, 0.16);
+  }
+  .best {
+    position: absolute;
+    top: -13px;
+    left: 28px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #d4a373;
+    color: #2a2318;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .amount {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .unit {
+    font-size: 15px;
+    color: var(--text-2);
+  }
+  .sub {
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    line-height: 1.45;
+    flex: 1;
+  }
+  li {
+    display: flex;
+    gap: 8px;
+  }
+  .check {
+    color: var(--success);
+    flex: none;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    border-radius: 999px;
+    background: var(--raised);
+    color: var(--text-ctl);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--hairline-strong);
+  }
+  .btn:hover {
+    color: var(--text);
+  }
+  .featured .btn {
+    background: #d4a373;
+    color: #2a2318;
+    box-shadow: 0 2px 6px -1px rgba(58, 49, 37, 0.1);
+  }
+  .fine {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-ctl);
+  }
+  @media (max-width: 700px) {
+    section {
+      padding: 72px 20px;
+    }
+    .inner {
+      gap: 40px;
+    }
+  }
+</style>

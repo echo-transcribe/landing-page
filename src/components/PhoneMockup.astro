@@ -1,0 +1,264 @@
+---
+---
+
+<div class="phone" role="img" aria-label="Echo showing a meeting transcript with a summary and a task">
+  <div class="screen">
+    <div class="notch"><span></span></div>
+    <div class="bar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+      <div class="bar-icons">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+      </div>
+    </div>
+    <div class="head">
+      <div class="title">Project kickoff</div>
+      <div class="meta">Today, 9:42 AM · 18 min <span class="tag">Work</span></div>
+    </div>
+    <div class="card summary">
+      <div class="label">Summary</div>
+      <div class="summary-text">The team agreed on the launch scope and split the budget work. Alex reviews the draft before Friday.</div>
+    </div>
+    <div class="card tasks">
+      <div class="label">Tasks · 2</div>
+      <div class="task">
+        <span class="box"></span>
+        <div class="task-body"><span class="task-title">Send the budget draft to Alex</span><span class="reminder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>Tomorrow, 10:00 AM</span></div>
+      </div>
+      <div class="task">
+        <span class="box"></span>
+        <span class="task-title">Book the room for Thursday</span>
+      </div>
+    </div>
+    <div class="transcript">
+      <div class="line">
+        <div class="speaker"><span class="dot" style="background: #bd8a58"></span><span class="name">Maja</span><span class="time">2:14 – 2:31</span></div>
+        <div class="text">Okay, so <mark>tomorrow at ten I'll send the budget draft to Alex</mark>, and he can review it before Friday.</div>
+      </div>
+      <div class="line">
+        <div class="speaker"><span class="dot" style="background: #94a56d"></span><span class="name">Alex</span><span class="time">2:32 – 2:40</span></div>
+        <div class="text">Works for me. Someone should <mark>book the room for Thursday</mark>.</div>
+      </div>
+    </div>
+    <div class="player">
+      <span class="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="7 4 20 12 7 20 7 4"></polygon></svg></span>
+      <div class="scrub">
+        <div class="track"><div class="fill"></div></div>
+        <div class="times"><span>2:14</span><span>18:05</span></div>
+      </div>
+      <span class="speed">1×</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .phone {
+    width: min(340px, 100%);
+    border-radius: 48px;
+    background: var(--frame);
+    padding: 10px;
+    box-shadow: 0 40px 80px -24px rgba(58, 49, 37, 0.35), 0 10px 24px -10px rgba(58, 49, 37, 0.2);
+  }
+  .screen {
+    border-radius: 40px;
+    background: var(--page);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .notch {
+    display: flex;
+    justify-content: center;
+    padding: 12px 0 4px;
+  }
+  .notch span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2a2318;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 18px;
+    color: var(--text-ctl);
+  }
+  .bar-icons {
+    display: flex;
+    gap: 16px;
+  }
+  .head {
+    padding: 6px 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .tag {
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    box-shadow: inset 0 0 0 1px var(--tag-border);
+    font-weight: 500;
+  }
+  .card {
+    border-radius: 16px;
+    background: var(--card);
+    box-shadow: var(--hairline), 0 1px 2px rgba(58, 49, 37, 0.06);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  .summary {
+    margin: 12px 18px 0;
+    gap: 6px;
+  }
+  .tasks {
+    margin: 10px 18px 0;
+    gap: 10px;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .summary-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-2);
+  }
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .box {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1.5px var(--control);
+    margin-top: 1px;
+  }
+  .task-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .task-title {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .reminder {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--accent-text);
+  }
+  .transcript {
+    padding: 14px 18px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .line {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .speaker {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .name {
+    font-weight: 600;
+  }
+  .time {
+    color: var(--text-3);
+  }
+  .text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-2);
+  }
+  mark {
+    background: rgba(212, 163, 115, 0.32);
+    color: var(--text);
+    border-radius: 4px;
+    padding: 0 2px;
+  }
+  .player {
+    margin: 14px 12px 12px;
+    border-radius: 18px;
+    background: var(--raised);
+    box-shadow: 0 8px 24px -6px rgba(58, 49, 37, 0.16);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .play {
+    width: 36px;
+    height: 36px;
+    flex: none;
+    border-radius: 50%;
+    background: #d4a373;
+    color: #2a2318;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .scrub {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .track {
+    height: 4px;
+    border-radius: 999px;
+    background: var(--track);
+    overflow: hidden;
+  }
+  .fill {
+    width: 14%;
+    height: 100%;
+    background: #bd8a58;
+  }
+  .times {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .speed {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-ctl);
+  }
+</style>

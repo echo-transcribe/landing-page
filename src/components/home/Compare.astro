@@ -1,0 +1,153 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../../assets/echo-mark.png';
+import SectionHeading from '../SectionHeading.astro';
+
+const rows = [
+  ['Where your audio is processed', 'On your phone', 'On their servers'],
+  ['Works without internet', 'Yes', 'No'],
+  ['Account needed', 'No', 'Yes'],
+  ['Tasks and reminders from speech', 'Yes', 'Varies'],
+  ['Joins Zoom or Teams calls for you', 'No', 'Often'],
+];
+---
+
+<section id="compare">
+  <div class="inner">
+    <SectionHeading eyebrow="Compare" title="Echo vs cloud note takers" />
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="feature"><span class="visually-hidden">Feature</span></th>
+            <th scope="col" class="echo">
+              <span class="echo-name"><Image src={mark} alt="" width={22} height={21} densities={[1, 2]} />Echo</span>
+            </th>
+            <th scope="col" class="other">Typical cloud services</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map(([label, echo, other]) => (
+              <tr>
+                <th scope="row">{label}</th>
+                <td class="echo-cell">{echo}</td>
+                <td class="other-cell">{other}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="fit">Echo isn't the right fit if you need a bot that joins video calls, or notes your team edits together in real time.</p>
+  </div>
+</section>
+
+<style>
+  section {
+    padding: 104px 24px;
+  }
+  .inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline), 0 1px 2px rgba(58, 49, 37, 0.06);
+  }
+  table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  th,
+  td {
+    text-align: left;
+  }
+  thead th {
+    padding: 18px 24px;
+  }
+  .feature {
+    width: 40%;
+  }
+  .echo {
+    background: var(--accent-soft);
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .echo-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .echo-name :global(img) {
+    object-fit: contain;
+  }
+  .other {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-ctl);
+  }
+  tbody tr {
+    box-shadow: inset 0 1px 0 var(--rule);
+  }
+  tbody th {
+    padding: 16px 24px;
+    font-weight: 500;
+  }
+  td {
+    padding: 16px 24px;
+  }
+  .echo-cell {
+    background: var(--accent-col);
+    font-weight: 600;
+  }
+  .other-cell {
+    color: var(--text-2);
+  }
+  .fit {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-2);
+    max-width: 620px;
+  }
+  @media (max-width: 700px) {
+    section {
+      padding: 72px 20px;
+    }
+    .inner {
+      gap: 24px;
+    }
+    /* All three columns fit on a phone; a hidden third column would hide the comparison. */
+    table {
+      min-width: 0;
+      font-size: 14px;
+    }
+    .feature {
+      width: 42%;
+    }
+    thead th,
+    tbody th,
+    td {
+      padding: 12px 10px;
+    }
+    thead th:first-child,
+    tbody th {
+      padding-left: 16px;
+    }
+    .echo,
+    .other {
+      font-size: 15px;
+    }
+    .echo-name :global(img) {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  center?: boolean;
+}
+
+const { eyebrow, title, center = false } = Astro.props;
+---
+
+<div class:list={['heading', { center }]}>
+  <span class="eyebrow">{eyebrow}</span>
+  <h2>{title}</h2>
+  <slot />
+</div>
+
+<style>
+  .heading {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 720px;
+  }
+  .center {
+    align-self: center;
+    text-align: center;
+    align-items: center;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  h2 {
+    margin: 0;
+    font-size: clamp(32px, 4vw, 46px);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .heading :global(p) {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+</style>

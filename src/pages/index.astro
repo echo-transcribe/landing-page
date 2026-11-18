@@ -1,13 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Features from '../components/home/Features.astro';
+import TasksCallout from '../components/home/TasksCallout.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import UseCases from '../components/home/UseCases.astro';
+import PrivacySection from '../components/home/PrivacySection.astro';
+import Compare from '../components/home/Compare.astro';
+import Pricing from '../components/home/Pricing.astro';
+import Faq from '../components/home/Faq.astro';
+import ClosingCta from '../components/home/ClosingCta.astro';
 ---
 
 <BaseLayout
   title="Echo — offline speech to text for Android"
   description="Meetings, lectures and voice notes become text, summaries and tasks on your phone. No internet, no uploads."
 >
-  <!-- Home sections land in checkpoint 2. -->
-  <section id="top" style="padding: 80px 24px; max-width: 1200px; margin: 0 auto">
-    <h1>Say it once. Echo writes it down.</h1>
-  </section>
+  <Hero />
+  <Features />
+  <TasksCallout />
+  <HowItWorks />
+  <UseCases />
+  <PrivacySection />
+  <Compare />
+  <Pricing />
+  <Faq />
+  <ClosingCta />
 </BaseLayout>
