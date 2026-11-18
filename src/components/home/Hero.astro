@@ -1,8 +1,8 @@
 ---
 import QRCode from 'qrcode';
 import { site } from '../../config/site';
-import PlayBadge from '../PlayBadge.astro';
 import PhoneMockup from '../PhoneMockup.astro';
+import DownloadButton from '../DownloadButton.astro';
 
 const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
   type: 'svg',
@@ -22,7 +22,7 @@ const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
         powered by Whisper Large V3 Turbo.
       </p>
       <div class="actions">
-        <PlayBadge size="lg" placement="hero" />
+        <DownloadButton placement="hero" />
         <div class="qr-wrap">
           <div class="qr" role="img" aria-label="QR code linking to Echo on Google Play" set:html={qrSvg} />
           <span class="qr-note">Or scan with your Android phone</span>

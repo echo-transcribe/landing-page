@@ -11,7 +11,7 @@ const dims = size === 'header' ? { w: 46, h: 45 } : { w: 38, h: 37 };
 ---
 
 <a href="/" class:list={['logo', size]} aria-label="Echo home">
-  <Image src={mark} alt="" width={dims.w} height={dims.h} densities={[1, 2]} loading="eager" />
+  <Image src={mark} alt="" width={dims.w} height={dims.h} densities={[1, 2]} loading={size === 'header' ? 'eager' : 'lazy'} />
   <span>Echo</span>
 </a>
 

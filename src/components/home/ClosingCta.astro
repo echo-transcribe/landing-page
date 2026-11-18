@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import mark from '../../assets/echo-mark.png';
-import PlayBadge from '../PlayBadge.astro';
+import DownloadButton from '../DownloadButton.astro';
 ---
 
 <section>
@@ -9,7 +9,16 @@ import PlayBadge from '../PlayBadge.astro';
     <div class="glow" aria-hidden="true"></div>
     <Image class="mark" src={mark} alt="" width={72} height={70} densities={[1, 2]} loading="lazy" />
     <h2>Your next meeting, written down.</h2>
-    <div class="badge"><PlayBadge size="lg" placement="cta" /></div>
+    <p class="sub">
+      Tap record and put your phone down. Echo hands you the transcript, a short summary and the tasks you mentioned,
+      without your words ever leaving the phone.
+    </p>
+    <div class="badge"><DownloadButton placement="cta" /></div>
+    <ul class="facts">
+      <li>Free to download</li>
+      <li>No account</li>
+      <li>Works offline</li>
+    </ul>
   </div>
 </section>
 
@@ -25,6 +34,8 @@ import PlayBadge from '../PlayBadge.astro';
     border-radius: 28px;
     background: var(--inverse);
     color: #fffdf5;
+    /* In dark mode the panel is close to the page colour; the ring keeps its edge visible. */
+    box-shadow: inset 0 0 0 1px rgba(255, 245, 220, 0.1);
     padding: clamp(40px, 6vw, 80px) 24px;
     display: flex;
     flex-direction: column;
@@ -40,7 +51,7 @@ import PlayBadge from '../PlayBadge.astro';
     height: 520px;
     margin-left: -360px;
     border-radius: 50%;
-    background: radial-gradient(closest-side, rgba(212, 163, 115, 0.22), rgba(212, 163, 115, 0));
+    background: radial-gradient(closest-side, rgba(212, 163, 115, 0.3), rgba(212, 163, 115, 0));
   }
   .panel :global(.mark) {
     position: relative;
@@ -55,8 +66,40 @@ import PlayBadge from '../PlayBadge.astro';
     letter-spacing: -0.03em;
     max-width: 720px;
   }
+  .sub {
+    position: relative;
+    margin: -4px 0 4px;
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: #c9bea6;
+  }
   .badge {
     position: relative;
+  }
+  .facts {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    font-size: 14px;
+    color: #a3967f;
+  }
+  .facts li {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .facts li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #b3c08e;
   }
   @media (max-width: 700px) {
     section {

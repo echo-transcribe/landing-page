@@ -1,0 +1,43 @@
+---
+import TextPageLayout from '../layouts/TextPageLayout.astro';
+import { site } from '../config/site';
+
+const { company, email, legal } = site;
+---
+
+<TextPageLayout
+  title="Legal notice — Echo"
+  description="Company details for Echo, the offline speech to text app for Android."
+  updated={legal.updated}
+  legal
+>
+  <section aria-labelledby="provider">
+    <h2 id="provider">Provider</h2>
+    <p>
+      {company.name}<br />
+      {company.address}<br />
+      Slovenia
+    </p>
+  </section>
+
+  <section aria-labelledby="registration">
+    <h2 id="registration">Registration</h2>
+    <p>
+      Registered in the {legal.register}, registration no. {company.regNo}.<br />
+      VAT ID: {company.vatId}
+    </p>
+  </section>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">Contact</h2>
+    <p>
+      General: <a href={`mailto:${email.hello}`}>{email.hello}</a><br />
+      Privacy: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>
+    </p>
+  </section>
+
+  <section aria-labelledby="disputes">
+    <h2 id="disputes">Consumer disputes</h2>
+    <p>{legal.adr}</p>
+  </section>
+</TextPageLayout>

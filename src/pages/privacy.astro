@@ -1,0 +1,158 @@
+---
+import TextPageLayout from '../layouts/TextPageLayout.astro';
+import { site } from '../config/site';
+
+const { company, email, legal } = site;
+---
+
+<TextPageLayout
+  title="Privacy policy — Echo"
+  description="How Echo and this website handle personal data. Your recordings and notes stay on your phone; this site sets no cookies."
+  updated={legal.updated}
+  legal
+>
+  <section class="summary" aria-labelledby="short">
+    <h2 id="short">The short version</h2>
+    <ul>
+      <li>Your recordings, transcripts, summaries and tasks are processed and stored only on your phone. We never receive them.</li>
+      <li>Echo has no accounts. Payments are handled by Google Play.</li>
+      <li>This website sets no cookies and counts visits without identifying you.</li>
+      <li>You can contact us any time at <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="controller">
+    <h2 id="controller">1. Who is responsible</h2>
+    <p>
+      The controller under the GDPR is {company.name}, {company.address}, Slovenia, registration no. {company.regNo},
+      VAT ID {company.vatId}. Email: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+    </p>
+  </section>
+
+  <section aria-labelledby="app">
+    <h2 id="app">2. The Echo app</h2>
+
+    <h3>Your recordings and notes</h3>
+    <p>
+      Audio, transcripts, speaker names, summaries, tasks and folders are created and stored on your device. Speech
+      recognition, speaker detection and the Notes AI all run on the phone. Nothing is sent to us or to anyone else
+      unless you share or export it yourself. Echo is excluded from Android's cloud backup and device transfer, so your
+      notes are not copied to Google either. Backups you make in the app are files you control. Deleting the app, or
+      using Delete all data in Settings, removes everything.
+    </p>
+
+    <h3>Permissions</h3>
+    <ul>
+      <li>Microphone, to record when you tap Record.</li>
+      <li>
+        Notifications, exact alarms and starting after a restart, to remind you of tasks at the time you mentioned.
+      </li>
+      <li>Foreground service, so recording and transcription keep going while the screen is off.</li>
+      <li>Internet and network state, only to download models and to buy Pro.</li>
+    </ul>
+
+    <h3>Model downloads</h3>
+    <p>
+      The speech, speaker and Notes AI models are downloaded when you first set up Echo or choose another model. Your
+      phone fetches them from Hugging Face (Hugging Face, Inc., USA) and, for one speaker model, from GitHub (GitHub,
+      Inc., USA). Like any download, these servers see your IP address and basic request details, under their own
+      privacy policies. Nothing about you or your notes is sent with the request, and we do not receive these logs.
+    </p>
+
+    <h3>Purchases</h3>
+    <p>
+      Pro is sold through Google Play, which processes your payment under <a
+        href="https://policies.google.com/privacy">Google's privacy policy</a
+      >. To know whether you have Pro, the app uses RevenueCat (RevenueCat, Inc., USA) as our processor. RevenueCat
+      receives a random, anonymous app user ID, your purchase receipts and history, and basic app and device information
+      such as the app version and country of the store. It does not receive your name, email address or payment
+      details, and no advertising ID is used. Legal basis: performance of a contract (Art. 6(1)(b) GDPR) and legal
+      obligations for tax records (Art. 6(1)(c)).
+    </p>
+
+    <h3>Crash reports and analytics in the app</h3>
+    <p>None. Echo contains no analytics, crash reporting or advertising.</p>
+  </section>
+
+  <section aria-labelledby="website">
+    <h2 id="website">3. This website</h2>
+    <p>
+      The site is hosted by Vercel (Vercel Inc., USA). Their servers process your IP address to deliver the pages and
+      keep short-lived logs for security and abuse prevention.
+    </p>
+    <p>
+      We count visits with PostHog, with data stored on PostHog's EU servers in Frankfurt. It runs in cookieless mode:
+      it sets no cookies and stores nothing on your device. To tell visits apart for one day, PostHog computes a hash
+      from your IP address and browser details with a salt that changes daily, then discards the IP address. We see
+      totals such as page views, referring sites and clicks on buttons like Get it on Google Play. Legal basis: our
+      legitimate interest in knowing how the site is used (Art. 6(1)(f)).
+    </p>
+    <p>
+      If you press the light/dark switch, your choice is saved in your browser's local storage so the next page opens
+      the same way. It never leaves your device and is only there because you asked for it. Because no cookies or
+      tracking technologies are used, there is no cookie banner.
+    </p>
+  </section>
+
+  <section aria-labelledby="email">
+    <h2 id="email">4. When you email us</h2>
+    <p>
+      If you write to us or use Send feedback in the app, we use your email address and message only to answer you, and
+      delete them {legal.emailRetention} after the conversation ends. Our email is handled by {legal.emailProvider}.
+      Legal basis: Art. 6(1)(b) or (f).
+    </p>
+  </section>
+
+  <section aria-labelledby="recipients">
+    <h2 id="recipients">5. Who else receives data</h2>
+    <p>Only the providers named above:</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Provider</th><th scope="col">Purpose</th><th scope="col">Role</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google (Google Play)</td><td>Payments for Pro</td><td>Independent controller</td></tr>
+          <tr><td>RevenueCat, Inc.</td><td>Checking Pro purchases</td><td>Processor</td></tr>
+          <tr><td>Hugging Face, Inc. and GitHub, Inc.</td><td>Model downloads</td><td>Independent controllers</td></tr>
+          <tr><td>Vercel Inc.</td><td>Website hosting</td><td>Processor</td></tr>
+          <tr><td>PostHog, Inc. (EU hosting)</td><td>Website visit counts</td><td>Processor</td></tr>
+          <tr><td>{legal.emailProvider}</td><td>Email</td><td>Processor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      We have data processing agreements with every processor. Several of these companies are based in the USA. Where
+      personal data leaves the EU/EEA, the transfer relies on the EU–US Data Privacy Framework or the European
+      Commission's Standard Contractual Clauses. We never sell data.
+    </p>
+  </section>
+
+  <section aria-labelledby="rights">
+    <h2 id="rights">6. Your rights</h2>
+    <p>
+      You can ask us for access to, correction, deletion or a copy of your personal data, ask us to restrict its use,
+      and object to processing based on legitimate interest. Write to <a href={`mailto:${email.privacy}`}
+        >{email.privacy}</a
+      >; we answer within one month. Since your notes never reach us, the quickest way to delete them is in the app.
+    </p>
+    <p>
+      You can also complain to a supervisory authority. In Slovenia that is the Information Commissioner (Informacijski
+      pooblaščenec), Dunajska cesta 22, 1000 Ljubljana, <a href="https://www.ip-rs.si">ip-rs.si</a>, or the authority
+      in your own EU country.
+    </p>
+  </section>
+
+  <section aria-labelledby="children">
+    <h2 id="children">7. Children</h2>
+    <p>Echo is intended for people aged {legal.minAge} and over.</p>
+  </section>
+
+  <section aria-labelledby="changes">
+    <h2 id="changes">8. Changes</h2>
+    <p>
+      If this policy changes, we update the date above. Significant changes are also announced in the app's release
+      notes.
+    </p>
+  </section>
+</TextPageLayout>

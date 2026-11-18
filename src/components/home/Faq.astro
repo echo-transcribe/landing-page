@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: 'Which phones does Echo run on?',
-    a: `Android ${product.minAndroid} or newer with at least ${product.minRamGb} GB of RAM. On phones that can run it, Echo offers a more accurate speech model as an optional download.`,
+    a: `Android ${product.minAndroid} or newer. Summaries and tasks need about ${product.notesAiRamGb} GB of RAM. Phones with ${product.largeModelRamGb} GB or more get Whisper Large V3 Turbo, the most accurate speech model; others get a smaller, faster one.`,
   },
   {
     q: 'How accurate is it?',
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'Which languages get summaries and tasks?',
-    a: `Transcription works in around 100 languages. Summaries and tasks are available in ${product.notesAiLanguages}.`,
+    a: `Transcription works in ${product.transcriptionLanguages} languages, and summaries and tasks are made for every one of them. The standard Notes AI writes them in English; the optional multilingual model writes them in the language of the note.`,
   },
   {
     q: 'Is Echo GDPR compliant?',
@@ -92,17 +92,46 @@ const faqs = [
   details[open] .faq-chev {
     transform: rotate(180deg);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .faq-chev {
-      transition: none;
-    }
-  }
   details p {
     margin: 0;
     padding: 0 24px 22px;
     font-size: 15px;
     line-height: 1.6;
     color: var(--text-2);
+  }
+
+  /* Height slide where supported (Chromium); other browsers open instantly but still get the fade below. */
+  details {
+    interpolate-size: allow-keywords;
+  }
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.28s ease,
+      content-visibility 0.28s allow-discrete;
+  }
+  details[open]::details-content {
+    height: auto;
+  }
+  details[open] p {
+    animation: faq-in 0.28s ease;
+  }
+  @keyframes faq-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-chev,
+    details::details-content {
+      transition: none;
+    }
+    details[open] p {
+      animation: none;
+    }
   }
   @media (max-width: 700px) {
     section {

@@ -26,6 +26,18 @@ export const site = {
     country: 'Slovenia, EU',
   },
 
+  legal: {
+    /** Flip to true once a qualified person has reviewed the legal pages; hides the draft notice. */
+    reviewed: false,
+    updated: '2026-11-18',
+    register: '[Business register, e.g. AJPES Slovenian Business Register]',
+    minAge: '[minimum age, matching the Google Play content rating]',
+    emailRetention: '[period]',
+    emailProvider: '[email provider]',
+    // Slovenian ZIsRPS: say whether an out-of-court dispute resolution provider is recognised.
+    adr: '[We do not recognise any out-of-court consumer dispute resolution provider. / Name the provider.]',
+  },
+
   prices: {
     currency: 'EUR',
     monthly: 5,

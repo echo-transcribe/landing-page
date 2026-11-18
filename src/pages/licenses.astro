@@ -1,0 +1,79 @@
+---
+import TextPageLayout from '../layouts/TextPageLayout.astro';
+import { site } from '../config/site';
+
+type Entry = { name: string; use: string; licence: string; url: string };
+
+// Checked against the echo repo (gradle/libs.versions.toml, ModelStore.kt, WhisperModels.kt,
+// SpeakerModels.kt, CMakeLists.txt) on 2026-11-18. Keep in sync when dependencies change.
+const models: Entry[] = [
+  { name: 'Whisper (Large V3 Turbo, Medium, Small, Base)', use: 'Speech recognition', licence: 'MIT', url: 'https://github.com/openai/whisper' },
+  { name: 'Qwen3 1.7B and 0.6B', use: 'Notes AI', licence: 'Apache 2.0', url: 'https://huggingface.co/Qwen' },
+  { name: 'Gemma 4 E2B', use: 'Multilingual Notes AI (optional)', licence: 'Apache 2.0', url: 'https://ai.google.dev/gemma' },
+  { name: 'Silero VAD', use: 'Voice activity detection', licence: 'MIT', url: 'https://github.com/snakers4/silero-vad' },
+  { name: 'pyannote segmentation 3.0', use: 'Speaker detection', licence: 'MIT', url: 'https://huggingface.co/pyannote/segmentation-3.0' },
+  { name: '3D-Speaker ERes2Net', use: 'Speaker detection', licence: 'Apache 2.0', url: 'https://github.com/modelscope/3D-Speaker' },
+];
+
+const libraries: Entry[] = [
+  { name: 'whisper.cpp / ggml', use: 'On-device Whisper engine', licence: 'MIT', url: 'https://github.com/ggml-org/whisper.cpp' },
+  { name: 'sherpa-onnx', use: 'Speaker detection engine', licence: 'Apache 2.0', url: 'https://github.com/k2-fsa/sherpa-onnx' },
+  { name: 'LiteRT-LM', use: 'On-device Notes AI engine', licence: 'Apache 2.0', url: 'https://github.com/google-ai-edge/LiteRT-LM' },
+  { name: 'Android Jetpack (AndroidX, Compose, Media3, WorkManager, Glance, Navigation)', use: 'App framework', licence: 'Apache 2.0', url: 'https://developer.android.com/jetpack' },
+  { name: 'SQLDelight', use: 'Database', licence: 'Apache 2.0', url: 'https://github.com/sqldelight/sqldelight' },
+  { name: 'kotlinx.serialization', use: 'Data format', licence: 'Apache 2.0', url: 'https://github.com/Kotlin/kotlinx.serialization' },
+  { name: 'RevenueCat Purchases SDK', use: 'Pro purchases', licence: 'MIT', url: 'https://github.com/RevenueCat/purchases-android' },
+];
+
+const website: Entry[] = [
+  { name: 'Astro', use: 'Site framework', licence: 'MIT', url: 'https://github.com/withastro/astro' },
+  { name: 'DM Sans', use: 'Typeface', licence: 'SIL Open Font License 1.1', url: 'https://github.com/googlefonts/dm-fonts' },
+  { name: 'qrcode', use: 'QR code', licence: 'MIT', url: 'https://github.com/soldair/node-qrcode' },
+];
+
+const groups = [
+  { id: 'models', title: 'AI models in the app', entries: models },
+  { id: 'libraries', title: 'Libraries in the app', entries: libraries },
+  { id: 'website', title: 'This website', entries: website },
+];
+---
+
+<TextPageLayout
+  title="Open-source licenses — Echo"
+  description="The open-source models and libraries Echo is built on, with their licences."
+  updated={site.legal.updated}
+>
+  <p>
+    Echo runs entirely on your phone thanks to open models and open-source software. We are grateful to the people who
+    build them. Follow each link for the full licence text.
+  </p>
+  {
+    groups.map((g) => (
+      <section aria-labelledby={g.id}>
+        <h2 id={g.id}>{g.title}</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Component</th>
+                <th scope="col">Used for</th>
+                <th scope="col">Licence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {g.entries.map((e) => (
+                <tr>
+                  <td>
+                    <a href={e.url}>{e.name}</a>
+                  </td>
+                  <td>{e.use}</td>
+                  <td>{e.licence}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ))
+  }
+</TextPageLayout>

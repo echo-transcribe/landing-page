@@ -7,9 +7,11 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   /** Where the badge sits, sent with the click event. */
   placement: string;
+  /** In the first screen (header, hero): load eagerly. Everything else lazy-loads. */
+  aboveFold?: boolean;
 }
 
-const { size = 'md', placement } = Astro.props;
+const { size = 'md', placement, aboveFold = false } = Astro.props;
 // Heights from the design; width follows the official badge's 564x168 ratio.
 const height = { sm: 44, md: 52, lg: 60 }[size];
 const width = Math.round((height * 564) / 168);
@@ -23,7 +25,7 @@ const width = Math.round((height * 564) / 168);
     width={width}
     height={height}
     densities={[1, 2]}
-    loading={size === 'sm' ? 'lazy' : 'eager'}
+    loading={aboveFold ? 'eager' : 'lazy'}
   />
 </a>
 
