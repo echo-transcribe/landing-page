@@ -1,0 +1,38 @@
+---
+// Cookieless PostHog (EU), proxied through /ingest on our own domain. See vercel.json and the privacy policy.
+// Without PUBLIC_POSTHOG_KEY at build time nothing is loaded.
+---
+
+<script>
+  const key = import.meta.env.PUBLIC_POSTHOG_KEY;
+
+  if (key) {
+    // The no-external build never fetches extra code from PostHog's CDN.
+    const { default: posthog } = await import('posthog-js/dist/module.slim.no-external');
+
+    posthog.init(key, {
+      api_host: '/ingest',
+      ui_host: 'https://eu.posthog.com',
+      cookieless_mode: 'always',
+      respect_dnt: true,
+      autocapture: false,
+      capture_pageview: true,
+      capture_pageleave: true,
+      disable_session_recording: true,
+      disable_surveys: true,
+      disable_web_experiments: true,
+      advanced_disable_feature_flags: true,
+      disable_external_dependency_loading: true,
+    });
+
+    // CTAs carry data-event="name" plus optional data-* properties (placement, plan).
+    document.addEventListener('click', (e) => {
+      const el = (e.target as Element).closest<HTMLElement>('[data-event]');
+      if (!el) return;
+      const { event, ...props } = el.dataset;
+      if (!event) return;
+      // Most CTAs leave the site; a beacon survives the navigation.
+      posthog.capture(event, props, { transport: 'sendBeacon' });
+    });
+  }
+</script>

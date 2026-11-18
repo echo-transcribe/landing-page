@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found — Echo" description="This page doesn't exist." noindex>
+  <section>
+    <p class="code">404</p>
+    <h1>Nothing recorded here.</h1>
+    <p class="lead">The page you're looking for doesn't exist or has moved.</p>
+    <a class="home" href="/">Back to the home page</a>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 120px 24px 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .code {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.08;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .lead {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+  .home {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    height: 52px;
+    padding: 0 26px;
+    border-radius: 999px;
+    background: var(--raised);
+    color: var(--text-ctl);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--hairline-strong);
+  }
+  .home:hover {
+    color: var(--text);
+  }
+</style>

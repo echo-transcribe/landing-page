@@ -13,4 +13,15 @@ export default defineConfig({
     locales: ['en'],
   },
   integrations: [sitemap()],
+  markdown: { syntaxHighlight: 'prism' },
+  security: {
+    csp: {
+      directives: [
+        "default-src 'self'",
+        "img-src 'self' data:",
+        "font-src 'self'",
+        "connect-src 'self'",
+      ],
+    },
+  },
 });

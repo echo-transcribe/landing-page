@@ -10,11 +10,47 @@ import Compare from '../components/home/Compare.astro';
 import Pricing from '../components/home/Pricing.astro';
 import Faq from '../components/home/Faq.astro';
 import ClosingCta from '../components/home/ClosingCta.astro';
+import { site } from '../config/site';
+import { product } from '../config/product';
+import { faqs } from '../config/faq';
+
+const { prices } = site;
+const offer = (name: string, price: number) => ({ '@type': 'Offer', name, price, priceCurrency: prices.currency });
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: site.name,
+    description: 'Offline speech to text for Android. Transcripts, summaries and tasks, made on your phone.',
+    operatingSystem: `Android ${product.minAndroid}+`,
+    applicationCategory: 'ProductivityApplication',
+    url: site.url,
+    downloadUrl: site.playUrl,
+    installUrl: site.playUrl,
+    offers: [
+      offer('Free', 0),
+      offer('Pro monthly', prices.monthly),
+      offer('Pro yearly', prices.yearly),
+      offer('Pro lifetime', prices.lifetime),
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
 <BaseLayout
   title="Echo — offline speech to text for Android"
   description="Meetings, lectures and voice notes become text, summaries and tasks on your phone. No internet, no uploads."
+  jsonLd={jsonLd}
 >
   <Hero />
   <Features />
