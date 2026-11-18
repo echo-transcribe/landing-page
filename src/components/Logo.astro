@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../assets/echo-mark.png';
+
+interface Props {
+  size?: 'header' | 'footer';
+}
+
+const { size = 'header' } = Astro.props;
+const dims = size === 'header' ? { w: 46, h: 45 } : { w: 38, h: 37 };
+---
+
+<a href="/" class:list={['logo', size]} aria-label="Echo home">
+  <Image src={mark} alt="" width={dims.w} height={dims.h} densities={[1, 2]} loading="eager" />
+  <span>Echo</span>
+</a>
+
+<style>
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .logo:hover {
+    color: var(--text);
+  }
+  .logo img {
+    object-fit: contain;
+  }
+  span {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.033em;
+  }
+  .footer {
+    gap: 10px;
+  }
+  .footer span {
+    font-size: 24px;
+  }
+</style>

@@ -1,0 +1,70 @@
+/* Ported from the design canvas (Main.dc.html, .echo-root). Keep in sync with ds/echo/tokens.json. */
+:root {
+  --page: #fefae0;
+  --card: #fffdf5;
+  --raised: #ffffff;
+  --sunken: #f5f2e8;
+  --text: #2a2318;
+  --text-2: #635747;
+  --text-3: #7a6d5a;
+  --text-ctl: #4e4335;
+  --accent-text: #7a5533;
+  --accent-hover: #573c24;
+  --icon-accent: #9c6f43;
+  --accent-soft: #f6e7d7;
+  --accent-col: rgba(246, 231, 215, 0.5);
+  --tag-border: #e0bb96;
+  --sage-soft: #eef2e0;
+  --sage-chip: #e9edc9;
+  --success: #55613b;
+  --sage-glyph: #718050;
+  --cream: #faedcd;
+  --control: #9a8f7d;
+  --track: #d9d2c2;
+  --bar: rgba(254, 250, 224, 0.86);
+  --border: rgba(58, 49, 37, 0.14);
+  --rule: rgba(58, 49, 37, 0.07);
+  --hairline: inset 0 0 0 1px rgba(58, 49, 37, 0.06);
+  --hairline-strong: inset 0 0 0 1px rgba(58, 49, 37, 0.11);
+  --inverse: #2a2318;
+  --frame: #2a2318;
+  --focus: #9c6f43;
+  --aura-grad: radial-gradient(closest-side, #faedcd, rgba(250, 237, 205, 0));
+  color-scheme: light;
+
+  --font-sans: 'DM Sans Variable', 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+:root[data-theme='dark'] {
+  --page: #1c1810;
+  --card: #241f16;
+  --raised: #2d271c;
+  --sunken: #201b13;
+  --text: #f3ecd9;
+  --text-2: #c9bea6;
+  --text-3: #a3967f;
+  --text-ctl: #d9d2c2;
+  --accent-text: #e0bb96;
+  --accent-hover: #ecd3ba;
+  --icon-accent: #d4a373;
+  --accent-soft: #3a2c1d;
+  --accent-col: rgba(212, 163, 115, 0.1);
+  --tag-border: #5c4429;
+  --sage-soft: #2f3322;
+  --sage-chip: #3d4328;
+  --success: #b3c08e;
+  --sage-glyph: #94a56d;
+  --cream: #2a2318;
+  --control: #8a7c66;
+  --track: #4e4335;
+  --bar: rgba(28, 24, 16, 0.86);
+  --border: rgba(255, 245, 220, 0.14);
+  --rule: rgba(255, 245, 220, 0.08);
+  --hairline: inset 0 0 0 1px rgba(255, 245, 220, 0.07);
+  --hairline-strong: inset 0 0 0 1px rgba(255, 245, 220, 0.12);
+  --inverse: #13100a;
+  --frame: #0d0b07;
+  --focus: #d4a373;
+  --aura-grad: radial-gradient(closest-side, rgba(212, 163, 115, 0.14), rgba(212, 163, 115, 0));
+  color-scheme: dark;
+}

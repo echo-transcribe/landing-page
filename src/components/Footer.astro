@@ -1,0 +1,114 @@
+---
+import { footerNav, site } from '../config/site';
+import Logo from './Logo.astro';
+import PlayBadge from './PlayBadge.astro';
+
+const groups = footerNav
+  .map((g) => ({ ...g, links: g.links.filter((l) => l.live) }))
+  .filter((g) => g.links.length > 0);
+const year = new Date().getFullYear();
+const { company } = site;
+---
+
+<footer>
+  <div class="inner">
+    <div class="top">
+      <div class="brand">
+        <Logo size="footer" />
+        <p>{site.tagline}.</p>
+        <div><PlayBadge size="sm" placement="footer" /></div>
+      </div>
+      <div class="cols">
+        {
+          groups.map((g) => (
+            <nav aria-label={g.label}>
+              <span class="heading">{g.label}</span>
+              {g.links.map((l) => (
+                <a href={l.href}>{l.label}</a>
+              ))}
+            </nav>
+          ))
+        }
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© {year} {company.name} · {company.address} · Reg. no. {company.regNo} · VAT ID {company.vatId}</span>
+      <span>Made in {company.country} · No cookies on this site</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 72px 24px 40px;
+  }
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px 64px;
+  }
+  .brand {
+    flex: 1 1 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .brand p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-2);
+    max-width: 280px;
+  }
+  .cols {
+    flex: 3 1 640px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 32px 24px;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    font-size: 15px;
+  }
+  .heading {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  nav a {
+    color: var(--text-ctl);
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+  .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-2);
+  }
+  @media (max-width: 700px) {
+    .cols {
+      flex-basis: 100%;
+    }
+  }
+</style>
