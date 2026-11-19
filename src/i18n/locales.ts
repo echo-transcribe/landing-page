@@ -19,12 +19,12 @@ export const defaultLocale: Locale = 'en';
 
 export const locales: LocaleInfo[] = [
   { code: 'en', path: '', htmlLang: 'en', ogLocale: 'en_US', dateLocale: 'en-GB', nativeName: 'English', enabled: true },
-  { code: 'de', path: 'de', htmlLang: 'de', ogLocale: 'de_DE', dateLocale: 'de', nativeName: 'Deutsch', enabled: false },
-  { code: 'es', path: 'es', htmlLang: 'es', ogLocale: 'es_ES', dateLocale: 'es', nativeName: 'Español', enabled: false },
-  { code: 'fr', path: 'fr', htmlLang: 'fr', ogLocale: 'fr_FR', dateLocale: 'fr', nativeName: 'Français', enabled: false },
-  { code: 'it', path: 'it', htmlLang: 'it', ogLocale: 'it_IT', dateLocale: 'it', nativeName: 'Italiano', enabled: false },
-  { code: 'pt-br', path: 'pt-br', htmlLang: 'pt-BR', ogLocale: 'pt_BR', dateLocale: 'pt-BR', nativeName: 'Português (Brasil)', enabled: false },
-  { code: 'sl', path: 'sl', htmlLang: 'sl', ogLocale: 'sl_SI', dateLocale: 'sl', nativeName: 'Slovenščina', enabled: false },
+  { code: 'de', path: 'de', htmlLang: 'de', ogLocale: 'de_DE', dateLocale: 'de', nativeName: 'Deutsch', enabled: true },
+  { code: 'es', path: 'es', htmlLang: 'es', ogLocale: 'es_ES', dateLocale: 'es', nativeName: 'Español', enabled: true },
+  { code: 'fr', path: 'fr', htmlLang: 'fr', ogLocale: 'fr_FR', dateLocale: 'fr', nativeName: 'Français', enabled: true },
+  { code: 'it', path: 'it', htmlLang: 'it', ogLocale: 'it_IT', dateLocale: 'it', nativeName: 'Italiano', enabled: true },
+  { code: 'pt-br', path: 'pt-br', htmlLang: 'pt-BR', ogLocale: 'pt_BR', dateLocale: 'pt-BR', nativeName: 'Português (Brasil)', enabled: true },
+  { code: 'sl', path: 'sl', htmlLang: 'sl', ogLocale: 'sl_SI', dateLocale: 'sl', nativeName: 'Slovenščina', enabled: true },
 ];
 
 export const enabledLocales = locales.filter((l) => l.enabled);

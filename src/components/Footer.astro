@@ -41,8 +41,10 @@ const year = new Date().getFullYear();
     </div>
     <div class="bottom">
       <span>{t.footer.copyright(year)}</span>
-      <LanguageSwitcher placement="footer" />
-      <span>{t.footer.noCookies}</span>
+      <div class="end">
+        <LanguageSwitcher placement="footer" />
+        <span>{t.footer.noCookies}</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -104,10 +106,17 @@ const year = new Date().getFullYear();
     color: var(--accent-hover);
     text-decoration: underline;
   }
+  .end {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 12px;
+  }
   .bottom {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     gap: 12px 24px;
     padding-top: 24px;
     border-top: 1px solid var(--rule);

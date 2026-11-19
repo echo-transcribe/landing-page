@@ -1,12 +1,17 @@
 import { site } from '../config/site';
 import { en, type Dict } from './en';
+import { de } from './de';
+import { es } from './es';
+import { fr } from './fr';
+import { it } from './it';
+import { ptBr } from './pt-br';
+import { sl } from './sl';
 import { defaultLocale, enabledLocales, localeInfo, locales, type Locale, type LocaleInfo } from './locales';
 
 export { defaultLocale, enabledLocales, localeInfo, locales };
 export type { Dict, Locale, LocaleInfo };
 
-/** Dictionaries that exist so far. A locale without one falls back to English. */
-const dictionaries: Partial<Record<Locale, Dict>> = { en };
+const dictionaries: Record<Locale, Dict> = { en, de, es, fr, it, 'pt-br': ptBr, sl };
 
 export function useDict(locale: Locale): Dict {
   return dictionaries[locale] ?? en;

@@ -17,7 +17,11 @@ const current = localeInfo(locale);
     <details class:list={['switcher', placement]}>
       <summary aria-label={`${t.languageSwitcher.label}: ${current.nativeName}`}>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        <span lang={current.htmlLang}>{current.nativeName}</span>
+        {placement === 'header' ? (
+          <span class="code">{current.htmlLang.split('-')[0].toUpperCase()}</span>
+        ) : (
+          <span lang={current.htmlLang}>{current.nativeName}</span>
+        )}
       </summary>
       <ul>
         {enabledLocales.map((l) => (
@@ -75,11 +79,17 @@ const current = localeInfo(locale);
       var(--hairline-strong),
       0 16px 32px -16px rgba(42, 35, 24, 0.25);
   }
+  /* In the footer the switcher always has "No cookies…" to its right, so the list opens rightwards. */
   .footer ul {
     top: auto;
     bottom: calc(100% + 6px);
     right: auto;
     left: 0;
+  }
+  .code {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
   .menu {
     padding: 12px 0 0;

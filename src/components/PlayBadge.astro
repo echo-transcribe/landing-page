@@ -1,8 +1,17 @@
 ---
 import { Image } from 'astro:assets';
-import badge from '../assets/google-play-badge.png';
+import en from '../assets/google-play-badge-en.png';
+import de from '../assets/google-play-badge-de.png';
+import es from '../assets/google-play-badge-es.png';
+import fr from '../assets/google-play-badge-fr.png';
+import it from '../assets/google-play-badge-it.png';
+import ptBr from '../assets/google-play-badge-pt-br.png';
+import sl from '../assets/google-play-badge-sl.png';
 import { site } from '../config/site';
-import { getLocale, useDict } from '../i18n';
+import { getLocale, useDict, type Locale } from '../i18n';
+
+// Google's official badges per language (play.google.com/intl/en_us/badges), trimmed to the visible area.
+const badges: Record<Locale, ImageMetadata> = { en, de, es, fr, it, 'pt-br': ptBr, sl };
 
 interface Props {
   size?: 'sm' | 'md' | 'lg';
@@ -13,10 +22,12 @@ interface Props {
 }
 
 const { size = 'md', placement, aboveFold = false } = Astro.props;
-const t = useDict(getLocale(Astro));
-// Heights from the design; width follows the official badge's 564x168 ratio.
+const locale = getLocale(Astro);
+const t = useDict(locale);
+const badge = badges[locale];
+// Heights from the design; width follows the badge's own ratio.
 const height = { sm: 44, md: 52, lg: 60 }[size];
-const width = Math.round((height * 564) / 168);
+const width = Math.round((height * badge.width) / badge.height);
 ---
 
 <!-- Official Google Play badge, cropped to its visible area only; the surrounding layout keeps the required clear space. -->

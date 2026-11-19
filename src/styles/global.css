@@ -26,6 +26,8 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 img,
