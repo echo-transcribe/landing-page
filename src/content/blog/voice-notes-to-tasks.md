@@ -3,7 +3,7 @@ title: 'Turn voice notes into tasks and reminders on Android'
 description: 'Say what you need to do and get tasks with reminders at the times you mentioned, made on your phone without the cloud. How it works and what to expect.'
 pubDate: 2026-11-19
 tags: ['tasks', 'reminders', 'productivity']
-draft: true
+draft: false
 ---
 
 Talking is faster than typing. On the way home you can list everything you need to do tomorrow in thirty seconds. The hard part is turning that into a list you will actually look at, with reminders at the right times.

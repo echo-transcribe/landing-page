@@ -21,7 +21,7 @@ Things only you can do. Details are in the linked files. Tick items off and dele
 
 ## Blog
 
-- [ ] Read the 3 drafts in `src/content/blog/`. Set the real `pubDate`, then `draft: false`. The first published
+- [x] Read the 3 drafts in `src/content/blog/`. Set the real `pubDate`, then `draft: false`. The first published
       post turns on `/blog`, `/rss.xml` and the footer link (see `src/content/blog/_README.md`).
 
 ## Google Play

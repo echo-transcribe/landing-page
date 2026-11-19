@@ -3,7 +3,7 @@ title: 'Which Whisper model can your Android phone run?'
 description: 'Whisper Base, Small, Medium or Large V3 Turbo: how much RAM and storage each needs on Android, how fast they are, and which one Echo picks for your phone.'
 pubDate: 2026-11-19
 tags: ['whisper', 'android', 'models']
-draft: true
+draft: false
 ---
 
 Whisper is a speech recognition model from OpenAI, released as open source. It comes in several sizes. Bigger ones make fewer mistakes, but they need more memory and take longer. On a phone, the right size depends mostly on how much RAM it has.

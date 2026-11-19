@@ -3,7 +3,7 @@ title: 'How to transcribe audio offline on Android'
 description: 'Turn recordings into text on your Android phone without uploading them. What offline transcription needs, how long it takes and how to get good results.'
 pubDate: 2026-11-19
 tags: ['transcription', 'offline', 'android']
-draft: true
+draft: false
 ---
 
 Most transcription apps upload your audio to a server, turn it into text there and send the text back. That is quick, but your recording leaves your phone. If it holds a doctor's appointment, a job interview or a meeting about next year's budget, you may not want that.
