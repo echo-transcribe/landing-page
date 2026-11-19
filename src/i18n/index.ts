@@ -53,6 +53,8 @@ export function unlocalizePath(pathname: string): string {
 /** Whether an unprefixed route exists in a locale. Pages not yet translated exist in English only. */
 export function hasRoute(path: string, locale: Locale): boolean {
   const route = path.split('#')[0];
+  // The blog is English only.
+  if (route === '/blog' || route.startsWith('/blog/') || route === '/rss.xml') return locale === defaultLocale;
   return !(pageRoutes as readonly string[]).includes(route) || pagesLocales.includes(locale);
 }
 

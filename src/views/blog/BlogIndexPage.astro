@@ -1,0 +1,111 @@
+---
+import type { Page } from 'astro';
+import TextPageLayout from '../../layouts/TextPageLayout.astro';
+import { formatDate } from '../../i18n';
+import { isoDate, postPath, type Post } from '../../lib/blog';
+
+// The blog is English only, so its few interface words live here rather than in the dictionaries.
+interface Props {
+  page: Page<Post>;
+}
+
+const { page } = Astro.props;
+const title = page.currentPage === 1 ? 'Echo blog — offline transcription and private notes' : `Echo blog — page ${page.currentPage}`;
+---
+
+<TextPageLayout
+  title={title}
+  heading="Blog"
+  description="Guides on transcribing recordings on your Android phone, keeping notes private and turning what was said into summaries and tasks."
+  locale="en"
+  path="/blog"
+>
+  <link slot="head" rel="alternate" type="application/rss+xml" title="Echo blog" href="/rss.xml" />
+  <ol class="posts">
+    {
+      page.data.map((post) => {
+        const date = isoDate(post.data.pubDate);
+        return (
+          <li>
+            <article>
+              <h2>
+                <a href={postPath(post)}>{post.data.title}</a>
+              </h2>
+              <p class="date">
+                <time datetime={date}>{formatDate(date, 'en')}</time>
+                {post.data.draft && <span class="tag">Draft</span>}
+              </p>
+              <p>{post.data.description}</p>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ol>
+  {
+    (page.url.prev || page.url.next) && (
+      <nav class="pager" aria-label="Blog pages">
+        {page.url.prev && <a href={page.url.prev}>Newer posts</a>}
+        {page.url.next && <a href={page.url.next}>Older posts</a>}
+      </nav>
+    )
+  }
+  <p class="feed"><a href="/rss.xml">RSS feed</a></p>
+</TextPageLayout>
+
+<style>
+  .posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  article {
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline);
+    padding: 24px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  article h2 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  article h2 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  article h2 a:hover {
+    text-decoration: underline;
+  }
+  article p {
+    margin: 0;
+  }
+  .date {
+    font-size: 14px;
+    color: var(--text-2);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .tag {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-text);
+  }
+  .pager {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .feed {
+    font-size: 15px;
+  }
+</style>

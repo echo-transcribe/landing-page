@@ -1,17 +1,20 @@
 ---
 import { footerNav } from '../config/site';
 import { getLocale, linkTo, useDict } from '../i18n';
+import { getPosts } from '../lib/blog';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import Logo from './Logo.astro';
 import PlayBadge from './PlayBadge.astro';
 
 const locale = getLocale(Astro);
 const t = useDict(locale);
+// No blog link while every post is a draft: /blog is not built then.
+const hasPosts = (await getPosts()).length > 0;
 const groups = footerNav
   .map((g) => ({
     label: t.footer.groups[g.id as keyof typeof t.footer.groups],
     links: g.links
-      .filter((l) => l.live)
+      .filter((l) => l.live && (l.id !== 'blog' || hasPosts))
       .map((l) => ({ href: linkTo(l.href, locale), label: t.footer.links[l.id as keyof typeof t.footer.links] })),
   }))
   .filter((g) => g.links.length > 0);

@@ -22,6 +22,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
+      - run: pnpm check:play
       - run: pnpm exec playwright install --with-deps chromium
       # Builds the site, serves it, and runs the privacy, CSP and UI tests.
       - run: pnpm test

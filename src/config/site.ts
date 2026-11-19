@@ -105,7 +105,7 @@ export const footerNav: NavGroup[] = [
   {
     id: 'resources',
     links: [
-      { id: 'blog', href: '/blog', live: false },
+      { id: 'blog', href: '/blog', live: true },
       { id: 'help', href: '/help', live: true },
       { id: 'contact', href: `mailto:${site.email.hello}`, live: true },
     ],

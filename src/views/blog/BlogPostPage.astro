@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import TextPageLayout from '../../layouts/TextPageLayout.astro';
+import { site } from '../../config/site';
+import { formatDate } from '../../i18n';
+import { isoDate, postPath, type Post } from '../../lib/blog';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { data } = post;
+const { Content, headings } = await render(post);
+const path = postPath(post);
+const url = new URL(path, Astro.site ?? site.url).href;
+const published = isoDate(data.pubDate);
+const updated = data.updatedDate ? isoDate(data.updatedDate) : null;
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: data.title,
+  description: data.description,
+  datePublished: published,
+  dateModified: updated ?? published,
+  inLanguage: 'en',
+  mainEntityOfPage: url,
+  url,
+  keywords: data.tags.length > 0 ? data.tags.join(', ') : undefined,
+  author: { '@type': 'Person', name: site.company.name },
+  publisher: { '@type': 'Organization', name: site.name, url: site.url },
+  ...(data.heroImage ? { image: new URL(data.heroImage.src, Astro.site ?? site.url).href } : {}),
+};
+---
+
+<TextPageLayout
+  title={data.title}
+  description={data.description}
+  locale="en"
+  path={path}
+  toc={headings.filter((h) => h.depth === 2).length > 2}
+  ogType="article"
+  jsonLd={[article]}
+>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={published} />
+    {updated && <meta property="article:modified_time" content={updated} />}
+    {data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    <link rel="alternate" type="application/rss+xml" title="Echo blog" href="/rss.xml" />
+  </Fragment>
+  <p class="byline" slot="meta">
+    {data.draft && <strong class="draft-tag">Draft · </strong>}
+    By {site.company.name} · <time datetime={published}>{formatDate(published, 'en')}</time>
+    {updated && (
+      <>
+        {' '}· Updated <time datetime={updated}>{formatDate(updated, 'en')}</time>
+      </>
+    )}
+  </p>
+  {data.heroImage && <Image src={data.heroImage} alt={data.heroAlt ?? ''} class="hero" widths={[760, 1520]} sizes="(min-width: 808px) 760px, 100vw" />}
+  <Content />
+  <p class="back"><a href="/blog">← All posts</a></p>
+</TextPageLayout>
+
+<style>
+  .byline {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text-2);
+  }
+  .draft-tag {
+    color: var(--accent-text);
+  }
+  .hero {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+  .back {
+    font-size: 15px;
+  }
+</style>

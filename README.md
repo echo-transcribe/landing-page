@@ -10,6 +10,7 @@
 | `pnpm test`         | Build, serve on port 4399 and run the Playwright tests                           |
 | `pnpm assets`       | Regenerate favicons and `public/og-image.png` from the logo                      |
 | `pnpm check:launch` | Fail while placeholders, the placeholder domain or unreviewed legal pages remain |
+| `pnpm check:play`   | Check the Google Play listing texts in `docs/play-listing/` against Play's limits |
 
 First run of the tests: `pnpm exec playwright install chromium`.
 
@@ -27,8 +28,11 @@ First run of the tests: `pnpm exec playwright install chromium`.
   until then its pages link to the English versions.
 - `src/config/languages.ts`: Whisper's 100 language codes for `/languages`.
 - `src/layouts/BaseLayout.astro`: head, SEO tags, theme bootstrap, header, footer, analytics.
-- `src/layouts/TextPageLayout.astro`: the text template for legal pages, and later help and blog posts.
-- `src/content.config.ts`: the blog collection schema. Posts go in `src/content/blog/` (no routes yet).
+- `src/layouts/TextPageLayout.astro`: the text template for legal pages, help, languages, phones and blog posts.
+- Blog (English only): posts are Markdown in `src/content/blog/`, schema in `src/content.config.ts`, routes in
+  `src/pages/blog/` and the feed at `/rss.xml`. While every post has `draft: true`, none of it is built and the
+  footer hides the blog link; `pnpm dev` shows drafts for previewing. See `src/content/blog/_README.md`.
+- `docs/play-listing/`: Google Play store listing texts in all 7 languages, copied into Play Console by hand.
 
 ## Languages
 

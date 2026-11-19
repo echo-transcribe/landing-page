@@ -18,9 +18,11 @@ interface Props {
   locale?: Locale;
   /** The unprefixed route (e.g. `/privacy`). Pages that have translations pass it so hreflang links can be built. */
   path?: string;
+  /** Open Graph type; blog posts are `article`. */
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, jsonLd = [], noindex = false, path } = Astro.props;
+const { title, description, jsonLd = [], noindex = false, path, ogType = 'website' } = Astro.props;
 const locale = Astro.props.locale ?? getLocale(Astro);
 const info = localeInfo(locale);
 const t = useDict(locale);
@@ -55,7 +57,7 @@ Astro.csp?.insertScriptHash(`sha256-${createHash('sha256').update(themeScript).d
     <meta name="theme-color" content="#fefae0" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#1c1810" media="(prefers-color-scheme: dark)" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

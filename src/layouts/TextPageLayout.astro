@@ -18,9 +18,10 @@ interface Props {
   path?: string;
   /** Long pages: list the H2 sections (they need ids) at the top. */
   toc?: boolean;
+  ogType?: 'website' | 'article';
 }
 
-const { title, description, heading, updated, legal = false, jsonLd, path, toc = false } = Astro.props;
+const { title, description, heading, updated, legal = false, jsonLd, path, toc = false, ogType } = Astro.props;
 const locale = Astro.props.locale ?? getLocale(Astro);
 const t = useDict(locale);
 const h1 = heading ?? title.split(' — ')[0];
@@ -36,12 +37,14 @@ const sections = toc
   : [];
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd} locale={locale} path={path}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd} locale={locale} path={path} ogType={ogType}>
+  <slot name="head" slot="head" />
   <div class="page">
     <article class="prose">
       <header class="page-head">
         <h1>{h1}</h1>
         {updatedLabel && <p class="updated">{t.textPage.lastUpdated} <time datetime={updated}>{updatedLabel}</time></p>}
+        <slot name="meta" />
       </header>
       {
         legal && !site.legal.reviewed && (

@@ -1,6 +1,20 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const routes = ['/', '/privacy', '/terms', '/legal-notice', '/licenses'];
+const routes = [
+  '/',
+  '/privacy',
+  '/terms',
+  '/legal-notice',
+  '/licenses',
+  '/help',
+  '/use-cases/meetings',
+  '/use-cases/lectures',
+  '/use-cases/interviews',
+  '/features/voice-to-tasks',
+  '/compare/loronote',
+  '/languages',
+  '/phones',
+];
 const prefixes = ['', '/de', '/es', '/fr', '/it', '/pt-br', '/sl'];
 const pages = prefixes.flatMap((p) => routes.map((r) => (r === '/' ? p || '/' : `${p}${r}`)));
 

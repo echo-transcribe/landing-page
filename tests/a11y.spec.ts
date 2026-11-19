@@ -2,7 +2,23 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 // WCAG 2.2 AA checks with axe on every page type, in both themes and at phone width.
-const pages = ['/', '/privacy', '/terms', '/legal-notice', '/licenses', '/de', '/sl/privacy'];
+const pages = [
+  '/',
+  '/privacy',
+  '/terms',
+  '/legal-notice',
+  '/licenses',
+  '/de',
+  '/sl/privacy',
+  '/help',
+  '/use-cases/meetings',
+  '/features/voice-to-tasks',
+  '/compare/loronote',
+  '/languages',
+  '/phones',
+  '/fr/use-cases/lectures',
+  '/sl/compare/loronote',
+];
 
 for (const path of pages) {
   for (const theme of ['light', 'dark'] as const) {

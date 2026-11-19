@@ -1,0 +1,15 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import BlogIndexPage from '../../views/blog/BlogIndexPage.astro';
+import { getPosts, postsPerPage, type Post } from '../../lib/blog';
+
+// /blog, /blog/2, … Nothing is built while every post is a draft, so no empty blog goes live.
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  return posts.length > 0 ? paginate(posts, { pageSize: postsPerPage }) : [];
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<Post> };
+---
+
+<BlogIndexPage page={page} />
