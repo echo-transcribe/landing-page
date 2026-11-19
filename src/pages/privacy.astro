@@ -24,8 +24,7 @@ const { company, email, legal } = site;
   <section aria-labelledby="controller">
     <h2 id="controller">1. Who is responsible</h2>
     <p>
-      The controller under the GDPR is {company.name}, {company.address}, Slovenia, registration no. {company.regNo},
-      VAT ID {company.vatId}. Email: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+      The controller under the GDPR is {company.name}, {company.address}, {company.country}{company.regNo && `, registration no. ${company.regNo}`}{company.vatId && `, VAT ID ${company.vatId}`}. Email: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
     </p>
   </section>
 
@@ -35,7 +34,9 @@ const { company, email, legal } = site;
     <h3>Your recordings and notes</h3>
     <p>
       Audio, transcripts, speaker names, summaries, tasks and folders are created and stored on your device. Speech
-      recognition, speaker detection and the Notes AI all run on the phone. Nothing is sent to us or to anyone else
+      recognition, speaker detection and the Notes AI all run on the phone. For recordings in a language your phone
+      supports offline, Echo can use Android's built-in on-device speech recognizer, which also works without a
+      connection. Nothing is sent to us or to anyone else
       unless you share or export it yourself. Echo is excluded from Android's cloud backup and device transfer, so your
       notes are not copied to Google either. Backups you make in the app are files you control. Deleting the app, or
       using Delete all data in Settings, removes everything.
@@ -48,7 +49,7 @@ const { company, email, legal } = site;
         Notifications, exact alarms and starting after a restart, to remind you of tasks at the time you mentioned.
       </li>
       <li>Foreground service, so recording and transcription keep going while the screen is off.</li>
-      <li>Internet and network state, only to download models and to buy Pro.</li>
+      <li>Internet and network state, only to download models, buy Pro and check whether you have Pro.</li>
     </ul>
 
     <h3>Model downloads</h3>
@@ -78,13 +79,14 @@ const { company, email, legal } = site;
     <h2 id="website">3. This website</h2>
     <p>
       The site is hosted by Vercel (Vercel Inc., USA). Their servers process your IP address to deliver the pages and
-      keep short-lived logs for security and abuse prevention.
+      keep short-lived logs for security and abuse prevention. Legal basis: our legitimate interest in running a secure
+      website (Art. 6(1)(f)).
     </p>
     <p>
       We count visits with PostHog, with data stored on PostHog's EU servers in Frankfurt. It runs in cookieless mode:
       it sets no cookies and stores nothing on your device. To tell visits apart for one day, PostHog computes a hash
       from your IP address and browser details with a salt that changes daily, then discards the IP address. We see
-      totals such as page views, referring sites and clicks on buttons like Get it on Google Play. Legal basis: our
+      totals such as page views, referring sites and clicks on the download buttons. Legal basis: our
       legitimate interest in knowing how the site is used (Art. 6(1)(f)).
     </p>
     <p>
@@ -99,12 +101,28 @@ const { company, email, legal } = site;
     <p>
       If you write to us or use Send feedback in the app, we use your email address and message only to answer you, and
       delete them {legal.emailRetention} after the conversation ends. Our email is handled by {legal.emailProvider}.
-      Legal basis: Art. 6(1)(b) or (f).
+      Legal basis: performance of a contract when you ask about your purchase (Art. 6(1)(b)), otherwise our legitimate
+      interest in answering you (Art. 6(1)(f)).
+    </p>
+  </section>
+
+  <section aria-labelledby="retention">
+    <h2 id="retention">5. How long we keep data</h2>
+    <ul>
+      <li>Your notes: on your phone until you delete them. We never hold them.</li>
+      <li>Emails: {legal.emailRetention} after the conversation ends.</li>
+      <li>Website visit counts in PostHog: {legal.analyticsRetention}, then deleted.</li>
+      <li>Purchase records at RevenueCat: as long as Echo uses RevenueCat, or until you ask us to delete them, unless tax law requires us to keep them longer.</li>
+      <li>Hosting logs at Vercel: a few days at most, under Vercel's retention rules.</li>
+    </ul>
+    <p>
+      You don't have to give us any personal data to use Echo or this website. If you email us, we need your address to
+      reply. We make no automated decisions about you and do no profiling.
     </p>
   </section>
 
   <section aria-labelledby="recipients">
-    <h2 id="recipients">5. Who else receives data</h2>
+    <h2 id="recipients">6. Who else receives data</h2>
     <p>Only the providers named above:</p>
     <div class="table-wrap">
       <table>
@@ -124,12 +142,13 @@ const { company, email, legal } = site;
     <p>
       We have data processing agreements with every processor. Several of these companies are based in the USA. Where
       personal data leaves the EU/EEA, the transfer relies on the EU–US Data Privacy Framework or the European
-      Commission's Standard Contractual Clauses. We never sell data.
+      Commission's Standard Contractual Clauses. Proton is in Switzerland, which the European Commission recognises as
+      offering adequate protection. We never sell data.
     </p>
   </section>
 
   <section aria-labelledby="rights">
-    <h2 id="rights">6. Your rights</h2>
+    <h2 id="rights">7. Your rights</h2>
     <p>
       You can ask us for access to, correction, deletion or a copy of your personal data, ask us to restrict its use,
       and object to processing based on legitimate interest. Write to <a href={`mailto:${email.privacy}`}
@@ -144,12 +163,12 @@ const { company, email, legal } = site;
   </section>
 
   <section aria-labelledby="children">
-    <h2 id="children">7. Children</h2>
+    <h2 id="children">8. Children</h2>
     <p>Echo is intended for people aged {legal.minAge} and over.</p>
   </section>
 
   <section aria-labelledby="changes">
-    <h2 id="changes">8. Changes</h2>
+    <h2 id="changes">9. Changes</h2>
     <p>
       If this policy changes, we update the date above. Significant changes are also announced in the app's release
       notes.

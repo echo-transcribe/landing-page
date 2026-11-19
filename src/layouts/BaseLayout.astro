@@ -16,7 +16,8 @@ interface Props {
 }
 
 const { title, description, jsonLd = [], noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const path = Astro.url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+const canonical = new URL(path, Astro.site ?? site.url).href;
 const ogImage = new URL('/og-image.png', Astro.site ?? site.url).href;
 
 // Sets the theme before first paint. localStorage holds only the visitor's own choice.

@@ -6,36 +6,38 @@ const packageId = 'dev.andrej.echo';
 export const site = {
   name: 'Echo',
   tagline: 'Offline speech to text for Android',
-  // Placeholder until the domain is decided. `.invalid` can never resolve.
-  url: 'https://echo-domain.invalid',
+  url: 'https://echoscribe.net',
   locale: 'en',
 
   playUrl: `https://play.google.com/store/apps/details?id=${packageId}`,
   downloadPath: '/download',
 
   email: {
-    hello: '[hello@yourdomain]',
-    privacy: '[privacy@yourdomain]',
+    hello: 'support@echoscribe.net',
+    privacy: 'support@echoscribe.net',
   },
 
+  /** The publisher and GDPR controller. A private individual for now; registration lines appear once set. */
   company: {
-    name: '[Company name, legal form]',
-    address: '[Registered address]',
-    regNo: '[number]',
-    vatId: '[number]',
-    country: 'Slovenia, EU',
+    name: 'Andrej Koman',
+    address: 'Počehova 65, 2000 Maribor',
+    country: 'Slovenia',
+    register: null as string | null,
+    regNo: null as string | null,
+    vatId: null as string | null,
   },
 
   legal: {
     /** Flip to true once a qualified person has reviewed the legal pages; hides the draft notice. */
-    reviewed: false,
-    updated: '2026-11-18',
-    register: '[Business register, e.g. AJPES Slovenian Business Register]',
-    minAge: '[minimum age, matching the Google Play content rating]',
-    emailRetention: '[period]',
-    emailProvider: '[email provider]',
+    reviewed: true,
+    updated: '2026-11-19',
+    minAge: '16',
+    emailRetention: '12 months',
+    /** Must match the PostHog project's data retention setting. */
+    analyticsRetention: '12 months',
+    emailProvider: 'Proton AG (Switzerland)',
     // Slovenian ZIsRPS: say whether an out-of-court dispute resolution provider is recognised.
-    adr: '[We do not recognise any out-of-court consumer dispute resolution provider. / Name the provider.]',
+    adr: 'We are not obliged to take part in out-of-court consumer dispute resolution and do not do so. If something goes wrong, write to us and we will sort it out with you directly.',
   },
 
   prices: {

@@ -7,7 +7,6 @@ const groups = footerNav
   .map((g) => ({ ...g, links: g.links.filter((l) => l.live) }))
   .filter((g) => g.links.length > 0);
 const year = new Date().getFullYear();
-const { company } = site;
 ---
 
 <footer>
@@ -32,8 +31,8 @@ const { company } = site;
       </div>
     </div>
     <div class="bottom">
-      <span>© {year} {company.name} · {company.address} · Reg. no. {company.regNo} · VAT ID {company.vatId}</span>
-      <span>Made in {company.country} · No cookies on this site</span>
+      <span>© {year} Koman</span>
+      <span>No cookies on this site</span>
     </div>
   </div>
 </footer>

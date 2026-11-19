@@ -7,7 +7,7 @@ const { company, email, legal } = site;
 
 <TextPageLayout
   title="Legal notice — Echo"
-  description="Company details for Echo, the offline speech to text app for Android."
+  description="Publisher details for Echo, the offline speech to text app for Android."
   updated={legal.updated}
   legal
 >
@@ -16,17 +16,21 @@ const { company, email, legal } = site;
     <p>
       {company.name}<br />
       {company.address}<br />
-      Slovenia
+      {company.country}
     </p>
   </section>
 
-  <section aria-labelledby="registration">
-    <h2 id="registration">Registration</h2>
-    <p>
-      Registered in the {legal.register}, registration no. {company.regNo}.<br />
-      VAT ID: {company.vatId}
-    </p>
-  </section>
+  {
+    company.regNo && (
+      <section aria-labelledby="registration">
+        <h2 id="registration">Registration</h2>
+        <p>
+          Registered in the {company.register}, registration no. {company.regNo}.
+          {company.vatId && <><br />VAT ID: {company.vatId}</>}
+        </p>
+      </section>
+    )
+  }
 
   <section aria-labelledby="contact">
     <h2 id="contact">Contact</h2>

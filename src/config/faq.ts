@@ -8,7 +8,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'Which phones does Echo run on?',
-    a: `Android ${product.minAndroid} or newer. Summaries and tasks need about ${product.notesAiRamGb} GB of RAM. Phones with ${product.largeModelRamGb} GB or more get Whisper Large V3 Turbo, the most accurate speech model; others get a smaller, faster one.`,
+    a: `Android ${product.minAndroid} or newer. Summaries and tasks need about ${product.notesAiRamGb} GB of RAM. Phones with ${product.largeModelRamGb} GB or more get Whisper Large V3 Turbo, the most accurate model Echo offers; others get a smaller, faster one.`,
   },
   {
     q: 'How accurate is it?',
@@ -20,7 +20,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'Is Echo GDPR compliant?',
-    a: 'Your recordings and notes are processed and stored on your device, so we never hold them. We are based in the EU, and the privacy policy lists the little data that is involved, such as Google Play purchases.',
+    a: 'Your recordings and notes are processed and stored on your device, so we never hold them. The privacy policy lists the little data that is involved, such as Google Play purchases.',
   },
   {
     q: 'Which files can I import?',
