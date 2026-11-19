@@ -4,7 +4,7 @@ import { getLocale, useDict } from '../../i18n';
 const t = useDict(getLocale(Astro));
 ---
 
-<section>
+<section id="tasks">
   <div class="panel">
     <div class="copy">
       <span class="eyebrow">{t.tasksCallout.eyebrow}</span>
@@ -181,6 +181,7 @@ const t = useDict(getLocale(Astro));
   .task-title {
     font-size: 17px;
     font-weight: 600;
+    hyphens: manual;
   }
   .reminder {
     display: flex;
@@ -188,6 +189,9 @@ const t = useDict(getLocale(Astro));
     gap: 6px;
     font-size: 14px;
     color: var(--accent-text);
+  }
+  .reminder svg {
+    flex: none;
   }
   .chip {
     font-size: 13px;
@@ -203,7 +207,17 @@ const t = useDict(getLocale(Astro));
       padding: 0 20px 72px;
     }
     .task {
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 10px 14px;
+    }
+    .box {
+      grid-row: 1 / span 2;
+    }
+    .chip {
+      grid-column: 2;
+      justify-self: start;
     }
   }
 </style>

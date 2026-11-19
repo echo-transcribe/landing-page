@@ -72,7 +72,6 @@ export const de: Dict = {
     links: {
       features: 'Funktionen',
       pricing: 'Preise',
-      voiceToTasks: 'Aufgaben per Sprache',
       changelog: 'Änderungsprotokoll',
       phones: 'Unterstützte Handys',
       languages: 'Sprachen',
@@ -90,7 +89,7 @@ export const de: Dict = {
       privacy: 'Datenschutzerklärung',
       terms: 'Nutzungsbedingungen',
       legalNotice: 'Impressum',
-      licenses: 'Open-Source-Lizenzen',
+      licenses: 'Lizenzen',
     },
   },
 

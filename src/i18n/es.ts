@@ -70,7 +70,6 @@ export const es: Dict = {
     links: {
       features: 'Funciones',
       pricing: 'Precios',
-      voiceToTasks: 'De voz a tareas',
       changelog: 'Novedades',
       phones: 'Teléfonos compatibles',
       languages: 'Idiomas',
@@ -88,7 +87,7 @@ export const es: Dict = {
       privacy: 'Política de privacidad',
       terms: 'Condiciones de uso',
       legalNotice: 'Aviso legal',
-      licenses: 'Licencias de código abierto',
+      licenses: 'Licencias',
     },
   },
 

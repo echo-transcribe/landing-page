@@ -71,7 +71,6 @@ export const en = {
     links: {
       features: 'Features',
       pricing: 'Pricing',
-      voiceToTasks: 'Voice to tasks',
       changelog: 'Changelog',
       phones: 'Supported phones',
       languages: 'Languages',
@@ -89,7 +88,7 @@ export const en = {
       privacy: 'Privacy policy',
       terms: 'Terms of use',
       legalNotice: 'Legal notice',
-      licenses: 'Open-source licenses',
+      licenses: 'Licenses',
     },
   },
 
