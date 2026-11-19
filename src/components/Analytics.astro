@@ -25,7 +25,7 @@
       disable_external_dependency_loading: true,
     });
 
-    // CTAs carry data-event="name" plus optional data-* properties (placement, plan).
+    // CTAs carry data-event="name" plus optional data-* properties (placement, use-case).
     document.addEventListener('click', (e) => {
       const el = (e.target as Element).closest<HTMLElement>('[data-event]');
       if (!el) return;
