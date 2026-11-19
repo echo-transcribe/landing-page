@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import { site } from '../config/site';
+import { formatDate, getLocale, useDict, type Locale } from '../i18n';
 
 interface Props {
   title: string;
@@ -12,28 +13,28 @@ interface Props {
   /** Legal text: shows a draft notice until site.legal.reviewed is true. */
   legal?: boolean;
   jsonLd?: object[];
+  locale?: Locale;
+  /** The unprefixed route, for hreflang links. */
+  path?: string;
 }
 
-const { title, description, heading, updated, legal = false, jsonLd } = Astro.props;
+const { title, description, heading, updated, legal = false, jsonLd, path } = Astro.props;
+const locale = Astro.props.locale ?? getLocale(Astro);
+const t = useDict(locale);
 const h1 = heading ?? title.split(' — ')[0];
-const updatedLabel = updated
-  ? new Date(updated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
-  : null;
+const updatedLabel = updated ? formatDate(updated, locale) : null;
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} jsonLd={jsonLd} locale={locale} path={path}>
   <div class="page">
     <article class="prose">
       <header class="page-head">
         <h1>{h1}</h1>
-        {updatedLabel && <p class="updated">Last updated <time datetime={updated}>{updatedLabel}</time></p>}
+        {updatedLabel && <p class="updated">{t.textPage.lastUpdated} <time datetime={updated}>{updatedLabel}</time></p>}
       </header>
       {
         legal && !site.legal.reviewed && (
-          <p class="draft" role="note">
-            Draft. Every value in [brackets] must be filled in, and the text reviewed by someone qualified in EU
-            law, before launch.
-          </p>
+          <p class="draft" role="note">{t.textPage.draftNotice}</p>
         )
       }
       <slot />

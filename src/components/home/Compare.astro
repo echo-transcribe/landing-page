@@ -2,33 +2,29 @@
 import { Image } from 'astro:assets';
 import mark from '../../assets/echo-mark.png';
 import SectionHeading from '../SectionHeading.astro';
+import { site } from '../../config/site';
+import { getLocale, useDict } from '../../i18n';
 
-const rows = [
-  ['Where your audio is processed', 'On your phone', 'On their servers'],
-  ['Works without internet', 'Yes', 'No'],
-  ['Account needed', 'No', 'Yes'],
-  ['Tasks and reminders from speech', 'Yes', 'Varies'],
-  ['Joins Zoom or Teams calls for you', 'No', 'Often'],
-];
+const t = useDict(getLocale(Astro));
 ---
 
 <section id="compare">
   <div class="inner">
-    <SectionHeading eyebrow="Compare" title="Echo vs cloud note takers" />
+    <SectionHeading eyebrow={t.compare.eyebrow} title={t.compare.title} />
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
-            <th scope="col" class="feature"><span class="visually-hidden">Feature</span></th>
+            <th scope="col" class="feature"><span class="visually-hidden">{t.compare.featureColumn}</span></th>
             <th scope="col" class="echo">
-              <span class="echo-name"><Image src={mark} alt="" width={22} height={21} densities={[1, 2]} />Echo</span>
+              <span class="echo-name"><Image src={mark} alt="" width={22} height={21} densities={[1, 2]} />{site.name}</span>
             </th>
-            <th scope="col" class="other">Typical cloud services</th>
+            <th scope="col" class="other">{t.compare.otherColumn}</th>
           </tr>
         </thead>
         <tbody>
           {
-            rows.map(([label, echo, other]) => (
+            t.compare.rows.map(({ label, echo, other }) => (
               <tr>
                 <th scope="row">{label}</th>
                 <td class="echo-cell">{echo}</td>
@@ -39,7 +35,7 @@ const rows = [
         </tbody>
       </table>
     </div>
-    <p class="fit">Echo isn't the right fit if you need a bot that joins video calls, or notes your team edits together in real time.</p>
+    <p class="fit">{t.compare.fit}</p>
   </div>
 </section>
 

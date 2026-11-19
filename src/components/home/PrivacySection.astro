@@ -1,20 +1,14 @@
 ---
-const points = [
-  {
-    title: 'No servers for your notes',
-    text: 'Audio, transcripts, summaries and tasks are stored only on your phone.',
-    icon: '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
-  },
-  {
-    title: 'No account',
-    text: 'No sign-up and no email. Pro is bought and managed in Google Play.',
-    icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="m17 8 5 5"></path><path d="m22 8-5 5"></path>',
-  },
-  {
-    title: 'Internet only for downloads',
-    text: 'You need a connection to download the models and to buy Pro. After that, airplane mode is fine.',
-    icon: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line>',
-  },
+import { getLocale, localizePath, useDict } from '../../i18n';
+
+const locale = getLocale(Astro);
+const t = useDict(locale);
+
+// Same order as `t.privacySection.points`.
+const icons = [
+  '<rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>',
+  '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="m17 8 5 5"></path><path d="m22 8-5 5"></path>',
+  '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line>',
 ];
 ---
 
@@ -22,17 +16,17 @@ const points = [
   <div class="inner">
     <div class="heading">
       <div class="eyebrow-row">
-        <span class="eyebrow">Privacy</span>
+        <span class="eyebrow">{t.privacySection.eyebrow}</span>
       </div>
-      <h2>Private by design, not by promise</h2>
-      <p>We can't leak, sell or train on your recordings, because we never receive them.</p>
+      <h2>{t.privacySection.title}</h2>
+      <p>{t.privacySection.lead}</p>
     </div>
     <div class="grid">
       {
-        points.map((p) => (
+        t.privacySection.points.map((p, i) => (
           <div class="card">
             <span class="icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={p.icon} />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[i]} />
             </span>
             <h3>{p.title}</h3>
             <p>{p.text}</p>
@@ -41,9 +35,9 @@ const points = [
       }
     </div>
     <div class="site-note">
-      <span class="site-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"></path><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"></path><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"></path><path d="m2 2 20 20"></path></svg>This website too</span>
-      <span class="site-text">No cookies. Visits are counted with cookieless analytics hosted in the EU, without storing your IP address.</span>
-      <a href="/privacy" data-event="privacy_policy_click">Privacy policy</a>
+      <span class="site-title"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"></path><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"></path><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"></path><path d="m2 2 20 20"></path></svg>{t.privacySection.siteTitle}</span>
+      <span class="site-text">{t.privacySection.siteText}</span>
+      <a href={localizePath('/privacy', locale)} data-event="privacy_policy_click">{t.privacySection.policyLink}</a>
     </div>
   </div>
 </section>

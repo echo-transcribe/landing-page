@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import badge from '../assets/google-play-badge.png';
 import { site } from '../config/site';
+import { getLocale, useDict } from '../i18n';
 
 interface Props {
   size?: 'sm' | 'md' | 'lg';
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const { size = 'md', placement, aboveFold = false } = Astro.props;
+const t = useDict(getLocale(Astro));
 // Heights from the design; width follows the official badge's 564x168 ratio.
 const height = { sm: 44, md: 52, lg: 60 }[size];
 const width = Math.round((height * 564) / 168);
@@ -21,7 +23,7 @@ const width = Math.round((height * 564) / 168);
 <a href={site.playUrl} class="badge" data-event="play_click" data-placement={placement}>
   <Image
     src={badge}
-    alt="Get it on Google Play"
+    alt={t.common.playBadgeAlt}
     width={width}
     height={height}
     densities={[1, 2]}

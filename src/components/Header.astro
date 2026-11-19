@@ -1,19 +1,26 @@
 ---
 import { headerNav } from '../config/site';
+import { getLocale, localizePath, useDict } from '../i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import PlayBadge from './PlayBadge.astro';
 
-const links = headerNav.filter((l) => l.live);
+const locale = getLocale(Astro);
+const t = useDict(locale);
+const links = headerNav
+  .filter((l) => l.live)
+  .map((l) => ({ href: localizePath(l.href, locale), label: t.header.nav[l.id as keyof typeof t.header.nav] }));
 ---
 
 <header class="bar">
   <div class="inner">
     <Logo size="header" />
-    <nav aria-label="Main" class="desktop-nav">
+    <nav aria-label={t.header.navLabel} class="desktop-nav">
       {links.map((l) => <a href={l.href} class="nav-link">{l.label}</a>)}
     </nav>
     <div class="actions">
+      <LanguageSwitcher placement="header" />
       <ThemeToggle />
       <span class="header-badge"><PlayBadge size="md" placement="header" aboveFold /></span>
       <button
@@ -21,7 +28,9 @@ const links = headerNav.filter((l) => l.live);
         class="menu-btn"
         aria-expanded="false"
         aria-controls="mobile-menu"
-        aria-label="Open menu"
+        aria-label={t.header.openMenu}
+        data-label-open={t.header.openMenu}
+        data-label-close={t.header.closeMenu}
         data-menu-toggle
       >
         <svg class="open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
@@ -31,9 +40,10 @@ const links = headerNav.filter((l) => l.live);
   </div>
 
   <div id="mobile-menu" class="mobile-menu" hidden>
-    <nav aria-label="Main">
+    <nav aria-label={t.header.navLabel}>
       {links.map((l) => <a href={l.href} class="menu-link">{l.label}</a>)}
     </nav>
+    <LanguageSwitcher placement="menu" />
     <div class="menu-badge"><PlayBadge size="md" placement="menu" /></div>
   </div>
 </header>
@@ -152,6 +162,10 @@ const links = headerNav.filter((l) => l.live);
     .menu-btn {
       display: flex;
     }
+    /* The mobile menu has its own language list. */
+    .actions :global(.switcher.header) {
+      display: none;
+    }
   }
   @media (max-width: 560px) {
     .inner {
@@ -182,7 +196,7 @@ const links = headerNav.filter((l) => l.live);
     const setOpen = (open: boolean) => {
       menu.hidden = !open;
       btn.setAttribute('aria-expanded', String(open));
-      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      btn.setAttribute('aria-label', (open ? btn.dataset.labelClose : btn.dataset.labelOpen) ?? '');
     };
 
     btn.addEventListener('click', () => setOpen(menu.hasAttribute('hidden')));

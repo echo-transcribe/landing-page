@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import Features from '../components/home/Features.astro';
+import TasksCallout from '../components/home/TasksCallout.astro';
+import HowItWorks from '../components/home/HowItWorks.astro';
+import UseCases from '../components/home/UseCases.astro';
+import PrivacySection from '../components/home/PrivacySection.astro';
+import Compare from '../components/home/Compare.astro';
+import Pricing from '../components/home/Pricing.astro';
+import Faq from '../components/home/Faq.astro';
+import ClosingCta from '../components/home/ClosingCta.astro';
+import { site } from '../config/site';
+import { product } from '../config/product';
+import { localeInfo, useDict, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useDict(locale);
+const info = localeInfo(locale);
+
+const { prices } = site;
+const { plans } = t.pricing;
+const offer = (name: string, price: number) => ({ '@type': 'Offer', name, price, priceCurrency: prices.currency });
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: site.name,
+    description: t.meta.home.appDescription,
+    inLanguage: info.htmlLang,
+    operatingSystem: `Android ${product.minAndroid}+`,
+    applicationCategory: 'ProductivityApplication',
+    url: site.url,
+    downloadUrl: site.playUrl,
+    installUrl: site.playUrl,
+    offers: [
+      offer(plans.free.name, 0),
+      offer(plans.monthly.name, prices.monthly),
+      offer(plans.yearly.name, prices.yearly),
+      offer(plans.lifetime.name, prices.lifetime),
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: info.htmlLang,
+    mainEntity: t.faq.items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={t.meta.home.title} description={t.meta.home.description} jsonLd={jsonLd} locale={locale} path="/">
+  <Hero />
+  <Features />
+  <TasksCallout />
+  <HowItWorks />
+  <UseCases />
+  <PrivacySection />
+  <Compare />
+  <Pricing />
+  <Faq />
+  <ClosingCta />
+</BaseLayout>

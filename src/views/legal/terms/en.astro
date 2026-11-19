@@ -1,0 +1,95 @@
+---
+import { localizePath, type Locale } from '../../../i18n';
+import { site } from '../../../config/site';
+
+const { company, email } = site;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<section aria-labelledby="who">
+  <h2 id="who">1. Who we are</h2>
+  <p>
+    Echo is provided by {company.name}, {company.address}, {company.country} ("we"). By installing or using Echo you agree to
+    these terms. Nothing in them limits rights you have as a consumer under the law of your country.
+  </p>
+</section>
+
+<section aria-labelledby="licence">
+  <h2 id="licence">2. Your licence</h2>
+  <p>
+    We give you a personal, non-exclusive, non-transferable licence to use Echo on devices you own or control. You may
+    not resell the app, or copy, modify or reverse-engineer it except where the law allows. Open-source components keep
+    their own licences, listed on the <a href={localizePath('/licenses', locale)}>open-source licenses</a> page.
+  </p>
+</section>
+
+<section aria-labelledby="free-pro">
+  <h2 id="free-pro">3. Free and Pro</h2>
+  <p>
+    Echo is free to download. The free version transcribes the first two minutes of each note. Echo Pro removes that
+    limit and unlocks the features described in the app, as a monthly or yearly subscription or a one-time lifetime
+    purchase.
+  </p>
+  <ul>
+    <li>Pro is bought, billed and refunded through Google Play under Google Play's terms.</li>
+    <li>
+      Subscriptions renew automatically until you cancel them in Google Play. Cancelling stops the next renewal; you
+      keep Pro until the end of the period you paid for.
+    </li>
+    <li>
+      Lifetime means for as long as we offer Echo, on any device signed in to the same Google account.
+    </li>
+    <li>
+      Pro is digital content delivered right away. In the EU you normally have 14 days to withdraw from an online
+      purchase, but for digital content that right ends once delivery starts, if you agreed to that when you paid.
+      Google Play asks for that agreement at checkout. Google Play's refund policy applies either way.
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="content">
+  <h2 id="content">4. Your recordings</h2>
+  <p>
+    Your recordings and notes belong to you and stay on your device. You are responsible for having the right to
+    record. Many countries require the consent of everyone being recorded, so tell people when you record them.
+  </p>
+</section>
+
+<section aria-labelledby="accuracy">
+  <h2 id="accuracy">5. Accuracy</h2>
+  <p>
+    Transcripts, speaker labels, summaries and tasks are produced automatically and can contain mistakes. Check them
+    before you rely on them, especially for medical, legal, financial or safety matters. Reminders depend on your
+    phone's notification and alarm settings.
+  </p>
+</section>
+
+<section aria-labelledby="liability">
+  <h2 id="liability">6. Liability</h2>
+  <p>
+    We are liable without limit for intent and gross negligence, and for injury to life, body or health. Otherwise we
+    are liable only for breaches of essential obligations, limited to the damage typical and foreseeable for this
+    kind of app. Keep backups of notes that matter to you; we cannot recover data stored only on your phone.
+  </p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">7. Changes and ending</h2>
+  <p>
+    We may update Echo and these terms. If a change affects you materially, we announce it in the app before it takes
+    effect. You can stop using Echo at any time by uninstalling it; cancel any subscription in Google Play.
+  </p>
+</section>
+
+<section aria-labelledby="law">
+  <h2 id="law">8. Law and contact</h2>
+  <p>
+    Slovenian law applies, without taking away the protection of mandatory consumer law in your country of residence.
+    Questions: <a href={`mailto:${email.hello}`}>{email.hello}</a>.
+  </p>
+</section>

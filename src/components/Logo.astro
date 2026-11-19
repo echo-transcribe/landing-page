@@ -1,18 +1,22 @@
 ---
 import { Image } from 'astro:assets';
 import mark from '../assets/echo-mark.png';
+import { site } from '../config/site';
+import { getLocale, localizePath, useDict } from '../i18n';
 
 interface Props {
   size?: 'header' | 'footer';
 }
 
 const { size = 'header' } = Astro.props;
+const locale = getLocale(Astro);
+const t = useDict(locale);
 const dims = size === 'header' ? { w: 46, h: 45 } : { w: 38, h: 37 };
 ---
 
-<a href="/" class:list={['logo', size]} aria-label="Echo home">
+<a href={localizePath('/', locale)} class:list={['logo', size]} aria-label={t.common.logoLabel}>
   <Image src={mark} alt="" width={dims.w} height={dims.h} densities={[1, 2]} loading={size === 'header' ? 'eager' : 'lazy'} />
-  <span>Echo</span>
+  <span>{site.name}</span>
 </a>
 
 <style>

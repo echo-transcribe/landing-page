@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import { createHash } from 'node:crypto';
 import { site } from '../config/site';
+import { alternates, enabledLocales, getLocale, localeInfo, useDict, type Locale } from '../i18n';
 
 interface Props {
   /** Full page title, written for the page's search phrase. */
@@ -13,11 +14,24 @@ interface Props {
   /** Structured data objects, each rendered as its own JSON-LD script. */
   jsonLd?: object[];
   noindex?: boolean;
+  /** Locale of the page; defaults to the one in the URL. */
+  locale?: Locale;
+  /** The unprefixed route (e.g. `/privacy`). Pages that have translations pass it so hreflang links can be built. */
+  path?: string;
 }
 
-const { title, description, jsonLd = [], noindex = false } = Astro.props;
-const path = Astro.url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
-const canonical = new URL(path, Astro.site ?? site.url).href;
+const { title, description, jsonLd = [], noindex = false, path } = Astro.props;
+const locale = Astro.props.locale ?? getLocale(Astro);
+const info = localeInfo(locale);
+const t = useDict(locale);
+const pathname = Astro.url.pathname
+  .replace(/(^|\/)index\.html$/, '$1')
+  .replace(/\.html$/, '')
+  .replace(/(.)\/$/, '$1');
+const canonical = new URL(pathname, Astro.site ?? site.url).href;
+// hreflang only makes sense once there is more than one language to point at.
+const alternateLinks = path && enabledLocales.length > 1 ? alternates(path) : [];
+const otherLocales = enabledLocales.filter((l) => l.code !== locale);
 const ogImage = new URL('/og-image.png', Astro.site ?? site.url).href;
 
 // Sets the theme before first paint. localStorage holds only the visitor's own choice.
@@ -28,13 +42,14 @@ Astro.csp?.insertScriptHash(`sha256-${createHash('sha256').update(themeScript).d
 ---
 
 <!doctype html>
-<html lang={site.locale}>
+<html lang={info.htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternateLinks.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#fefae0" media="(prefers-color-scheme: light)" />
@@ -45,11 +60,12 @@ Astro.csp?.insertScriptHash(`sha256-${createHash('sha256').update(themeScript).d
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={info.ogLocale} />
+    {alternateLinks.length > 0 && otherLocales.map((l) => <meta property="og:locale:alternate" content={l.ogLocale} />)}
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Echo: say it once, Echo writes it down." />
+    <meta property="og:image:alt" content={t.common.ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
 
@@ -65,7 +81,7 @@ Astro.csp?.insertScriptHash(`sha256-${createHash('sha256').update(themeScript).d
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">{t.common.skipToContent}</a>
     <Header />
     <main id="main">
       <slot />

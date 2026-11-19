@@ -2,22 +2,20 @@
 import { Image } from 'astro:assets';
 import mark from '../../assets/echo-mark.png';
 import DownloadButton from '../DownloadButton.astro';
+import { getLocale, useDict } from '../../i18n';
+
+const t = useDict(getLocale(Astro));
 ---
 
 <section>
   <div class="panel">
     <div class="glow" aria-hidden="true"></div>
     <Image class="mark" src={mark} alt="" width={72} height={70} densities={[1, 2]} loading="lazy" />
-    <h2>Your next meeting, written down.</h2>
-    <p class="sub">
-      Tap record and put your phone down. Echo hands you the transcript, a short summary and the tasks you mentioned,
-      without your words ever leaving the phone.
-    </p>
+    <h2>{t.closingCta.title}</h2>
+    <p class="sub">{t.closingCta.sub}</p>
     <div class="badge"><DownloadButton placement="cta" /></div>
     <ul class="facts">
-      <li>Free to download</li>
-      <li>No account</li>
-      <li>Works offline</li>
+      {t.closingCta.facts.map((fact) => <li>{fact}</li>)}
     </ul>
   </div>
 </section>

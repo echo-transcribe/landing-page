@@ -1,56 +1,39 @@
 ---
 import { site } from '../../config/site';
+import { formatPrice, getLocale, useDict } from '../../i18n';
 import SectionHeading from '../SectionHeading.astro';
 import DownloadButton from '../DownloadButton.astro';
 
+const locale = getLocale(Astro);
+const t = useDict(locale);
 const { prices } = site;
-const eur = (n: number) => `€${n}`;
-const perMonth = (prices.yearly / 12).toFixed(2);
+const { plans: copy } = t.pricing;
+const perMonth = formatPrice(Math.round((prices.yearly / 12) * 100) / 100, locale);
 const savePercent = Math.round((1 - prices.yearly / (prices.monthly * 12)) * 100);
 
 const plans = [
+  { ...copy.free, price: formatPrice(0, locale), featured: false },
+  { ...copy.monthly, price: formatPrice(prices.monthly, locale), featured: false },
   {
-    name: 'Free',
-    price: eur(0),
-    unit: '',
-    sub: 'Forever',
-    features: ['First 2 minutes of every note', 'Summary and tasks included', 'Unlimited notes'],
-  },
-  {
-    name: 'Pro monthly',
-    price: eur(prices.monthly),
-    unit: '/ month',
-    sub: 'Cancel anytime',
-    features: ['No time limit', 'Summary and tasks from the whole recording', 'Full-length imports', 'Markdown, SRT and audio export'],
-  },
-  {
-    name: 'Pro yearly',
-    price: eur(prices.yearly),
-    unit: '/ year',
-    sub: `€${perMonth} a month · save ${savePercent}% vs monthly`,
-    features: ['Everything in Pro', 'Billed once a year'],
+    ...copy.yearly,
+    price: formatPrice(prices.yearly, locale),
+    sub: copy.yearly.sub(perMonth, savePercent),
     featured: true,
   },
-  {
-    name: 'Pro lifetime',
-    price: eur(prices.lifetime),
-    unit: 'once',
-    sub: 'No renewals',
-    features: ['Everything in Pro', 'Future updates included'],
-  },
+  { ...copy.lifetime, price: formatPrice(prices.lifetime, locale), featured: false },
 ];
 ---
 
 <section id="pricing">
   <div class="inner">
-    <SectionHeading eyebrow="Pricing" title="Start free. Go Pro when notes get long." center>
-      <p>Pro removes the 2-minute limit and adds Markdown, SRT and audio export.</p>
+    <SectionHeading eyebrow={t.pricing.eyebrow} title={t.pricing.title} center>
+      <p>{t.pricing.lead}</p>
     </SectionHeading>
     <div class="grid">
       {
         plans.map((p) => (
           <div class:list={['plan', { featured: p.featured }]}>
-            {p.featured && <span class="best">Best value</span>}
+            {p.featured && <span class="best">{t.pricing.bestValue}</span>}
             <div class="head">
               <h3>{p.name}</h3>
               <div class="price">
@@ -74,13 +57,10 @@ const plans = [
       }
     </div>
     <div class="cta">
-      <p>Start free. Upgrade inside the app when you need to.</p>
-      <DownloadButton placement="pricing" label="Download free" />
+      <p>{t.pricing.ctaText}</p>
+      <DownloadButton placement="pricing" label={t.pricing.ctaButton} />
     </div>
-    <p class="fine">
-      Prices in euros, VAT included. Billed through Google Play, which may show your local currency. Subscriptions renew
-      until you cancel them in Google Play.
-    </p>
+    <p class="fine">{t.pricing.fine}</p>
   </div>
 </section>
 

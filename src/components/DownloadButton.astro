@@ -1,5 +1,6 @@
 ---
 import { site } from '../config/site';
+import { getLocale, useDict } from '../i18n';
 
 interface Props {
   /** Where the button sits, sent with the click event. */
@@ -7,7 +8,8 @@ interface Props {
   label?: string;
 }
 
-const { placement, label = 'Download now' } = Astro.props;
+const t = useDict(getLocale(Astro));
+const { placement, label = t.common.downloadNow } = Astro.props;
 ---
 
 <a class="download" href={site.playUrl} data-event="play_click" data-placement={placement}>

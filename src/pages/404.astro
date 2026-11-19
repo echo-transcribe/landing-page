@@ -1,13 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale, localizePath, useDict } from '../i18n';
+
+// The 404 page is English only.
+const t = useDict(defaultLocale);
 ---
 
-<BaseLayout title="Page not found — Echo" description="This page doesn't exist." noindex>
+<BaseLayout title={t.meta.notFound.title} description={t.meta.notFound.description} noindex locale={defaultLocale}>
   <section>
     <p class="code">404</p>
-    <h1>Nothing recorded here.</h1>
-    <p class="lead">The page you're looking for doesn't exist or has moved.</p>
-    <a class="home" href="/">Back to the home page</a>
+    <h1>{t.notFound.heading}</h1>
+    <p class="lead">{t.notFound.lead}</p>
+    <a class="home" href={localizePath('/', defaultLocale)}>{t.notFound.home}</a>
   </section>
 </BaseLayout>
 

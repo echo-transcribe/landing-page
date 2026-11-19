@@ -3,7 +3,9 @@ import QRCode from 'qrcode';
 import { site } from '../../config/site';
 import PhoneMockup from '../PhoneMockup.astro';
 import DownloadButton from '../DownloadButton.astro';
+import { getLocale, useDict } from '../../i18n';
 
+const t = useDict(getLocale(Astro));
 const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
   type: 'svg',
   margin: 0,
@@ -15,20 +17,17 @@ const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
   <div class="aura" aria-hidden="true"></div>
   <div class="inner">
     <div class="copy">
-      <span class="pill">Offline speech to text for Android</span>
-      <h1>Say it once.<br />Echo writes it down.</h1>
-      <p class="lead">
-        Meetings, lectures and voice notes become text, summaries and tasks on your phone. Nothing is uploaded,
-        and after a one-time model download it works without internet.
-      </p>
+      <span class="pill">{t.hero.pill}</span>
+      <h1>{t.hero.headingLine1}<br />{t.hero.headingLine2}</h1>
+      <p class="lead">{t.hero.lead}</p>
       <div class="actions">
         <DownloadButton placement="hero" />
         <div class="qr-wrap">
-          <div class="qr" role="img" aria-label="QR code linking to Echo on Google Play" set:html={qrSvg} />
-          <span class="qr-note">Or scan with your Android phone</span>
+          <div class="qr" role="img" aria-label={t.hero.qrLabel} set:html={qrSvg} />
+          <span class="qr-note">{t.hero.qrNote}</span>
         </div>
       </div>
-      <p class="note">Free to download · No account</p>
+      <p class="note">{t.hero.note}</p>
     </div>
     <div class="phone-col">
       <PhoneMockup />

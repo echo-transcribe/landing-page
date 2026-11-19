@@ -2,13 +2,13 @@
 // or legal pages not yet reviewed. Run: pnpm check:launch
 import { readFile } from 'node:fs/promises';
 
-const files = ['src/config/site.ts', 'src/config/product.ts', 'src/config/faq.ts'];
+const files = ['src/config/site.ts', 'src/config/product.ts', 'src/i18n/en.ts'];
 const problems = [];
 
 for (const file of files) {
   const lines = (await readFile(new URL(`../${file}`, import.meta.url), 'utf8')).split('\n');
   lines.forEach((line, i) => {
-    if (line.trim().startsWith('//')) return;
+    if (line.trim().startsWith('//') || line.includes('launch-check: ignore')) return;
     // Placeholders sit inside string literals: '[Company name]' or `...[number]...`.
     for (const m of line.matchAll(/['"`][^'"`]*?(\[[^\]]+\])[^'"`]*['"`]/g)) problems.push(`${file}:${i + 1}  placeholder ${m[1]}`);
     if (line.includes('.invalid')) problems.push(`${file}:${i + 1}  placeholder domain`);

@@ -48,62 +48,63 @@ export const site = {
   },
 } as const;
 
-export type NavLink = { label: string; href: string; live: boolean };
-export type NavGroup = { label: string; links: NavLink[] };
+/** `id` keys the label in the dictionary (`header.nav`, `footer.links`). */
+export type NavLink = { id: string; href: string; live: boolean };
+export type NavGroup = { id: string; links: NavLink[] };
 
 export const headerNav: NavLink[] = [
-  { label: 'Features', href: '/#features', live: true },
-  { label: 'Use cases', href: '/#use-cases', live: true },
-  { label: 'Privacy', href: '/#privacy', live: true },
-  { label: 'Pricing', href: '/#pricing', live: true },
-  { label: 'FAQ', href: '/#faq', live: true },
+  { id: 'features', href: '/#features', live: true },
+  { id: 'useCases', href: '/#use-cases', live: true },
+  { id: 'privacy', href: '/#privacy', live: true },
+  { id: 'pricing', href: '/#pricing', live: true },
+  { id: 'faq', href: '/#faq', live: true },
 ];
 
 // `live: false` links point at phase-2 pages; the footer hides them until they exist.
 export const footerNav: NavGroup[] = [
   {
-    label: 'Product',
+    id: 'product',
     links: [
-      { label: 'Features', href: '/#features', live: true },
-      { label: 'Pricing', href: '/#pricing', live: true },
-      { label: 'Changelog', href: '/changelog', live: false },
-      { label: 'Supported phones', href: '/phones', live: false },
-      { label: 'Languages', href: '/languages', live: false },
+      { id: 'features', href: '/#features', live: true },
+      { id: 'pricing', href: '/#pricing', live: true },
+      { id: 'changelog', href: '/changelog', live: false },
+      { id: 'phones', href: '/phones', live: false },
+      { id: 'languages', href: '/languages', live: false },
     ],
   },
   {
-    label: 'Use cases',
+    id: 'useCases',
     links: [
-      { label: 'Meetings', href: '/use-cases/meetings', live: false },
-      { label: 'Lectures', href: '/use-cases/lectures', live: false },
-      { label: 'Interviews', href: '/use-cases/interviews', live: false },
-      { label: 'Voice notes', href: '/use-cases/voice-notes', live: false },
-      { label: 'Subtitles', href: '/use-cases/subtitles', live: false },
+      { id: 'meetings', href: '/use-cases/meetings', live: false },
+      { id: 'lectures', href: '/use-cases/lectures', live: false },
+      { id: 'interviews', href: '/use-cases/interviews', live: false },
+      { id: 'voiceNotes', href: '/use-cases/voice-notes', live: false },
+      { id: 'subtitles', href: '/use-cases/subtitles', live: false },
     ],
   },
   {
-    label: 'Compare',
+    id: 'compare',
     links: [
-      { label: 'Echo vs LoroNote', href: '/compare/loronote', live: false },
-      { label: 'Echo vs Otter', href: '/compare/otter', live: false },
-      { label: 'Echo vs Google Recorder', href: '/compare/google-recorder', live: false },
+      { id: 'vsLoronote', href: '/compare/loronote', live: false },
+      { id: 'vsOtter', href: '/compare/otter', live: false },
+      { id: 'vsGoogleRecorder', href: '/compare/google-recorder', live: false },
     ],
   },
   {
-    label: 'Resources',
+    id: 'resources',
     links: [
-      { label: 'Blog', href: '/blog', live: false },
-      { label: 'Help center', href: '/help', live: false },
-      { label: 'Contact', href: `mailto:${site.email.hello}`, live: true },
+      { id: 'blog', href: '/blog', live: false },
+      { id: 'help', href: '/help', live: false },
+      { id: 'contact', href: `mailto:${site.email.hello}`, live: true },
     ],
   },
   {
-    label: 'Legal',
+    id: 'legal',
     links: [
-      { label: 'Privacy policy', href: '/privacy', live: true },
-      { label: 'Terms of use', href: '/terms', live: true },
-      { label: 'Legal notice', href: '/legal-notice', live: true },
-      { label: 'Open-source licenses', href: '/licenses', live: true },
+      { id: 'privacy', href: '/privacy', live: true },
+      { id: 'terms', href: '/terms', live: true },
+      { id: 'legalNotice', href: '/legal-notice', live: true },
+      { id: 'licenses', href: '/licenses', live: true },
     ],
   },
 ];

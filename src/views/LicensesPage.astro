@@ -1,0 +1,26 @@
+---
+import TextPageLayout from '../layouts/TextPageLayout.astro';
+import { site } from '../config/site';
+import { useDict, type Locale } from '../i18n';
+import En from './legal/licenses/en.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useDict(locale);
+// One component per locale; a locale without its own text shows the English one.
+const bodies: Partial<Record<Locale, typeof En>> = { en: En };
+const Body = bodies[locale] ?? En;
+---
+
+<TextPageLayout
+  title={t.meta.licenses.title}
+  description={t.meta.licenses.description}
+  updated={site.legal.updated}
+  locale={locale}
+  path="/licenses"
+>
+  <Body locale={locale} />
+</TextPageLayout>

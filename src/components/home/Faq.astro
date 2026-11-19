@@ -1,14 +1,16 @@
 ---
-import { faqs } from '../../config/faq';
 import SectionHeading from '../SectionHeading.astro';
+import { getLocale, useDict } from '../../i18n';
+
+const t = useDict(getLocale(Astro));
 ---
 
 <section id="faq">
   <div class="inner">
-    <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+    <SectionHeading eyebrow={t.faq.eyebrow} title={t.faq.title} />
     <div class="list">
       {
-        faqs.map((f, i) => (
+        t.faq.items.map((f, i) => (
           <details open={i === 0}>
             <summary>
               {f.q}

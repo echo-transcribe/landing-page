@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro';
+import TermsPage from '../../views/TermsPage.astro';
+import { enabledLocales } from '../../i18n';
+
+export const getStaticPaths = (() =>
+  enabledLocales.filter((l) => l.path !== '').map((l) => ({ params: { lang: l.path }, props: { locale: l.code } }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
+---
+
+<TermsPage locale={locale} />

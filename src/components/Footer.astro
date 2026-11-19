@@ -1,10 +1,19 @@
 ---
-import { footerNav, site } from '../config/site';
+import { footerNav } from '../config/site';
+import { getLocale, localizePath, useDict } from '../i18n';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import Logo from './Logo.astro';
 import PlayBadge from './PlayBadge.astro';
 
+const locale = getLocale(Astro);
+const t = useDict(locale);
 const groups = footerNav
-  .map((g) => ({ ...g, links: g.links.filter((l) => l.live) }))
+  .map((g) => ({
+    label: t.footer.groups[g.id as keyof typeof t.footer.groups],
+    links: g.links
+      .filter((l) => l.live)
+      .map((l) => ({ href: localizePath(l.href, locale), label: t.footer.links[l.id as keyof typeof t.footer.links] })),
+  }))
   .filter((g) => g.links.length > 0);
 const year = new Date().getFullYear();
 ---
@@ -14,7 +23,7 @@ const year = new Date().getFullYear();
     <div class="top">
       <div class="brand">
         <Logo size="footer" />
-        <p>{site.tagline}.</p>
+        <p>{t.common.brandTagline}.</p>
         <div><PlayBadge size="sm" placement="footer" /></div>
       </div>
       <div class="cols">
@@ -31,8 +40,9 @@ const year = new Date().getFullYear();
       </div>
     </div>
     <div class="bottom">
-      <span>© {year} Koman</span>
-      <span>No cookies on this site</span>
+      <span>{t.footer.copyright(year)}</span>
+      <LanguageSwitcher placement="footer" />
+      <span>{t.footer.noCookies}</span>
     </div>
   </div>
 </footer>
