@@ -79,7 +79,6 @@ export const en = {
       interviews: 'Interviews',
       voiceNotes: 'Voice notes',
       subtitles: 'Subtitles',
-      vsLoronote: 'Echo vs LoroNote',
       vsOtter: 'Echo vs Otter',
       vsGoogleRecorder: 'Echo vs Google Recorder',
       blog: 'Blog',

@@ -9,7 +9,9 @@
       "permanent": false
     },
     { "source": "/features/voice-to-tasks", "destination": "/#tasks", "permanent": true },
-    { "source": "/:lang/features/voice-to-tasks", "destination": "/:lang#tasks", "permanent": true }
+    { "source": "/:lang/features/voice-to-tasks", "destination": "/:lang#tasks", "permanent": true },
+    { "source": "/compare/loronote", "destination": "/", "permanent": true },
+    { "source": "/:lang/compare/loronote", "destination": "/:lang", "permanent": true }
   ],
   "rewrites": [
     { "source": "/ingest/static/:path(.*)", "destination": "https://eu-assets.i.posthog.com/static/:path" },

@@ -78,7 +78,6 @@ export const ptBr: Dict = {
       interviews: 'Entrevistas',
       voiceNotes: 'Notas de voz',
       subtitles: 'Legendas',
-      vsLoronote: 'Echo vs LoroNote',
       vsOtter: 'Echo vs Otter',
       vsGoogleRecorder: 'Echo vs Google Recorder',
       blog: 'Blog',

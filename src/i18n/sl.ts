@@ -78,7 +78,6 @@ export const sl: Dict = {
       interviews: 'Intervjuji',
       voiceNotes: 'Glasovni zapiski',
       subtitles: 'Podnapisi',
-      vsLoronote: 'Echo proti LoroNote',
       vsOtter: 'Echo proti Otter',
       vsGoogleRecorder: 'Echo proti Google Recorder',
       blog: 'Blog',

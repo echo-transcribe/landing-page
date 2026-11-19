@@ -15,9 +15,6 @@ Things only you can do. Details are in the linked files. Tick items off and dele
       Keep or remove.
 - [ ] `/phones` says Large V3 Turbo takes "about as long as the recording or longer". It's honest; keep it?
 - [ ] `/languages` says Cantonese needs Large V3 Turbo. That comes from the models, not from testing in the app. Test it.
-- [ ] LoroNote comparison: the $24.99 lifetime price is a Black Friday sale ending 27 Nov 2026. Recheck the App Store
-      listing after that and update `loronote.checked` in `src/i18n/pages/en.ts`. The other languages show the same
-      date, but the prices are written into each language's text, so update those too.
 
 ## Blog
 

@@ -78,7 +78,6 @@ export const it: Dict = {
       interviews: 'Interviste',
       voiceNotes: 'Note vocali',
       subtitles: 'Sottotitoli',
-      vsLoronote: 'Echo vs LoroNote',
       vsOtter: 'Echo vs Otter',
       vsGoogleRecorder: 'Echo vs Google Recorder',
       blog: 'Blog',

@@ -29,7 +29,6 @@ export const pageRoutes = [
   '/use-cases/meetings',
   '/use-cases/lectures',
   '/use-cases/interviews',
-  '/compare/loronote',
   '/languages',
   '/phones',
 ] as const;

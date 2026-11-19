@@ -10,7 +10,6 @@ const routes = [
   '/use-cases/meetings',
   '/use-cases/lectures',
   '/use-cases/interviews',
-  '/compare/loronote',
   '/languages',
   '/phones',
 ];

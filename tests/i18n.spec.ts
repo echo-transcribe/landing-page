@@ -20,14 +20,13 @@ const routes = [
   '/use-cases/meetings',
   '/use-cases/lectures',
   '/use-cases/interviews',
-  '/compare/loronote',
   '/languages',
   '/phones',
 ];
 // Legal texts: translations say the English version prevails.
 const legalRoutes = ['/privacy', '/terms', '/legal-notice'];
 // Pages whose heading is the same in every language (names only).
-const sameHeading = ['/licenses', '/legal-notice', '/compare/loronote'];
+const sameHeading = ['/licenses', '/legal-notice'];
 const url = (prefix: string, route: string) => (route === '/' ? prefix || '/' : `${prefix}${route}`);
 
 for (const route of routes) {

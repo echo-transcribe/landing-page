@@ -12,11 +12,9 @@ const pages = [
   '/sl/privacy',
   '/help',
   '/use-cases/meetings',
-  '/compare/loronote',
   '/languages',
   '/phones',
   '/fr/use-cases/lectures',
-  '/sl/compare/loronote',
 ];
 
 for (const path of pages) {

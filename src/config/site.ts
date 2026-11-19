@@ -96,7 +96,6 @@ export const footerNav: NavGroup[] = [
   {
     id: 'compare',
     links: [
-      { id: 'vsLoronote', href: '/compare/loronote', live: true },
       { id: 'vsOtter', href: '/compare/otter', live: false },
       { id: 'vsGoogleRecorder', href: '/compare/google-recorder', live: false },
     ],

@@ -3,9 +3,9 @@ import { product } from '../../config/product';
 /** Pages a page can point to under "Read next" (routes in ./index.ts). */
 export type RelatedId = 'meetings' | 'lectures' | 'interviews';
 
-// Text for the help, use-case, feature, comparison, languages and phones pages.
+// Text for the help, use-case, languages and phones pages.
 // Facts checked against the echo repo on 2026-11-19 (implementation-notes.md, WhisperModels.kt,
-// ModelStore.kt, NotesAiModel.kt, LiteRtLlmRunner.kt). LoroNote facts: see `loronote.sources`.
+// ModelStore.kt, NotesAiModel.kt, LiteRtLlmRunner.kt).
 export const enPages = {
   common: {
     faqTitle: 'Questions',
@@ -366,87 +366,6 @@ export const enPages = {
     },
   },
 
-
-  loronote: {
-    title: 'LoroNote for Android? Echo vs LoroNote compared',
-    description:
-      'LoroNote is an offline transcription app for iPhone. Echo is the Android app for the same job. A dated, sourced comparison of features and prices.',
-    eyebrow: 'Compare',
-    heading: 'Echo vs LoroNote',
-    lead: 'Both apps transcribe on the device with Whisper, so your audio stays with you. The biggest difference is the phone: LoroNote is made for Apple devices, Echo for Android.',
-    checked: '2026-11-19',
-    whoTitle: 'Who each app is for',
-    who: {
-      echo: 'For Android phones. Pick Echo if you want tasks and reminders from what you say, or summaries that run on the phone itself.',
-      other: 'For iPhone, iPad and Apple Watch. Pick LoroNote if you use Apple devices, especially if you want to record from your watch.',
-    },
-    tableTitle: 'Side by side',
-    tableCaption: 'Echo facts are from the app itself. LoroNote facts are from its US App Store listing.',
-    featureColumn: 'Feature',
-    otherName: 'LoroNote',
-    rows: [
-      {
-        label: 'Devices',
-        echo: `Android ${product.minAndroid} or newer`,
-        other: 'iPhone 13 or later and iPhone SE (3rd gen), iPad, Apple Watch; iOS 18.6 or later',
-        source: 0,
-      },
-      {
-        label: 'Transcription',
-        echo: 'Whisper on the phone: Large V3 Turbo with 8 GB of RAM, a smaller model otherwise, or the phone’s own offline recognizer',
-        other: 'Whisper Large V3 Turbo on the device',
-        source: 0,
-      },
-      { label: 'Works offline', echo: 'Yes', other: 'Yes, including airplane mode', source: 0 },
-      { label: 'Languages', echo: '100, detected automatically', other: '“Over 100”, detected automatically', source: 0 },
-      { label: 'Speaker labels', echo: 'Yes, rename and reassign', other: 'Yes, rename and assign by hand', source: 0 },
-      {
-        label: 'Summaries',
-        echo: `Yes, with Echo’s own model on the phone (about ${product.notesAiRamGb} GB of RAM)`,
-        other: 'With Apple Intelligence, which runs on the iPhone 15 Pro and later',
-        source: 1,
-      },
-      {
-        label: 'Tasks from speech',
-        echo: 'Yes, with reminders at the times you mention',
-        other: 'Action items with Apple Intelligence; reminders are not mentioned',
-        source: 0,
-      },
-      { label: 'Export', echo: 'Text free; Markdown, SRT and audio with Pro', other: 'Text, SRT, and audio as MP3 or M4A', source: 0 },
-      {
-        label: 'Import',
-        echo: 'MP3, M4A, AAC, WAV, FLAC, OGG, Opus, and the audio of MP4 and WebM videos',
-        other: 'MP3, WAV, M4A, MP4, MOV',
-        source: 0,
-      },
-      {
-        label: 'Price',
-        echo: (monthly: string, yearly: string, lifetime: string) =>
-          `Free with the first 2 minutes of each note; Pro ${monthly} a month, ${yearly} a year or ${lifetime} once`,
-        other: 'Free with in-app purchases: $4.99 a month, $19.99 a year, $24.99 lifetime (a sale price; regularly $39.99)',
-        source: 0,
-      },
-    ],
-    winsTitle: 'Where LoroNote is the better choice',
-    wins: [
-      'You have an iPhone or iPad. Echo is Android only.',
-      'You want to record from an Apple Watch and transcribe on the phone.',
-      'You want Whisper Large V3 Turbo on a phone with less than 8 GB of RAM: LoroNote offers it from the iPhone 13, Echo only on 8 GB Android phones.',
-      'You want search and replace in transcripts, or the text highlighted while the audio plays.',
-    ],
-    switchTitle: 'Moving from LoroNote to Echo',
-    switch: [
-      'In LoroNote, export your recordings as audio (MP3 or M4A) and copy them to the Android phone.',
-      'Share them to Echo or use the import button in Notes. Each file can go under the day it was recorded.',
-      'Add names and terms you rely on to the Dictionary in Settings before you import, so Whisper spells them your way.',
-    ],
-    sources: [
-      { label: 'LoroNote on the US App Store', url: 'https://apps.apple.com/us/app/loronote-ai-transcribe/id6749249346' },
-      { label: 'Apple: devices that support Apple Intelligence', url: 'https://support.apple.com/en-us/121115' },
-    ],
-    disclaimer:
-      'LoroNote is a trademark of its owner, Rich Soft Co., Ltd. We are not affiliated with them. Prices and features change; if something here is out of date, write to us and we will fix it.',
-  },
 
   languages: {
     title: 'Languages Echo can transcribe — offline speech to text in 100 languages',
