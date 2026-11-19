@@ -4,14 +4,15 @@ import { site } from '../config/site';
 interface Props {
   /** Where the button sits, sent with the click event. */
   placement: string;
+  label?: string;
 }
 
-const { placement } = Astro.props;
+const { placement, label = 'Download now' } = Astro.props;
 ---
 
 <a class="download" href={site.playUrl} data-event="play_click" data-placement={placement}>
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="m7 10 5 5 5-5"></path><path d="M5 20h14"></path></svg>
-  Download now
+  {label}
 </a>
 
 <style>

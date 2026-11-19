@@ -15,7 +15,7 @@ test('analytics go through /ingest, cookieless, with CTA events', async ({ page,
   await page.evaluate(() => {
     document.addEventListener('click', (e) => e.preventDefault(), { capture: true, once: true });
   });
-  await page.locator('[data-event="pricing_click"]').first().click();
+  await page.locator('[data-event="play_click"][data-placement="pricing"]').first().click();
   await page.waitForTimeout(1500);
 
   expect(ingest.length).toBeGreaterThan(0);

@@ -1,6 +1,7 @@
 ---
 import { site } from '../../config/site';
 import SectionHeading from '../SectionHeading.astro';
+import DownloadButton from '../DownloadButton.astro';
 
 const { prices } = site;
 const eur = (n: number) => `€${n}`;
@@ -9,41 +10,33 @@ const savePercent = Math.round((1 - prices.yearly / (prices.monthly * 12)) * 100
 
 const plans = [
   {
-    id: 'free',
     name: 'Free',
     price: eur(0),
     unit: '',
     sub: 'Forever',
     features: ['First 2 minutes of every note', 'Summary and tasks included', 'Unlimited notes'],
-    cta: 'Download free',
   },
   {
-    id: 'pro-monthly',
     name: 'Pro monthly',
     price: eur(prices.monthly),
     unit: '/ month',
     sub: 'Cancel anytime',
     features: ['No time limit', 'Summary and tasks from the whole recording', 'Full-length imports'],
-    cta: 'Get Pro monthly',
   },
   {
-    id: 'pro-yearly',
     name: 'Pro yearly',
     price: eur(prices.yearly),
     unit: '/ year',
     sub: `€${perMonth} a month · save ${savePercent}% vs monthly`,
     features: ['Everything in Pro', 'Billed once a year'],
-    cta: 'Get Pro yearly',
     featured: true,
   },
   {
-    id: 'pro-lifetime',
     name: 'Pro lifetime',
     price: eur(prices.lifetime),
     unit: 'once',
     sub: 'No renewals',
     features: ['Everything in Pro', 'Future updates included'],
-    cta: 'Get Pro lifetime',
   },
 ];
 ---
@@ -76,12 +69,13 @@ const plans = [
                 </li>
               ))}
             </ul>
-            <a class="btn" href={site.playUrl} data-event="pricing_click" data-plan={p.id}>
-              {p.cta}
-            </a>
           </div>
         ))
       }
+    </div>
+    <div class="cta">
+      <p>Start free. Upgrade inside the app when you need to.</p>
+      <DownloadButton placement="pricing" label="Download free" />
     </div>
     <p class="fine">
       Prices in euros, VAT included. Billed through Google Play, which may show your local currency. Subscriptions renew
@@ -180,26 +174,17 @@ const plans = [
     color: var(--success);
     flex: none;
   }
-  .btn {
+  .cta {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 48px;
-    border-radius: 999px;
-    background: var(--raised);
-    color: var(--text-ctl);
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: var(--hairline-strong);
+    gap: 16px;
   }
-  .btn:hover {
-    color: var(--text);
-  }
-  .featured .btn {
-    background: #d4a373;
-    color: #2a2318;
-    box-shadow: 0 2px 6px -1px rgba(58, 49, 37, 0.1);
+  .cta p {
+    margin: 0;
+    text-align: center;
+    font-size: 17px;
+    color: var(--text-2);
   }
   .fine {
     margin: 0;
