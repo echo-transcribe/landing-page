@@ -150,7 +150,7 @@ export const frPages: PagesDict = {
     ],
     contactTitle: 'Toujours bloqué ?',
     contactText: (email: string) =>
-      `Écrivez à ${email}. Indiquez-nous le modèle de votre téléphone et ce que vous avez essayé ; nous répondons en anglais ou en slovène.`,
+      `Écrivez à ${email}. Indiquez-nous le modèle de votre téléphone et ce que vous avez essayé.`,
   },
 
   useCases: {
@@ -374,7 +374,7 @@ export const frPages: PagesDict = {
     sections: {
       transcription: {
         title: 'Transcription',
-        text: 'Chaque langue ci-dessous peut être transcrite hors ligne, depuis des enregistrements et des fichiers importés. Le cantonais demande Whisper Large V3 Turbo, qu’Echo utilise sur les téléphones avec 8 Go de RAM ou plus.',
+        text: 'Chaque langue ci-dessous peut être transcrite hors ligne, depuis des enregistrements et des fichiers importés.',
       },
       live: {
         title: 'Texte en direct et transcriptions instantanées',

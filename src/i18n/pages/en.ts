@@ -153,7 +153,7 @@ export const enPages = {
       },
     ],
     contactTitle: 'Still stuck?',
-    contactText: (email: string) => `Write to ${email}. Tell us your phone model and what you tried; we answer in English or Slovenian.`,
+    contactText: (email: string) => `Write to ${email}. Tell us your phone model and what you tried.`,
   },
 
   useCases: {
@@ -377,7 +377,7 @@ export const enPages = {
     sections: {
       transcription: {
         title: 'Transcription',
-        text: 'Every language below can be transcribed offline, from recordings and from imported files. Cantonese needs Whisper Large V3 Turbo, which Echo uses on phones with 8 GB of RAM or more.',
+        text: 'Every language below can be transcribed offline, from recordings and from imported files.',
       },
       live: {
         title: 'Live text and instant transcripts',

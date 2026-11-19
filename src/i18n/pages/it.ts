@@ -148,7 +148,7 @@ export const itPages: PagesDict = {
       },
     ],
     contactTitle: 'Sei ancora bloccato?',
-    contactText: (email: string) => `Scrivi a ${email}. Indicaci il modello del tuo telefono e cosa hai provato; rispondiamo in inglese o in sloveno.`,
+    contactText: (email: string) => `Scrivi a ${email}. Indicaci il modello del tuo telefono e cosa hai provato.`,
   },
 
   useCases: {
@@ -372,7 +372,7 @@ export const itPages: PagesDict = {
     sections: {
       transcription: {
         title: 'Trascrizione',
-        text: 'Ogni lingua qui sotto può essere trascritta offline, da registrazioni e da file importati. Il cantonese richiede Whisper Large V3 Turbo, che Echo usa sui telefoni con 8 GB di RAM o più.',
+        text: 'Ogni lingua qui sotto può essere trascritta offline, da registrazioni e da file importati.',
       },
       live: {
         title: 'Testo in tempo reale e trascrizioni istantanee',

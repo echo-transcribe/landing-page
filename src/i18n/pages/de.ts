@@ -150,7 +150,7 @@ export const dePages: PagesDict = {
     ],
     contactTitle: 'Noch nicht weitergekommen?',
     contactText: (email: string) =>
-      `Schreib an ${email}. Nenne uns dein Handymodell und was du versucht hast; wir antworten auf Englisch oder Slowenisch.`,
+      `Schreib an ${email}. Nenne uns dein Handymodell und was du versucht hast.`,
   },
 
   useCases: {
@@ -377,7 +377,7 @@ export const dePages: PagesDict = {
     sections: {
       transcription: {
         title: 'Transkription',
-        text: 'Jede Sprache unten kann offline transkribiert werden, aus Aufnahmen und aus importierten Dateien. Kantonesisch braucht Whisper Large V3 Turbo, das Echo auf Handys mit 8 GB RAM oder mehr nutzt.',
+        text: 'Jede Sprache unten kann offline transkribiert werden, aus Aufnahmen und aus importierten Dateien.',
       },
       live: {
         title: 'Live-Text und sofortige Transkripte',

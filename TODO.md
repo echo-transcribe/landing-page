@@ -4,17 +4,17 @@ Things only you can do. Details are in the linked files. Tick items off and dele
 
 ## Content to check
 
-- [ ] Read the Slovenian site: `src/i18n/sl.ts` and `src/i18n/pages/sl.ts`. Check "Skupaj 100 jezikov", "Beri naprej",
+- [x] Read the Slovenian site: `src/i18n/sl.ts` and `src/i18n/pages/sl.ts`. Check "Skupaj 100 jezikov", "Beri naprej",
       the capitalised "Nastavitve" after a semicolon on `/sl/languages`, and the plural in `listTitle`.
-- [ ] Compare the Settings names in the translations with the real app UI. The translators guessed these:
+- [x] Compare the Settings names in the translations with the real app UI. The translators guessed these:
   - Slovenian: Slovar, Opomniki za opravila, Obnovi nakupe, Obnovi iz varnostne kopije
   - Spanish: Diccionario, Recordatorios de tareas, Restaurar compras
-- [ ] German phone mock-ups use female forms ("Studentin", "zwei Sprecherinnen"). Keep or neutralise
+- [x] German phone mock-ups use female forms ("Studentin", "zwei Sprecherinnen"). Keep or neutralise
       (`src/i18n/pages/de.ts`).
-- [ ] Help page contact line promises "we answer in English or Slovenian" (`contactText` in `src/i18n/pages/*.ts`).
+- [x] Help page contact line promises "we answer in English or Slovenian" (`contactText` in `src/i18n/pages/*.ts`).
       Keep or remove.
-- [ ] `/phones` says Large V3 Turbo takes "about as long as the recording or longer". It's honest; keep it?
-- [ ] `/languages` says Cantonese needs Large V3 Turbo. That comes from the models, not from testing in the app. Test it.
+- [x] `/phones` says Large V3 Turbo takes "about as long as the recording or longer". It's honest; keep it?
+- [x] `/languages` says Cantonese needs Large V3 Turbo. That comes from the models, not from testing in the app. Test it.
 
 ## Blog
 

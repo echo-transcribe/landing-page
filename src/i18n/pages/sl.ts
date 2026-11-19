@@ -149,7 +149,7 @@ export const slPages: PagesDict = {
     ],
     contactTitle: 'Še vedno ne gre?',
     contactText: (email: string) =>
-      `Piši na ${email}. Sporoči model telefona in kaj si poskusil; odgovarjamo v angleščini ali slovenščini.`,
+      `Piši na ${email}. Sporoči model telefona in kaj si poskusil.`,
   },
 
   useCases: {
@@ -373,7 +373,7 @@ export const slPages: PagesDict = {
     sections: {
       transcription: {
         title: 'Prepisovanje',
-        text: 'Vsak spodnji jezik je mogoče prepisati brez povezave, iz posnetkov in uvoženih datotek. Kantonščina potrebuje Whisper Large V3 Turbo, ki ga Echo uporablja na telefonih z 8 GB RAM-a ali več.',
+        text: 'Vsak spodnji jezik je mogoče prepisati brez povezave, iz posnetkov in uvoženih datotek.',
       },
       live: {
         title: 'Besedilo v živo in takojšnji prepisi',

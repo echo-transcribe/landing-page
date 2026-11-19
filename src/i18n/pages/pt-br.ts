@@ -149,7 +149,7 @@ export const ptBrPages: PagesDict = {
     ],
     contactTitle: 'Ainda com dúvidas?',
     contactText: (email: string) =>
-      `Escreva para ${email}. Conte o modelo do seu celular e o que você tentou; respondemos em inglês ou esloveno.`,
+      `Escreva para ${email}. Conte o modelo do seu celular e o que você tentou.`,
   },
 
   useCases: {
@@ -373,7 +373,7 @@ export const ptBrPages: PagesDict = {
     sections: {
       transcription: {
         title: 'Transcrição',
-        text: 'Todos os idiomas abaixo podem ser transcritos offline, a partir de gravações e de arquivos importados. O cantonês exige o Whisper Large V3 Turbo, que o Echo usa em celulares com 8 GB de RAM ou mais.',
+        text: 'Todos os idiomas abaixo podem ser transcritos offline, a partir de gravações e de arquivos importados.',
       },
       live: {
         title: 'Texto ao vivo e transcrições instantâneas',
