@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import LanguagesPage from '../../views/pages/LanguagesPage.astro';
+import { enabledLocales } from '../../i18n';
+import { pagesLocales } from '../../i18n/pages';
+
+// Only languages whose page texts exist get this page.
+export const getStaticPaths = (() =>
+  enabledLocales
+    .filter((l) => l.path !== '' && pagesLocales.includes(l.code))
+    .map((l) => ({ params: { lang: l.path }, props: { locale: l.code } }))) satisfies GetStaticPaths;
+
+const { locale } = Astro.props;
+---
+
+<LanguagesPage locale={locale} />

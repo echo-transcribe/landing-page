@@ -7,6 +7,7 @@ import { it } from './it';
 import { ptBr } from './pt-br';
 import { sl } from './sl';
 import { defaultLocale, enabledLocales, localeInfo, locales, type Locale, type LocaleInfo } from './locales';
+import { pageRoutes, pagesLocales } from './pages';
 
 export { defaultLocale, enabledLocales, localeInfo, locales };
 export type { Dict, Locale, LocaleInfo };
@@ -49,11 +50,22 @@ export function unlocalizePath(pathname: string): string {
   return pathname.slice(info.path.length + 1) || '/';
 }
 
-/** hreflang entries for an unprefixed route: every enabled locale plus x-default (English). */
+/** Whether an unprefixed route exists in a locale. Pages not yet translated exist in English only. */
+export function hasRoute(path: string, locale: Locale): boolean {
+  const route = path.split('#')[0];
+  return !(pageRoutes as readonly string[]).includes(route) || pagesLocales.includes(locale);
+}
+
+/** A link to a route from a page in `locale`: the translated page, or the English one until it exists. */
+export function linkTo(path: string, locale: Locale): string {
+  return hasRoute(path, locale) ? localizePath(path, locale) : path;
+}
+
+/** hreflang entries for an unprefixed route: every enabled locale it exists in, plus x-default (English). */
 export function alternates(path: string): { hreflang: string; href: string }[] {
   const href = (locale: Locale) => new URL(localizePath(path, locale), site.url).href;
   return [
-    ...enabledLocales.map((l) => ({ hreflang: l.htmlLang, href: href(l.code) })),
+    ...enabledLocales.filter((l) => hasRoute(path, l.code)).map((l) => ({ hreflang: l.htmlLang, href: href(l.code) })),
     { hreflang: 'x-default', href: href(defaultLocale) },
   ];
 }

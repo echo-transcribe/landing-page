@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import PageSection from '../../components/page/PageSection.astro';
+import ClosingCta from '../../components/home/ClosingCta.astro';
+import { site } from '../../config/site';
+import { formatDate, formatPrice, type Locale } from '../../i18n';
+import { usePages } from '../../i18n/pages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const p = usePages(locale);
+const c = p.loronote;
+const checked = formatDate(c.checked, locale);
+const echoText = (v: string | ((m: string, y: string, l: string) => string)) =>
+  typeof v === 'function' ? v(formatPrice(site.prices.monthly, locale), formatPrice(site.prices.yearly, locale), formatPrice(site.prices.lifetime, locale)) : v;
+---
+
+<BaseLayout title={c.title} description={c.description} locale={locale} path="/compare/loronote">
+  <PageHero eyebrow={c.eyebrow} heading={c.heading} lead={c.lead} placement="compare-loronote" />
+
+  <PageSection title={c.whoTitle} tone="sunken">
+    <div class="who">
+      <div class="card">
+        <h3>{site.name}</h3>
+        <p>{c.who.echo}</p>
+      </div>
+      <div class="card">
+        <h3>{c.otherName}</h3>
+        <p>{c.who.other}</p>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection title={c.tableTitle}>
+    <p class="checked">
+      {p.common.checkedOn(checked)}. {c.tableCaption}
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{c.featureColumn}</th>
+            <th scope="col">{site.name}</th>
+            <th scope="col">{c.otherName}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            c.rows.map((r) => (
+              <tr>
+                <th scope="row">{r.label}</th>
+                <td>{echoText(r.echo)}</td>
+                <td>
+                  {r.other}
+                  <a class="ref" href={`#source-${r.source + 1}`} aria-label={`${p.common.sourcesTitle} ${r.source + 1}`}>
+                    [{r.source + 1}]
+                  </a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </PageSection>
+
+  <PageSection title={c.winsTitle} width="narrow" tone="sunken">
+    <ul class="list">
+      {c.wins.map((w) => <li>{w}</li>)}
+    </ul>
+  </PageSection>
+
+  <PageSection title={c.switchTitle} width="narrow">
+    <ol class="list">
+      {c.switch.map((s) => <li>{s}</li>)}
+    </ol>
+  </PageSection>
+
+  <PageSection title={p.common.sourcesTitle} width="narrow" id="sources">
+    <ol class="sources">
+      {
+        c.sources.map((s, i) => (
+          <li id={`source-${i + 1}`}>
+            <a href={s.url} rel="noopener">{s.label}</a>
+            {' '}({p.common.checkedOn(checked)})
+          </li>
+        ))
+      }
+    </ol>
+    <p class="fine">{c.disclaimer}</p>
+  </PageSection>
+
+  <ClosingCta />
+</BaseLayout>
+
+<style>
+  .who {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 16px;
+  }
+  .card {
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline);
+  }
+  table {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  th,
+  td {
+    text-align: left;
+    vertical-align: top;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+  thead th {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-2);
+  }
+  tbody th {
+    font-weight: 600;
+    width: 22%;
+  }
+  td {
+    color: var(--text-ctl);
+  }
+  .ref {
+    margin-left: 4px;
+    font-size: 12px;
+    color: var(--accent-text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .list,
+  .sources {
+    margin: 0;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .list li {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-ctl);
+  }
+  .sources li {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .sources a {
+    color: var(--text-ctl);
+  }
+</style>

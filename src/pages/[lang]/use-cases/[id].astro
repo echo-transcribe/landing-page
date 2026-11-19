@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from 'astro';
+import UseCasePage from '../../../views/pages/UseCasePage.astro';
+import { enabledLocales } from '../../../i18n';
+import { pagesLocales, useCaseIds } from '../../../i18n/pages';
+
+// Only languages whose page texts exist get these pages.
+export const getStaticPaths = (() =>
+  enabledLocales
+    .filter((l) => l.path !== '' && pagesLocales.includes(l.code))
+    .flatMap((l) => useCaseIds.map((id) => ({ params: { lang: l.path, id }, props: { locale: l.code, id } })))) satisfies GetStaticPaths;
+
+const { locale, id } = Astro.props;
+---
+
+<UseCasePage locale={locale} id={id} />

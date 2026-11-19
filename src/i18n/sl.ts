@@ -70,6 +70,7 @@ export const sl: Dict = {
     links: {
       features: 'Funkcije',
       pricing: 'Cenik',
+      voiceToTasks: 'Od glasu do opravil',
       changelog: 'Dnevnik sprememb',
       phones: 'Podprti telefoni',
       languages: 'Jeziki',

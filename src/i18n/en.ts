@@ -71,6 +71,7 @@ export const en = {
     links: {
       features: 'Features',
       pricing: 'Pricing',
+      voiceToTasks: 'Voice to tasks',
       changelog: 'Changelog',
       phones: 'Supported phones',
       languages: 'Languages',

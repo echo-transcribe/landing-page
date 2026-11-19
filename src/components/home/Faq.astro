@@ -1,5 +1,6 @@
 ---
 import SectionHeading from '../SectionHeading.astro';
+import FaqList from '../FaqList.astro';
 import { getLocale, useDict } from '../../i18n';
 
 const t = useDict(getLocale(Astro));
@@ -8,19 +9,7 @@ const t = useDict(getLocale(Astro));
 <section id="faq">
   <div class="inner">
     <SectionHeading eyebrow={t.faq.eyebrow} title={t.faq.title} />
-    <div class="list">
-      {
-        t.faq.items.map((f, i) => (
-          <details open={i === 0}>
-            <summary>
-              {f.q}
-              <svg class="faq-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
-            </summary>
-            <p>{f.a}</p>
-          </details>
-        ))
-      }
-    </div>
+    <FaqList items={t.faq.items} firstOpen />
   </div>
 </section>
 
@@ -35,86 +24,12 @@ const t = useDict(getLocale(Astro));
     flex-direction: column;
     gap: 40px;
   }
-  .list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  details {
-    border-radius: 18px;
-    background: var(--card);
-    box-shadow: var(--hairline), 0 1px 2px rgba(58, 49, 37, 0.06);
-  }
-  summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 20px 24px;
-    font-size: 17px;
-    font-weight: 600;
-  }
-  .faq-chev {
-    flex: none;
-    color: var(--text-3);
-    transition: transform 0.2s ease;
-  }
-  details[open] .faq-chev {
-    transform: rotate(180deg);
-  }
-  details p {
-    margin: 0;
-    padding: 0 24px 22px;
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--text-2);
-  }
-
-  /* Height slide where supported (Chromium); other browsers open instantly but still get the fade below. */
-  details {
-    interpolate-size: allow-keywords;
-  }
-  details::details-content {
-    height: 0;
-    overflow: clip;
-    transition:
-      height 0.28s ease,
-      content-visibility 0.28s allow-discrete;
-  }
-  details[open]::details-content {
-    height: auto;
-  }
-  details[open] p {
-    animation: faq-in 0.28s ease;
-  }
-  @keyframes faq-in {
-    from {
-      opacity: 0;
-      transform: translateY(-6px);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .faq-chev,
-    details::details-content {
-      transition: none;
-    }
-    details[open] p {
-      animation: none;
-    }
-  }
   @media (max-width: 700px) {
     section {
       padding: 72px 20px;
     }
     .inner {
       gap: 32px;
-    }
-    summary {
-      padding: 18px 20px;
-    }
-    details p {
-      padding: 0 20px 20px;
     }
   }
 </style>

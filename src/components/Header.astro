@@ -1,6 +1,6 @@
 ---
 import { headerNav } from '../config/site';
-import { getLocale, localizePath, useDict } from '../i18n';
+import { getLocale, linkTo, useDict } from '../i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
@@ -10,7 +10,7 @@ const locale = getLocale(Astro);
 const t = useDict(locale);
 const links = headerNav
   .filter((l) => l.live)
-  .map((l) => ({ href: localizePath(l.href, locale), label: t.header.nav[l.id as keyof typeof t.header.nav] }));
+  .map((l) => ({ href: linkTo(l.href, locale), label: t.header.nav[l.id as keyof typeof t.header.nav] }));
 ---
 
 <header class="bar">

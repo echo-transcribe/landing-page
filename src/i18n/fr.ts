@@ -72,6 +72,7 @@ export const fr: Dict = {
     links: {
       features: 'Fonctions',
       pricing: 'Tarifs',
+      voiceToTasks: 'De la voix aux tâches',
       changelog: 'Historique des versions',
       phones: 'Téléphones compatibles',
       languages: 'Langues',

@@ -1,0 +1,81 @@
+---
+import TextPageLayout from '../../layouts/TextPageLayout.astro';
+import { site } from '../../config/site';
+import type { Locale } from '../../i18n';
+import { usePages } from '../../i18n/pages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ph = usePages(locale).phones;
+const email = site.email.hello;
+const [testedBefore, testedAfter] = ph.tested('\u0000').split('\u0000');
+---
+
+<TextPageLayout title={ph.title} heading={ph.heading} description={ph.description} locale={locale} path="/phones" toc>
+  <p>{ph.intro}</p>
+  <section>
+    <h2 id="tiers">{ph.tiersTitle}</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{ph.tiersHead.ram}</th>
+            <th scope="col">{ph.tiersHead.speech}</th>
+            <th scope="col">{ph.tiersHead.notes}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            ph.tiers.map((t) => (
+              <tr>
+                <th scope="row">{t.ram}</th>
+                <td>{t.speech}</td>
+                <td>{t.notes}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p>{ph.tiersNote}</p>
+  </section>
+  <section>
+    <h2 id="recognizer">{ph.recognizerTitle}</h2>
+    <p>{ph.recognizer}</p>
+  </section>
+  <section>
+    <h2 id="storage">{ph.storageTitle}</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">{ph.storageHead.item}</th>
+            <th scope="col">{ph.storageHead.size}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            ph.storage.map((s) => (
+              <tr>
+                <td>{s.item}</td>
+                <td>{s.size}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+    <p>{ph.storageNote}</p>
+  </section>
+  <section>
+    <h2 id="speed">{ph.speedTitle}</h2>
+    <p>{ph.speed}</p>
+  </section>
+  <section>
+    <h2 id="tested">{ph.testedTitle}</h2>
+    <p>{testedBefore}<a href={`mailto:${email}`}>{email}</a>{testedAfter}</p>
+  </section>
+</TextPageLayout>

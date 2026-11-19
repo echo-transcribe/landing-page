@@ -1,5 +1,5 @@
 ---
-import { enabledLocales, getLocale, localeInfo, localizePath, unlocalizePath, useDict } from '../i18n';
+import { enabledLocales, getLocale, hasRoute, localeInfo, localizePath, unlocalizePath, useDict } from '../i18n';
 
 interface Props {
   placement: 'header' | 'menu' | 'footer';
@@ -29,7 +29,7 @@ const label = placement === 'header' ? `${code}, ${t.languageSwitcher.label}: ${
         {enabledLocales.map((l) => (
           <li>
             <a
-              href={localizePath(route, l.code)}
+              href={localizePath(hasRoute(route, l.code) ? route : '/', l.code)}
               hreflang={l.htmlLang}
               lang={l.htmlLang}
               aria-current={l.code === locale ? 'true' : undefined}

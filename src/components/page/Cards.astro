@@ -1,0 +1,65 @@
+---
+interface Props {
+  items: readonly { title: string; text: string }[];
+  /** Number the cards, for steps. */
+  numbered?: boolean;
+}
+
+const { items, numbered = false } = Astro.props;
+const Tag = numbered ? 'ol' : 'ul';
+---
+
+<Tag class="grid">
+  {
+    items.map((item, i) => (
+      <li class="card">
+        {numbered && <span class="num" aria-hidden="true">{i + 1}</span>}
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </li>
+    ))
+  }
+</Tag>
+
+<style>
+  .grid {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+    gap: 16px;
+  }
+  .card {
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline), 0 1px 2px rgba(58, 49, 37, 0.06);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -0.014em;
+  }
+  p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-2);
+  }
+</style>

@@ -2,9 +2,16 @@
 import { getLocale, useDict } from '../i18n';
 
 const t = useDict(getLocale(Astro));
+
+interface Props {
+  /** The note on screen; defaults to the home page's meeting. */
+  screen?: Omit<typeof t.phone, 'lines'> & { lines: { name: string; time: string; before: string; mark: string; after: string }[] };
+}
+
+const p = Astro.props.screen ?? t.phone;
 ---
 
-<div class="phone" role="img" aria-label={t.phone.label}>
+<div class="phone" role="img" aria-label={p.label}>
   <div class="screen">
     <div class="notch"><span></span></div>
     <div class="bar">
@@ -15,27 +22,27 @@ const t = useDict(getLocale(Astro));
       </div>
     </div>
     <div class="head">
-      <div class="title">{t.phone.title}</div>
-      <div class="meta">{t.phone.meta} <span class="tag">{t.phone.tag}</span></div>
+      <div class="title">{p.title}</div>
+      <div class="meta">{p.meta} <span class="tag">{p.tag}</span></div>
     </div>
     <div class="card summary">
-      <div class="label">{t.phone.summaryLabel}</div>
-      <div class="summary-text">{t.phone.summaryText}</div>
+      <div class="label">{p.summaryLabel}</div>
+      <div class="summary-text">{p.summaryText}</div>
     </div>
     <div class="card tasks">
-      <div class="label">{t.phone.tasksLabel}</div>
+      <div class="label">{p.tasksLabel}</div>
       <div class="task">
         <span class="box"></span>
-        <div class="task-body"><span class="task-title">{t.phone.task1}</span><span class="reminder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>{t.phone.task1Reminder}</span></div>
+        <div class="task-body"><span class="task-title">{p.task1}</span><span class="reminder"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>{p.task1Reminder}</span></div>
       </div>
       <div class="task">
         <span class="box"></span>
-        <span class="task-title">{t.phone.task2}</span>
+        <span class="task-title">{p.task2}</span>
       </div>
     </div>
     <div class="transcript">
       {
-        t.phone.lines.map((line, i) => (
+        p.lines.map((line, i) => (
           <div class="line">
             <div class="speaker"><span class:list={['dot', i === 0 ? 'maja' : 'alex']}></span><span class="name">{line.name}</span><span class="time">{line.time}</span></div>
             <div class="text">{line.before}<mark>{line.mark}</mark>{line.after}</div>

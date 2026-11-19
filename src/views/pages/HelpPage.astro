@@ -1,0 +1,41 @@
+---
+import TextPageLayout from '../../layouts/TextPageLayout.astro';
+import FaqList from '../../components/FaqList.astro';
+import { site } from '../../config/site';
+import type { Locale } from '../../i18n';
+import { usePages } from '../../i18n/pages';
+import { faqSchema } from '../../i18n/pages/schema';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const h = usePages(locale).help;
+const email = site.email.hello;
+const [before, after] = h.contactText('\u0000').split('\u0000');
+---
+
+<TextPageLayout
+  title={h.title}
+  heading={h.heading}
+  description={h.description}
+  locale={locale}
+  path="/help"
+  toc
+  jsonLd={[faqSchema(h.groups.flatMap((g) => g.items), locale)]}
+>
+  <p class="intro">{h.intro}</p>
+  {
+    h.groups.map((g) => (
+      <section>
+        <h2 id={g.id}>{g.title}</h2>
+        <FaqList items={g.items} />
+      </section>
+    ))
+  }
+  <section class="summary">
+    <h2 id="contact">{h.contactTitle}</h2>
+    <p>{before}<a href={`mailto:${email}`}>{email}</a>{after}</p>
+  </section>
+</TextPageLayout>

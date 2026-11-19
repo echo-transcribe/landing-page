@@ -1,0 +1,69 @@
+---
+import TextPageLayout from '../../layouts/TextPageLayout.astro';
+import { bcp47, whisperLanguages } from '../../config/languages';
+import { localeInfo, type Locale } from '../../i18n';
+import { usePages } from '../../i18n/pages';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const l = usePages(locale).languages;
+const tag = localeInfo(locale).dateLocale;
+const names = new Intl.DisplayNames([tag], { type: 'language' });
+const collator = new Intl.Collator(tag);
+// Names in the page's language, sorted the way that language sorts.
+const list = whisperLanguages
+  .map((code) => {
+    const bcp = bcp47[code] ?? code;
+    const name = names.of(bcp) ?? code;
+    return name.charAt(0).toLocaleUpperCase(tag) + name.slice(1);
+  })
+  .sort(collator.compare);
+// The app's own UI languages, named in the page's language.
+const appLanguages = new Intl.ListFormat(tag, { type: 'conjunction' }).format(
+  ['en', 'de', 'es', 'fr', 'it', 'pt-BR', 'sl'].map((c) => names.of(c) ?? c),
+);
+const { sections } = l;
+---
+
+<TextPageLayout title={l.title} heading={l.heading} description={l.description} locale={locale} path="/languages" toc>
+  <p>{l.intro}</p>
+  <section>
+    <h2 id="transcription">{sections.transcription.title}</h2>
+    <p>{sections.transcription.text}</p>
+  </section>
+  <section>
+    <h2 id="live-text">{sections.live.title}</h2>
+    <p>{sections.live.text}</p>
+  </section>
+  <section>
+    <h2 id="summaries-tasks">{sections.notes.title}</h2>
+    <p>{sections.notes.text}</p>
+  </section>
+  <section>
+    <h2 id="app">{sections.app.title}</h2>
+    <p>{sections.app.text(appLanguages)}</p>
+  </section>
+  <section>
+    <h2 id="all">{l.listTitle(list.length)}</h2>
+    <ul class="langs">
+      {list.map((name) => <li>{name}</li>)}
+    </ul>
+  </section>
+</TextPageLayout>
+
+<style>
+  .langs {
+    list-style: none;
+    padding: 0;
+    display: block;
+    columns: 3 170px;
+    column-gap: 24px;
+  }
+  .langs li {
+    break-inside: avoid;
+    padding: 3px 0;
+  }
+</style>

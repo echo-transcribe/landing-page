@@ -78,17 +78,18 @@ export const footerNav: NavGroup[] = [
     links: [
       { id: 'features', href: '/#features', live: true },
       { id: 'pricing', href: '/#pricing', live: true },
+      { id: 'voiceToTasks', href: '/features/voice-to-tasks', live: true },
       { id: 'changelog', href: '/changelog', live: false },
-      { id: 'phones', href: '/phones', live: false },
-      { id: 'languages', href: '/languages', live: false },
+      { id: 'phones', href: '/phones', live: true },
+      { id: 'languages', href: '/languages', live: true },
     ],
   },
   {
     id: 'useCases',
     links: [
-      { id: 'meetings', href: '/use-cases/meetings', live: false },
-      { id: 'lectures', href: '/use-cases/lectures', live: false },
-      { id: 'interviews', href: '/use-cases/interviews', live: false },
+      { id: 'meetings', href: '/use-cases/meetings', live: true },
+      { id: 'lectures', href: '/use-cases/lectures', live: true },
+      { id: 'interviews', href: '/use-cases/interviews', live: true },
       { id: 'voiceNotes', href: '/use-cases/voice-notes', live: false },
       { id: 'subtitles', href: '/use-cases/subtitles', live: false },
     ],
@@ -96,7 +97,7 @@ export const footerNav: NavGroup[] = [
   {
     id: 'compare',
     links: [
-      { id: 'vsLoronote', href: '/compare/loronote', live: false },
+      { id: 'vsLoronote', href: '/compare/loronote', live: true },
       { id: 'vsOtter', href: '/compare/otter', live: false },
       { id: 'vsGoogleRecorder', href: '/compare/google-recorder', live: false },
     ],
@@ -105,7 +106,7 @@ export const footerNav: NavGroup[] = [
     id: 'resources',
     links: [
       { id: 'blog', href: '/blog', live: false },
-      { id: 'help', href: '/help', live: false },
+      { id: 'help', href: '/help', live: true },
       { id: 'contact', href: `mailto:${site.email.hello}`, live: true },
     ],
   },

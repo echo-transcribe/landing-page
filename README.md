@@ -17,9 +17,15 @@ First run of the tests: `pnpm exec playwright install chromium`.
 
 - `src/config/site.ts`: domain, company and legal details, emails, prices, navigation. Footer links with
   `live: false` stay hidden until their page exists.
+- The LoroNote comparison (`/compare/loronote`) cites the App Store listing with a checked-on date
+  (`loronote.checked`). Recheck the listing and update the date before relying on it.
 - `src/config/product.ts`: app facts (Android version, RAM tiers, formats), checked against the echo repo.
 - `src/i18n/`: every piece of UI text per language, including the FAQ (also used for the FAQPage structured data).
 - `src/views/`: page bodies shared by the English and translated routes in `src/pages/` and `src/pages/[lang]/`.
+- `src/i18n/pages/<code>.ts`: text of the help, use-case, voice-to-tasks, comparison, languages and phones pages.
+  A language gets these routes (and links to them) only once its file is registered in `src/i18n/pages/index.ts`;
+  until then its pages link to the English versions.
+- `src/config/languages.ts`: Whisper's 100 language codes for `/languages`.
 - `src/layouts/BaseLayout.astro`: head, SEO tags, theme bootstrap, header, footer, analytics.
 - `src/layouts/TextPageLayout.astro`: the text template for legal pages, and later help and blog posts.
 - `src/content.config.ts`: the blog collection schema. Posts go in `src/content/blog/` (no routes yet).

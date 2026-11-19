@@ -70,6 +70,7 @@ export const ptBr: Dict = {
     links: {
       features: 'Recursos',
       pricing: 'Preços',
+      voiceToTasks: 'Da voz às tarefas',
       changelog: 'Novidades',
       phones: 'Celulares compatíveis',
       languages: 'Idiomas',

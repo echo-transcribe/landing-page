@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/page/PageHero.astro';
+import PageSection from '../../components/page/PageSection.astro';
+import Cards from '../../components/page/Cards.astro';
+import Related from '../../components/page/Related.astro';
+import FaqList from '../../components/FaqList.astro';
+import PhoneMockup from '../../components/PhoneMockup.astro';
+import ClosingCta from '../../components/home/ClosingCta.astro';
+import { usePages, type UseCaseId } from '../../i18n/pages';
+import { faqSchema } from '../../i18n/pages/schema';
+import type { Locale } from '../../i18n';
+
+interface Props {
+  locale: Locale;
+  id: UseCaseId;
+}
+
+const { locale, id } = Astro.props;
+const p = usePages(locale);
+const c = p.useCases[id];
+---
+
+<BaseLayout title={c.title} description={c.description} locale={locale} path={`/use-cases/${id}`} jsonLd={[faqSchema(c.faq, locale)]}>
+  <PageHero eyebrow={c.eyebrow} heading={c.heading} lead={c.lead} placement={`use-case-${id}`}>
+    <PhoneMockup screen={c.phone} />
+  </PageHero>
+  <PageSection title={c.problemTitle} width="narrow" tone="sunken">
+    <p>{c.problem}</p>
+  </PageSection>
+  <PageSection title={c.featuresTitle}>
+    <Cards items={c.features} />
+  </PageSection>
+  <PageSection title={p.common.faqTitle} eyebrow={p.common.faqEyebrow} width="narrow">
+    <FaqList items={c.faq} />
+  </PageSection>
+  <PageSection title={p.common.relatedTitle}>
+    <Related ids={c.related} />
+  </PageSection>
+  <ClosingCta />
+</BaseLayout>
