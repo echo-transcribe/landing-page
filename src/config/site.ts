@@ -22,6 +22,8 @@ export const site = {
     name: 'Andrej Koman',
     address: 'Počehova 65, 2000 Maribor',
     country: 'Slovenia',
+    /** ISO 3166 code; translated pages show the country name in their own language. */
+    countryCode: 'SI',
     register: null as string | null,
     regNo: null as string | null,
     vatId: null as string | null,

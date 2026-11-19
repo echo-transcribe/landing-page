@@ -1,0 +1,41 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email } = site;
+---
+
+<section aria-labelledby="provider">
+  <h2 id="provider">Fornitore</h2>
+  <p>
+    {company.name}<br />
+    {company.address}<br />
+    {countryName('it')}
+  </p>
+</section>
+
+{
+  company.regNo && (
+    <section aria-labelledby="registration">
+      <h2 id="registration">Registrazione</h2>
+      <p>
+        Iscritta presso {company.register}, n. di registrazione {company.regNo}.
+        {company.vatId && <><br />Partita IVA: {company.vatId}</>}
+      </p>
+    </section>
+  )
+}
+
+<section aria-labelledby="contact">
+  <h2 id="contact">Contatti</h2>
+  <p>
+    Generale: <a href={`mailto:${email.hello}`}>{email.hello}</a><br />
+    Privacy: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>
+  </p>
+</section>
+
+<section aria-labelledby="disputes">
+  <h2 id="disputes">Controversie con i consumatori</h2>
+  {/* keep in sync with site.legal.adr */}
+  <p>Non siamo obbligati a partecipare a procedure extragiudiziali di risoluzione delle controversie con i consumatori e non vi partecipiamo. Se qualcosa non va, scrivici e risolveremo la questione direttamente con te.</p>
+</section>

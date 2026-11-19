@@ -97,6 +97,8 @@ export const it: Dict = {
   textPage: {
     lastUpdated: 'Ultimo aggiornamento',
     draftNotice: 'Bozza. Ogni valore tra [parentesi quadre] va compilato e il testo rivisto da un esperto di diritto UE prima del lancio.', // launch-check: ignore
+    translationNotice: 'Questa traduzione è solo per tua comodità. In caso di differenze, prevale la versione inglese.',
+    translationNoticeLink: 'Leggi la versione inglese',
   },
 
   notFound: {

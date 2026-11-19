@@ -97,6 +97,8 @@ export const es: Dict = {
   textPage: {
     lastUpdated: 'Última actualización',
     draftNotice: 'Borrador. Hay que rellenar cada valor entre [corchetes] y que alguien cualificado en derecho de la UE revise el texto antes del lanzamiento.', // launch-check: ignore
+    translationNotice: 'Esta traducción es solo para tu comodidad. Si difiere de la versión en inglés, prevalece la versión en inglés.',
+    translationNoticeLink: 'Leer la versión en inglés',
   },
 
   notFound: {

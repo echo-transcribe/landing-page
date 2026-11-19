@@ -98,6 +98,8 @@ export const en = {
   textPage: {
     lastUpdated: 'Last updated',
     draftNotice: 'Draft. Every value in [brackets] must be filled in, and the text reviewed by someone qualified in EU law, before launch.', // launch-check: ignore
+    translationNotice: 'This is a translation for your convenience. If it differs from the English version, the English version applies.',
+    translationNoticeLink: 'Read the English version',
   },
 
   notFound: {

@@ -1,0 +1,179 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email, legal } = site;
+---
+
+<section class="summary" aria-labelledby="short">
+  <h2 id="short">La versión corta</h2>
+  <ul>
+    <li>Tus grabaciones, transcripciones, resúmenes y tareas se procesan y almacenan únicamente en tu teléfono. Nunca los recibimos.</li>
+    <li>Echo no tiene cuentas. Los pagos los gestiona Google Play.</li>
+    <li>Este sitio web no instala cookies y cuenta las visitas sin identificarte.</li>
+    <li>Puedes contactarnos en cualquier momento en <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="controller">
+  <h2 id="controller">1. Quién es el responsable</h2>
+  <p>
+    El responsable del tratamiento en el sentido del RGPD es {company.name}, {company.address}, {countryName('es')}{company.regNo && `, n.º de registro ${company.regNo}`}{company.vatId && `, NIF-IVA ${company.vatId}`}. Correo electrónico: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+  </p>
+</section>
+
+<section aria-labelledby="app">
+  <h2 id="app">2. La app Echo</h2>
+
+  <h3>Tus grabaciones y notas</h3>
+  <p>
+    El audio, las transcripciones, los nombres de los interlocutores, los resúmenes, las tareas y las carpetas se crean
+    y se almacenan en tu dispositivo. El reconocimiento de voz, la detección de interlocutores y la IA de notas
+    funcionan íntegramente en el teléfono. Para las grabaciones en un idioma que tu teléfono admite sin conexión, Echo
+    puede usar el reconocedor de voz integrado de Android en el dispositivo, que también funciona sin conexión. No se
+    envía nada a nosotros ni a terceros a menos que lo compartas o exportes tú mismo. Echo está excluida de la copia de
+    seguridad en la nube y de la transferencia de dispositivo de Android, por lo que tus notas tampoco se copian a
+    Google. Las copias de seguridad que hagas en la app son archivos que controlas tú. Al desinstalar la app, o al usar
+    Borrar todos los datos en Ajustes, se elimina todo.
+  </p>
+
+  <h3>Permisos</h3>
+  <ul>
+    <li>Micrófono, para grabar cuando tocas Grabar.</li>
+    <li>
+      Notificaciones, alarmas exactas e inicio tras un reinicio, para recordarte las tareas a la hora que mencionaste.
+    </li>
+    <li>Servicio en primer plano, para que la grabación y la transcripción continúen con la pantalla apagada.</li>
+    <li>Internet y estado de la red, solo para descargar modelos, comprar Pro y comprobar si tienes Pro.</li>
+  </ul>
+
+  <h3>Descarga de modelos</h3>
+  <p>
+    Los modelos de voz, de interlocutores y de IA de notas se descargan cuando configuras Echo por primera vez o eliges
+    otro modelo. Tu teléfono los obtiene de Hugging Face (Hugging Face, Inc., EE. UU.) y, para un modelo de
+    interlocutores, de GitHub (GitHub, Inc., EE. UU.). Como en cualquier descarga, estos servidores ven tu dirección IP
+    y datos básicos de la solicitud, conforme a sus propias políticas de privacidad. Con la solicitud no se envía nada
+    sobre ti ni sobre tus notas, y nosotros no recibimos estos registros.
+  </p>
+
+  <h3>Compras</h3>
+  <p>
+    Pro se vende a través de Google Play, que procesa tu pago conforme a la <a
+      href="https://policies.google.com/privacy">política de privacidad de Google</a
+    >. Para saber si tienes Pro, la app utiliza RevenueCat (RevenueCat, Inc., EE. UU.) como nuestro encargado del
+    tratamiento. RevenueCat recibe un ID de usuario de la app aleatorio y anónimo, tus recibos e historial de compras, e
+    información básica de la app y del dispositivo, como la versión de la app y el país de la tienda. No recibe tu
+    nombre, tu dirección de correo electrónico ni tus datos de pago, y no se usa ningún identificador de publicidad.
+    Base jurídica: ejecución de un contrato (art. 6.1.b) del RGPD) y cumplimiento de obligaciones legales relativas a
+    los registros fiscales (art. 6.1.c)).
+  </p>
+
+  <h3>Informes de errores y analítica en la app</h3>
+  <p>Ninguno. Echo no contiene analítica, informes de fallos ni publicidad.</p>
+</section>
+
+<section aria-labelledby="website">
+  <h2 id="website">3. Este sitio web</h2>
+  <p>
+    El sitio está alojado en Vercel (Vercel Inc., EE. UU.). Sus servidores procesan tu dirección IP para entregar las
+    páginas y conservan registros de corta duración por motivos de seguridad y prevención de abusos. Base jurídica:
+    nuestro interés legítimo en mantener un sitio web seguro (art. 6.1.f) del RGPD).
+  </p>
+  <p>
+    Contamos las visitas con PostHog, con los datos almacenados en los servidores de PostHog en la UE, en Fráncfort.
+    Funciona en modo sin cookies: no instala cookies y no guarda nada en tu dispositivo. Para distinguir las visitas
+    durante un día, PostHog calcula un hash a partir de tu dirección IP y de los datos de tu navegador con una sal que
+    cambia a diario, y después descarta la dirección IP. Vemos totales como las visitas a páginas, los sitios de origen
+    y los clics en los botones de descarga. Base jurídica: nuestro interés legítimo en saber cómo se usa el sitio
+    (art. 6.1.f) del RGPD).
+  </p>
+  <p>
+    Si pulsas el interruptor de modo claro/oscuro, tu elección se guarda en el almacenamiento local de tu navegador
+    para que la siguiente página se abra igual. Nunca sale de tu dispositivo y solo existe porque lo has pedido. Como
+    no se usan cookies ni tecnologías de seguimiento, no hay banner de cookies.
+  </p>
+</section>
+
+<section aria-labelledby="email">
+  <h2 id="email">4. Cuando nos escribes por correo electrónico</h2>
+  <p>
+    Si nos escribes o usas Enviar comentarios en la app, usamos tu dirección de correo electrónico y tu mensaje solo
+    para responderte, y los eliminamos 12 meses después de que termine la conversación{/* keep in sync with site.legal.emailRetention */}.
+    Nuestro correo electrónico lo gestiona Proton AG (Suiza){/* keep in sync with site.legal.emailProvider */}.
+    Base jurídica: ejecución de un contrato cuando preguntas por tu compra (art. 6.1.b) del RGPD); en los demás casos,
+    nuestro interés legítimo en responderte (art. 6.1.f) del RGPD).
+  </p>
+</section>
+
+<section aria-labelledby="retention">
+  <h2 id="retention">5. Cuánto tiempo conservamos los datos</h2>
+  <ul>
+    <li>Tus notas: en tu teléfono hasta que las elimines. Nosotros nunca las conservamos.</li>
+    {/* keep in sync with site.legal.emailRetention */}
+    <li>Correos electrónicos: 12 meses después de que termine la conversación.</li>
+    {/* keep in sync with site.legal.analyticsRetention */}
+    <li>Recuentos de visitas al sitio web en PostHog: 12 meses, y después se eliminan.</li>
+    <li>Registros de compras en RevenueCat: mientras Echo use RevenueCat, o hasta que nos pidas eliminarlos, salvo que la legislación fiscal nos obligue a conservarlos más tiempo.</li>
+    <li>Registros de alojamiento en Vercel: unos pocos días como máximo, según las normas de conservación de Vercel.</li>
+  </ul>
+  <p>
+    No tienes que facilitarnos ningún dato personal para usar Echo o este sitio web. Si nos escribes por correo
+    electrónico, necesitamos tu dirección para responderte. No tomamos decisiones automatizadas sobre ti ni elaboramos
+    perfiles.
+  </p>
+</section>
+
+<section aria-labelledby="recipients">
+  <h2 id="recipients">6. Quién más recibe datos</h2>
+  <p>Solo los proveedores mencionados arriba:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Proveedor</th><th scope="col">Finalidad</th><th scope="col">Función</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Google (Google Play)</td><td>Pagos de Pro</td><td>Responsable del tratamiento independiente</td></tr>
+        <tr><td>RevenueCat, Inc.</td><td>Comprobación de las compras de Pro</td><td>Encargado del tratamiento</td></tr>
+        <tr><td>Hugging Face, Inc. y GitHub, Inc.</td><td>Descarga de modelos</td><td>Responsables del tratamiento independientes</td></tr>
+        <tr><td>Vercel Inc.</td><td>Alojamiento del sitio web</td><td>Encargado del tratamiento</td></tr>
+        <tr><td>PostHog, Inc. (alojamiento en la UE)</td><td>Recuento de visitas al sitio web</td><td>Encargado del tratamiento</td></tr>
+        <tr><td>Proton AG (Suiza)</td>{/* keep in sync with site.legal.emailProvider */}<td>Correo electrónico</td><td>Encargado del tratamiento</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Tenemos contratos de encargo del tratamiento con todos los encargados. Varias de estas empresas tienen su sede en
+    EE. UU. Cuando los datos personales salen de la UE/EEE, la transferencia se basa en el Marco de Privacidad de
+    Datos UE-EE. UU. o en las cláusulas contractuales tipo de la Comisión Europea. Proton está en Suiza, país que la
+    Comisión Europea reconoce como que ofrece un nivel de protección adecuado. Nunca vendemos datos.
+  </p>
+</section>
+
+<section aria-labelledby="rights">
+  <h2 id="rights">7. Tus derechos</h2>
+  <p>
+    Puedes solicitarnos el acceso a tus datos personales, su rectificación, su supresión o una copia de ellos,
+    solicitar la limitación de su tratamiento y oponerte al tratamiento basado en el interés legítimo. Escribe a <a href={`mailto:${email.privacy}`}
+      >{email.privacy}</a
+    >; respondemos en el plazo de un mes. Como tus notas nunca llegan a nosotros, la forma más rápida de eliminarlas es
+    hacerlo en la app.
+  </p>
+  <p>
+    También puedes presentar una reclamación ante una autoridad de control. En Eslovenia es el Comisionado de
+    Información (Informacijski pooblaščenec), Dunajska cesta 22, 1000 Ljubljana, <a href="https://www.ip-rs.si">ip-rs.si</a>,
+    o la autoridad de tu propio país de la UE.
+  </p>
+</section>
+
+<section aria-labelledby="children">
+  <h2 id="children">8. Menores</h2>
+  <p>Echo está destinada a personas de {legal.minAge} años o más.</p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">9. Cambios</h2>
+  <p>
+    Si esta política cambia, actualizamos la fecha indicada arriba. Los cambios significativos también se anuncian en
+    las notas de la versión de la app.
+  </p>
+</section>

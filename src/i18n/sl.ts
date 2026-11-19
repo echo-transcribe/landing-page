@@ -98,6 +98,8 @@ export const sl: Dict = {
     lastUpdated: 'Nazadnje posodobljeno',
     draftNotice:
       'Osnutek. Vse vrednosti v [oglatih oklepajih] je treba izpolniti, besedilo pa mora pred objavo pregledati strokovnjak za pravo EU.', // launch-check: ignore
+    translationNotice: 'Ta prevod je zgolj v pomoč. Če se razlikuje od angleške različice, velja angleška različica.',
+    translationNoticeLink: 'Preberi angleško različico',
   },
 
   notFound: {

@@ -100,6 +100,8 @@ export const fr: Dict = {
     lastUpdated: 'Dernière mise à jour',
     draftNotice:
       'Brouillon. Chaque valeur entre [crochets] doit être renseignée, et le texte relu par un spécialiste du droit européen, avant le lancement.', // launch-check: ignore
+    translationNotice: 'Cette traduction vous est fournie pour faciliter la lecture. En cas de divergence, la version anglaise fait foi.',
+    translationNoticeLink: 'Lire la version anglaise',
   },
 
   notFound: {

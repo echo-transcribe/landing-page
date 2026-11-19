@@ -1,0 +1,41 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email } = site;
+---
+
+<section aria-labelledby="provider">
+  <h2 id="provider">Anbieter</h2>
+  <p>
+    {company.name}<br />
+    {company.address}<br />
+    {countryName('de')}
+  </p>
+</section>
+
+{
+  company.regNo && (
+    <section aria-labelledby="registration">
+      <h2 id="registration">Registereintrag</h2>
+      <p>
+        Eingetragen im {company.register}, Registernummer {company.regNo}.
+        {company.vatId && <><br />USt-IdNr.: {company.vatId}</>}
+      </p>
+    </section>
+  )
+}
+
+<section aria-labelledby="contact">
+  <h2 id="contact">Kontakt</h2>
+  <p>
+    Allgemein: <a href={`mailto:${email.hello}`}>{email.hello}</a><br />
+    Datenschutz: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>
+  </p>
+</section>
+
+<section aria-labelledby="disputes">
+  <h2 id="disputes">Verbraucherstreitigkeiten</h2>
+  {/* keep in sync with site.legal.adr */}
+  <p>Wir sind nicht verpflichtet, an einem außergerichtlichen Streitbeilegungsverfahren für Verbraucher teilzunehmen, und tun dies auch nicht. Wenn etwas schiefgeht, schreibe uns, und wir klären es direkt mit dir.</p>
+</section>

@@ -1,0 +1,41 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email } = site;
+---
+
+<section aria-labelledby="provider">
+  <h2 id="provider">Ponudnik</h2>
+  <p>
+    {company.name}<br />
+    {company.address}<br />
+    {countryName('sl')}
+  </p>
+</section>
+
+{
+  company.regNo && (
+    <section aria-labelledby="registration">
+      <h2 id="registration">Vpis v register</h2>
+      <p>
+        Vpisan v register: {company.register}, matična številka {company.regNo}.
+        {company.vatId && <><br />ID za DDV: {company.vatId}</>}
+      </p>
+    </section>
+  )
+}
+
+<section aria-labelledby="contact">
+  <h2 id="contact">Stik</h2>
+  <p>
+    Splošno: <a href={`mailto:${email.hello}`}>{email.hello}</a><br />
+    Zasebnost: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>
+  </p>
+</section>
+
+<section aria-labelledby="disputes">
+  <h2 id="disputes">Potrošniški spori</h2>
+  {/* keep in sync with site.legal.adr */}
+  <p>Nismo zavezani k sodelovanju v izvensodnem reševanju potrošniških sporov in v njem ne sodelujemo. Če gre kaj narobe, nam piši in zadevo bomo rešili neposredno s teboj.</p>
+</section>

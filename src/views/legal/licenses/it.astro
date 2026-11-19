@@ -1,0 +1,71 @@
+---
+
+type Entry = { name: string; use: string; licence: string; url: string };
+
+// Checked against the echo repo (gradle/libs.versions.toml, ModelStore.kt, WhisperModels.kt,
+// SpeakerModels.kt, CMakeLists.txt) on 2026-11-18. Keep in sync when dependencies change.
+const models: Entry[] = [
+  { name: 'Whisper (Large V3 Turbo, Medium, Small, Base)', use: 'Riconoscimento vocale', licence: 'MIT', url: 'https://github.com/openai/whisper' },
+  { name: 'Qwen3 1.7B and 0.6B', use: 'IA per le note', licence: 'Apache 2.0', url: 'https://huggingface.co/Qwen' },
+  { name: 'Gemma 4 E2B', use: 'IA per le note multilingue (opzionale)', licence: 'Apache 2.0', url: 'https://ai.google.dev/gemma' },
+  { name: 'Silero VAD', use: 'Rilevamento dell\'attività vocale', licence: 'MIT', url: 'https://github.com/snakers4/silero-vad' },
+  { name: 'pyannote segmentation 3.0', use: 'Rilevamento dei parlanti', licence: 'MIT', url: 'https://huggingface.co/pyannote/segmentation-3.0' },
+  { name: '3D-Speaker ERes2Net', use: 'Rilevamento dei parlanti', licence: 'Apache 2.0', url: 'https://github.com/modelscope/3D-Speaker' },
+];
+
+const libraries: Entry[] = [
+  { name: 'whisper.cpp / ggml', use: 'Motore Whisper sul dispositivo', licence: 'MIT', url: 'https://github.com/ggml-org/whisper.cpp' },
+  { name: 'sherpa-onnx', use: 'Motore di rilevamento dei parlanti', licence: 'Apache 2.0', url: 'https://github.com/k2-fsa/sherpa-onnx' },
+  { name: 'LiteRT-LM', use: 'Motore di IA per le note sul dispositivo', licence: 'Apache 2.0', url: 'https://github.com/google-ai-edge/LiteRT-LM' },
+  { name: 'Android Jetpack (AndroidX, Compose, Media3, WorkManager, Glance, Navigation)', use: 'Framework dell\'app', licence: 'Apache 2.0', url: 'https://developer.android.com/jetpack' },
+  { name: 'SQLDelight', use: 'Database', licence: 'Apache 2.0', url: 'https://github.com/sqldelight/sqldelight' },
+  { name: 'kotlinx.serialization', use: 'Formato dei dati', licence: 'Apache 2.0', url: 'https://github.com/Kotlin/kotlinx.serialization' },
+  { name: 'RevenueCat Purchases SDK', use: 'Acquisti di Pro', licence: 'MIT', url: 'https://github.com/RevenueCat/purchases-android' },
+];
+
+const website: Entry[] = [
+  { name: 'Astro', use: 'Framework del sito', licence: 'MIT', url: 'https://github.com/withastro/astro' },
+  { name: 'DM Sans', use: 'Carattere tipografico', licence: 'SIL Open Font License 1.1', url: 'https://github.com/googlefonts/dm-fonts' },
+  { name: 'qrcode', use: 'Codice QR', licence: 'MIT', url: 'https://github.com/soldair/node-qrcode' },
+];
+
+const groups = [
+  { id: 'models', title: 'Modelli di IA nell\'app', entries: models },
+  { id: 'libraries', title: 'Librerie nell\'app', entries: libraries },
+  { id: 'website', title: 'Questo sito web', entries: website },
+];
+---
+
+<p>
+  Echo funziona interamente sul tuo telefono grazie a modelli aperti e a software open source. Siamo grati alle persone
+  che li sviluppano. Segui ciascun link per il testo completo della licenza.
+</p>
+{
+  groups.map((g) => (
+    <section aria-labelledby={g.id}>
+      <h2 id={g.id}>{g.title}</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Componente</th>
+              <th scope="col">Utilizzo</th>
+              <th scope="col">Licenza</th>
+            </tr>
+          </thead>
+          <tbody>
+            {g.entries.map((e) => (
+              <tr>
+                <td>
+                  <a href={e.url}>{e.name}</a>
+                </td>
+                <td>{e.use}</td>
+                <td>{e.licence}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))
+}

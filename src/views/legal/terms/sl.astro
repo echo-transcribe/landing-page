@@ -1,0 +1,96 @@
+---
+import { countryName, localizePath, type Locale } from '../../../i18n';
+import { site } from '../../../config/site';
+
+const { company, email } = site;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<section aria-labelledby="who">
+  <h2 id="who">1. Kdo smo</h2>
+  <p>
+    Echo zagotavlja {company.name}, {company.address}, {countryName('sl')} (»mi«). Z namestitvijo ali uporabo Echa
+    sprejemaš te pogoje. Nič v njih ne omejuje pravic, ki jih imaš kot potrošnik po zakonodaji svoje države.
+  </p>
+</section>
+
+<section aria-labelledby="licence">
+  <h2 id="licence">2. Tvoja licenca</h2>
+  <p>
+    Dovoljujemo ti osebno, neizključno in neprenosljivo uporabo Echa v napravah, ki so tvoja last ali pod tvojim
+    nadzorom. Aplikacije ne smeš prodajati naprej, je kopirati, spreminjati ali obratno prevajati, razen kjer to
+    dovoljuje zakon. Odprtokodne komponente ohranijo svoje licence, navedene na strani <a href={localizePath('/licenses', locale)}>odprtokodne licence</a>.
+  </p>
+</section>
+
+<section aria-labelledby="free-pro">
+  <h2 id="free-pro">3. Brezplačna različica in Pro</h2>
+  <p>
+    Echo je brezplačen za prenos. Brezplačna različica prepiše prvi dve minuti vsakega zapiska. Echo Pro odpravi to
+    omejitev in odklene funkcije, opisane v aplikaciji, kot mesečna ali letna naročnina ali kot enkratni dosmrtni
+    nakup.
+  </p>
+  <ul>
+    <li>Pro se kupuje, zaračunava in povrne prek Google Playa v skladu s pogoji Google Playa.</li>
+    <li>
+      Naročnine se samodejno obnavljajo, dokler jih ne prekličeš v Google Playu. Preklic prepreči naslednjo obnovo;
+      Pro obdržiš do konca obdobja, za katero je plačano.
+    </li>
+    <li>
+      Dosmrtno pomeni, dokler Echo ponujamo, v kateri koli napravi, prijavljeni v isti račun Google.
+    </li>
+    <li>
+      Pro je digitalna vsebina, ki se dobavi takoj. V EU imaš običajno 14 dni časa za odstop od spletnega nakupa, vendar
+      ta pravica za digitalno vsebino preneha, ko se dobava začne, če se s tem strinjaš ob plačilu. Google Play
+      to soglasje zahteva ob zaključku nakupa. V obeh primerih velja Google Playeva politika vračil.
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="content">
+  <h2 id="content">4. Tvoji posnetki</h2>
+  <p>
+    Tvoji posnetki in zapiski so tvoji in ostanejo v tvoji napravi. Zagotoviti moraš, da imaš pravico snemati. Številne
+    države zahtevajo soglasje vseh snemanih oseb, zato ljudi o snemanju obvesti.
+  </p>
+</section>
+
+<section aria-labelledby="accuracy">
+  <h2 id="accuracy">5. Točnost</h2>
+  <p>
+    Prepisi, oznake govorcev, povzetki in opravila nastanejo samodejno in lahko vsebujejo napake. Preveri jih, preden
+    se nanje zaneseš, zlasti pri zdravstvenih, pravnih, finančnih ali varnostnih zadevah. Opomniki so odvisni od
+    nastavitev obvestil in alarmov v tvojem telefonu.
+  </p>
+</section>
+
+<section aria-labelledby="liability">
+  <h2 id="liability">6. Odgovornost</h2>
+  <p>
+    Neomejeno odgovarjamo za naklep in veliko malomarnost ter za škodo zaradi poškodbe življenja, telesa ali zdravja.
+    Sicer odgovarjamo samo za kršitve bistvenih obveznosti, in sicer do višine škode, ki je tipična in predvidljiva za
+    tovrstno aplikacijo. Varnostno kopiraj zapiske, ki so ti pomembni; podatkov, shranjenih samo v tvojem telefonu,
+    ne moremo obnoviti.
+  </p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">7. Spremembe in prenehanje</h2>
+  <p>
+    Echo in te pogoje lahko posodobimo. Če sprememba bistveno vpliva nate, jo objavimo v aplikaciji, preden začne
+    veljati. Z Echom lahko kadar koli prenehaš, tako da ga odstraniš; naročnino prekliči v Google Playu.
+  </p>
+</section>
+
+<section aria-labelledby="law">
+  <h2 id="law">8. Pravo in stik</h2>
+  <p>
+    Uporablja se slovensko pravo, pri čemer ostane nespremenjeno varstvo, ki ti ga kot potrošniku zagotavljajo
+    prisilni predpisi o varstvu potrošnikov v državi tvojega prebivališča. Vprašanja: <a href={`mailto:${email.hello}`}>{email.hello}</a>.
+  </p>
+</section>

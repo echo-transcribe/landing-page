@@ -1,0 +1,71 @@
+---
+
+type Entry = { name: string; use: string; licence: string; url: string };
+
+// Checked against the echo repo (gradle/libs.versions.toml, ModelStore.kt, WhisperModels.kt,
+// SpeakerModels.kt, CMakeLists.txt) on 2026-11-18. Keep in sync when dependencies change.
+const models: Entry[] = [
+  { name: 'Whisper (Large V3 Turbo, Medium, Small, Base)', use: 'Prepoznavanje govora', licence: 'MIT', url: 'https://github.com/openai/whisper' },
+  { name: 'Qwen3 1.7B and 0.6B', use: 'Umetna inteligenca za zapiske', licence: 'Apache 2.0', url: 'https://huggingface.co/Qwen' },
+  { name: 'Gemma 4 E2B', use: 'Večjezična umetna inteligenca za zapiske (izbirno)', licence: 'Apache 2.0', url: 'https://ai.google.dev/gemma' },
+  { name: 'Silero VAD', use: 'Zaznavanje glasovne dejavnosti', licence: 'MIT', url: 'https://github.com/snakers4/silero-vad' },
+  { name: 'pyannote segmentation 3.0', use: 'Zaznavanje govorcev', licence: 'MIT', url: 'https://huggingface.co/pyannote/segmentation-3.0' },
+  { name: '3D-Speaker ERes2Net', use: 'Zaznavanje govorcev', licence: 'Apache 2.0', url: 'https://github.com/modelscope/3D-Speaker' },
+];
+
+const libraries: Entry[] = [
+  { name: 'whisper.cpp / ggml', use: 'Pogon Whisper v napravi', licence: 'MIT', url: 'https://github.com/ggml-org/whisper.cpp' },
+  { name: 'sherpa-onnx', use: 'Pogon za zaznavanje govorcev', licence: 'Apache 2.0', url: 'https://github.com/k2-fsa/sherpa-onnx' },
+  { name: 'LiteRT-LM', use: 'Pogon umetne inteligence za zapiske v napravi', licence: 'Apache 2.0', url: 'https://github.com/google-ai-edge/LiteRT-LM' },
+  { name: 'Android Jetpack (AndroidX, Compose, Media3, WorkManager, Glance, Navigation)', use: 'Ogrodje aplikacije', licence: 'Apache 2.0', url: 'https://developer.android.com/jetpack' },
+  { name: 'SQLDelight', use: 'Podatkovna zbirka', licence: 'Apache 2.0', url: 'https://github.com/sqldelight/sqldelight' },
+  { name: 'kotlinx.serialization', use: 'Podatkovna oblika', licence: 'Apache 2.0', url: 'https://github.com/Kotlin/kotlinx.serialization' },
+  { name: 'RevenueCat Purchases SDK', use: 'Nakupi različice Pro', licence: 'MIT', url: 'https://github.com/RevenueCat/purchases-android' },
+];
+
+const website: Entry[] = [
+  { name: 'Astro', use: 'Ogrodje spletnega mesta', licence: 'MIT', url: 'https://github.com/withastro/astro' },
+  { name: 'DM Sans', use: 'Pisava', licence: 'SIL Open Font License 1.1', url: 'https://github.com/googlefonts/dm-fonts' },
+  { name: 'qrcode', use: 'Koda QR', licence: 'MIT', url: 'https://github.com/soldair/node-qrcode' },
+];
+
+const groups = [
+  { id: 'models', title: 'Modeli umetne inteligence v aplikaciji', entries: models },
+  { id: 'libraries', title: 'Knjižnice v aplikaciji', entries: libraries },
+  { id: 'website', title: 'To spletno mesto', entries: website },
+];
+---
+
+<p>
+  Echo deluje povsem v tvojem telefonu zahvaljujoč odprtim modelom in odprtokodni programski opremi. Hvaležni smo
+  ljudem, ki jih razvijajo. Za celotno besedilo licence sledi povezavi pri posamezni komponenti.
+</p>
+{
+  groups.map((g) => (
+    <section aria-labelledby={g.id}>
+      <h2 id={g.id}>{g.title}</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Komponenta</th>
+              <th scope="col">Uporaba</th>
+              <th scope="col">Licenca</th>
+            </tr>
+          </thead>
+          <tbody>
+            {g.entries.map((e) => (
+              <tr>
+                <td>
+                  <a href={e.url}>{e.name}</a>
+                </td>
+                <td>{e.use}</td>
+                <td>{e.licence}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  ))
+}

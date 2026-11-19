@@ -1,0 +1,180 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email, legal } = site;
+---
+
+<section class="summary" aria-labelledby="short">
+  <h2 id="short">Das Wichtigste in Kürze</h2>
+  <ul>
+    <li>Deine Aufnahmen, Transkripte, Zusammenfassungen und Aufgaben werden ausschließlich auf deinem Handy verarbeitet und gespeichert. Wir erhalten sie nie.</li>
+    <li>Echo hat keine Konten. Zahlungen werden über Google Play abgewickelt.</li>
+    <li>Diese Website setzt keine Cookies und zählt Besuche, ohne dich zu identifizieren.</li>
+    <li>Du kannst uns jederzeit unter <a href={`mailto:${email.privacy}`}>{email.privacy}</a> erreichen.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="controller">
+  <h2 id="controller">1. Wer verantwortlich ist</h2>
+  <p>
+    Verantwortlicher im Sinne der DSGVO ist {company.name}, {company.address}, {countryName('de')}{company.regNo && `, Registernummer ${company.regNo}`}{company.vatId && `, USt-IdNr. ${company.vatId}`}. E-Mail: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+  </p>
+</section>
+
+<section aria-labelledby="app">
+  <h2 id="app">2. Die Echo-App</h2>
+
+  <h3>Deine Aufnahmen und Notizen</h3>
+  <p>
+    Audio, Transkripte, Sprechernamen, Zusammenfassungen, Aufgaben und Ordner werden auf deinem Gerät erstellt und
+    gespeichert. Spracherkennung, Sprechererkennung und die Notes-KI laufen vollständig auf dem Handy. Für Aufnahmen
+    in einer Sprache, die dein Handy offline unterstützt, kann Echo die in Android integrierte Spracherkennung auf dem
+    Gerät nutzen, die auch ohne Verbindung funktioniert. Es wird nichts an uns oder an Dritte gesendet,
+    es sei denn, du teilst oder exportierst es selbst. Echo ist von der Cloud-Sicherung und der Geräteübertragung von
+    Android ausgenommen, daher werden deine Notizen auch nicht zu Google kopiert. Sicherungen, die du in der App
+    erstellst, sind Dateien, über die du selbst verfügst. Wenn du die App löschst oder in den Einstellungen
+    „Alle Daten löschen“ wählst, wird alles entfernt.
+  </p>
+
+  <h3>Berechtigungen</h3>
+  <ul>
+    <li>Mikrofon, um aufzunehmen, wenn du auf „Aufnehmen“ tippst.</li>
+    <li>
+      Benachrichtigungen, exakte Alarme und der Start nach einem Neustart, um dich zu der von dir genannten Zeit an
+      Aufgaben zu erinnern.
+    </li>
+    <li>Vordergrunddienst, damit Aufnahme und Transkription auch bei ausgeschaltetem Bildschirm weiterlaufen.</li>
+    <li>Internet und Netzwerkstatus, nur um Modelle herunterzuladen, Pro zu kaufen und zu prüfen, ob du Pro hast.</li>
+  </ul>
+
+  <h3>Modell-Downloads</h3>
+  <p>
+    Die Sprach-, Sprecher- und Notes-KI-Modelle werden heruntergeladen, wenn du Echo zum ersten Mal einrichtest oder
+    ein anderes Modell wählst. Dein Handy lädt sie von Hugging Face (Hugging Face, Inc., USA) und, für ein
+    Sprechermodell, von GitHub (GitHub, Inc., USA) herunter. Wie bei jedem Download sehen diese Server deine
+    IP-Adresse und grundlegende Anfragedaten, gemäß ihren eigenen Datenschutzrichtlinien. Mit der Anfrage werden
+    keine Informationen über dich oder deine Notizen gesendet, und wir erhalten diese Protokolle nicht.
+  </p>
+
+  <h3>Käufe</h3>
+  <p>
+    Pro wird über Google Play verkauft, das deine Zahlung gemäß <a
+      href="https://policies.google.com/privacy">Googles Datenschutzerklärung</a
+    > verarbeitet. Um festzustellen, ob du Pro hast, nutzt die App RevenueCat (RevenueCat, Inc., USA) als unseren
+    Auftragsverarbeiter. RevenueCat erhält eine zufällige, anonyme App-Nutzer-ID, deine Kaufbelege und deinen
+    Kaufverlauf sowie grundlegende App- und Geräteinformationen wie die App-Version und das Land des Stores. Name,
+    E-Mail-Adresse und Zahlungsdaten erhält RevenueCat nicht, und es wird keine Werbe-ID verwendet. Rechtsgrundlage:
+    Vertragserfüllung (Art. 6 Abs. 1 lit. b DSGVO) und rechtliche Verpflichtungen zur Aufbewahrung von
+    Steuerunterlagen (Art. 6 Abs. 1 lit. c DSGVO).
+  </p>
+
+  <h3>Absturzberichte und Analysen in der App</h3>
+  <p>Keine. Echo enthält weder Analyse-, noch Absturzberichts- oder Werbefunktionen.</p>
+</section>
+
+<section aria-labelledby="website">
+  <h2 id="website">3. Diese Website</h2>
+  <p>
+    Die Website wird von Vercel (Vercel Inc., USA) gehostet. Deren Server verarbeiten deine IP-Adresse, um die Seiten
+    auszuliefern, und speichern kurzlebige Protokolle zur Gewährleistung der Sicherheit und zur Missbrauchsabwehr.
+    Rechtsgrundlage: unser berechtigtes Interesse am Betrieb einer sicheren Website (Art. 6 Abs. 1 lit. f DSGVO).
+  </p>
+  <p>
+    Wir zählen Besuche mit PostHog; die Daten werden auf den EU-Servern von PostHog in Frankfurt gespeichert. PostHog
+    läuft im cookielosen Modus: Es setzt keine Cookies und speichert nichts auf deinem Gerät. Um Besuche für die Dauer
+    eines Tages voneinander zu unterscheiden, berechnet PostHog aus deiner IP-Adresse und deinen Browserdaten mit einem
+    täglich wechselnden Salt einen Hash und verwirft anschließend die IP-Adresse. Wir sehen Gesamtwerte wie
+    Seitenaufrufe, verweisende Websites und Klicks auf die Download-Schaltflächen. Rechtsgrundlage: unser
+    berechtigtes Interesse zu wissen, wie die Website genutzt wird (Art. 6 Abs. 1 lit. f DSGVO).
+  </p>
+  <p>
+    Wenn du den Hell-/Dunkel-Schalter betätigst, wird deine Auswahl im lokalen Speicher deines Browsers abgelegt,
+    damit die nächste Seite genauso geöffnet wird. Sie verlässt nie dein Gerät und existiert nur, weil du es so
+    wolltest. Da keine Cookies oder Tracking-Technologien verwendet werden, gibt es kein Cookie-Banner.
+  </p>
+</section>
+
+<section aria-labelledby="email">
+  <h2 id="email">4. Wenn du uns eine E-Mail schreibst</h2>
+  <p>
+    Wenn du uns schreibst oder in der App „Feedback senden“ nutzt, verwenden wir deine E-Mail-Adresse und deine
+    Nachricht nur, um dir zu antworten, und löschen sie 12 Monate nach Abschluss der Unterhaltung. {/* keep in sync with site.legal.emailRetention */}
+    Unsere E-Mail wird von Proton AG (Schweiz) betrieben. {/* keep in sync with site.legal.emailProvider */}
+    Rechtsgrundlage: Vertragserfüllung, wenn du zu deinem Kauf anfragst (Art. 6 Abs. 1 lit. b DSGVO), andernfalls
+    unser berechtigtes Interesse, dir zu antworten (Art. 6 Abs. 1 lit. f DSGVO).
+  </p>
+</section>
+
+<section aria-labelledby="retention">
+  <h2 id="retention">5. Wie lange wir Daten speichern</h2>
+  <ul>
+    <li>Deine Notizen: auf deinem Handy, bis du sie löschst. Wir haben sie nie.</li>
+    <li>E-Mails: 12 Monate nach Abschluss der Unterhaltung. {/* keep in sync with site.legal.emailRetention */}</li>
+    <li>Besuchszahlen der Website in PostHog: 12 Monate, danach gelöscht. {/* keep in sync with site.legal.analyticsRetention */}</li>
+    <li>Kaufdaten bei RevenueCat: solange Echo RevenueCat nutzt oder bis du uns um Löschung bittest, es sei denn, das Steuerrecht verpflichtet uns zu einer längeren Aufbewahrung.</li>
+    <li>Hosting-Protokolle bei Vercel: höchstens wenige Tage, gemäß den Aufbewahrungsregeln von Vercel.</li>
+  </ul>
+  <p>
+    Du musst uns keine personenbezogenen Daten mitteilen, um Echo oder diese Website zu nutzen. Wenn du uns eine
+    E-Mail schreibst, benötigen wir deine Adresse, um zu antworten. Wir treffen keine automatisierten Entscheidungen
+    über dich und führen kein Profiling durch.
+  </p>
+</section>
+
+<section aria-labelledby="recipients">
+  <h2 id="recipients">6. Wer sonst Daten erhält</h2>
+  <p>Nur die oben genannten Anbieter:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Anbieter</th><th scope="col">Zweck</th><th scope="col">Rolle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Google (Google Play)</td><td>Zahlungen für Pro</td><td>Eigenständiger Verantwortlicher</td></tr>
+        <tr><td>RevenueCat, Inc.</td><td>Prüfung von Pro-Käufen</td><td>Auftragsverarbeiter</td></tr>
+        <tr><td>Hugging Face, Inc. und GitHub, Inc.</td><td>Modell-Downloads</td><td>Eigenständige Verantwortliche</td></tr>
+        <tr><td>Vercel Inc.</td><td>Website-Hosting</td><td>Auftragsverarbeiter</td></tr>
+        <tr><td>PostHog, Inc. (EU-Hosting)</td><td>Besuchszahlen der Website</td><td>Auftragsverarbeiter</td></tr>
+        <tr><td>Proton AG (Schweiz)</td><td>E-Mail</td><td>Auftragsverarbeiter</td></tr>{/* keep in sync with site.legal.emailProvider */}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Mit jedem Auftragsverarbeiter haben wir Auftragsverarbeitungsverträge abgeschlossen. Mehrere dieser Unternehmen
+    haben ihren Sitz in den USA. Wenn personenbezogene Daten die EU/den EWR verlassen, stützt sich die Übermittlung
+    auf das EU-US Data Privacy Framework oder auf die Standardvertragsklauseln der Europäischen Kommission. Proton
+    hat seinen Sitz in der Schweiz, der die Europäische Kommission ein angemessenes Schutzniveau bescheinigt. Wir
+    verkaufen niemals Daten.
+  </p>
+</section>
+
+<section aria-labelledby="rights">
+  <h2 id="rights">7. Deine Rechte</h2>
+  <p>
+    Du kannst von uns Auskunft über deine personenbezogenen Daten, deren Berichtigung, Löschung oder eine Kopie
+    verlangen, die Einschränkung der Verarbeitung verlangen und der Verarbeitung widersprechen, soweit sie auf einem
+    berechtigten Interesse beruht. Schreibe an <a href={`mailto:${email.privacy}`}
+      >{email.privacy}</a
+    >; wir antworten innerhalb eines Monats. Da deine Notizen uns nie erreichen, ist das Löschen in der App der
+    schnellste Weg.
+  </p>
+  <p>
+    Du hast außerdem das Recht, dich bei einer Aufsichtsbehörde zu beschweren. In Slowenien ist das der
+    Informationsbeauftragte (Informacijski pooblaščenec), Dunajska cesta 22, 1000 Ljubljana, <a href="https://www.ip-rs.si">ip-rs.si</a>,
+    oder die Aufsichtsbehörde in deinem eigenen EU-Land.
+  </p>
+</section>
+
+<section aria-labelledby="children">
+  <h2 id="children">8. Kinder</h2>
+  <p>Echo richtet sich an Personen ab {legal.minAge} Jahren.</p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">9. Änderungen</h2>
+  <p>
+    Wenn sich diese Erklärung ändert, aktualisieren wir das oben genannte Datum. Wesentliche Änderungen werden
+    zusätzlich in den Versionshinweisen der App angekündigt.
+  </p>
+</section>

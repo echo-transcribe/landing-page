@@ -1,0 +1,175 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email, legal } = site;
+---
+
+<section class="summary" aria-labelledby="short">
+  <h2 id="short">Na kratko</h2>
+  <ul>
+    <li>Tvoji posnetki, prepisi, povzetki in opravila se obdelujejo in shranjujejo samo v tvojem telefonu. Nikoli jih ne prejmemo.</li>
+    <li>Echo nima uporabniških računov. Plačila obdeluje Google Play.</li>
+    <li>To spletno mesto ne nastavlja piškotkov in šteje obiske, ne da bi te identificiralo.</li>
+    <li>Kadar koli nam lahko pišeš na <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="controller">
+  <h2 id="controller">1. Kdo je odgovoren</h2>
+  <p>
+    Upravljavec v smislu Splošne uredbe o varstvu podatkov (GDPR) je {company.name}, {company.address}, {countryName('sl')}{company.regNo && `, matična številka ${company.regNo}`}{company.vatId && `, ID za DDV ${company.vatId}`}. E-pošta: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+  </p>
+</section>
+
+<section aria-labelledby="app">
+  <h2 id="app">2. Aplikacija Echo</h2>
+
+  <h3>Tvoji posnetki in zapiski</h3>
+  <p>
+    Zvok, prepisi, imena govorcev, povzetki, opravila in mape se ustvarijo in shranijo v tvoji napravi. Prepoznavanje
+    govora, zaznavanje govorcev in umetna inteligenca za zapiske se izvajajo v telefonu. Za posnetke v jeziku, ki ga
+    tvoj telefon podpira brez povezave, lahko Echo uporabi vgrajeni prepoznavalnik govora v sistemu Android, ki deluje
+    tudi brez povezave z internetom. Nič se ne pošlje nam ali komur koli drugemu,
+    razen če to sam deliš ali izvoziš. Echo je izključen iz Androidovega varnostnega kopiranja v oblak in prenosa
+    naprave, zato se tvoji zapiski ne kopirajo niti h Googlu. Varnostne kopije, ki jih narediš v aplikaciji, so
+    datoteke pod tvojim nadzorom. Z odstranitvijo aplikacije ali z izbiro Izbriši vse podatke v nastavitvah se vse
+    izbriše.
+  </p>
+
+  <h3>Dovoljenja</h3>
+  <ul>
+    <li>Mikrofon, za snemanje, ko tapneš Snemaj.</li>
+    <li>
+      Obvestila, natančni alarmi in zagon po ponovnem zagonu naprave, da te ob omenjenem času opomnimo na opravila.
+    </li>
+    <li>Storitev v ospredju, da snemanje in prepisovanje tečeta naprej tudi, ko je zaslon ugasnjen.</li>
+    <li>Internet in stanje omrežja, samo za prenos modelov, nakup različice Pro in preverjanje, ali imaš Pro.</li>
+  </ul>
+
+  <h3>Prenosi modelov</h3>
+  <p>
+    Modeli za govor, govorce in umetno inteligenco za zapiske se prenesejo, ko prvič nastaviš Echo ali izbereš drug
+    model. Telefon jih prenese s portala Hugging Face (Hugging Face, Inc., ZDA), za en model govorcev pa z GitHuba
+    (GitHub, Inc., ZDA). Kot pri vsakem prenosu ti strežniki vidijo tvoj naslov IP in osnovne podatke o zahtevi v
+    skladu z lastnimi politikami zasebnosti. Z zahtevo se ne pošlje nič o tebi ali tvojih zapiskih, teh dnevnikov pa
+    ne prejmemo.
+  </p>
+
+  <h3>Nakupi</h3>
+  <p>
+    Pro se prodaja prek Google Playa, ki tvoje plačilo obdeluje v skladu z <a
+      href="https://policies.google.com/privacy">Googlovo politiko zasebnosti</a
+    >. Da ugotovi, ali imaš Pro, aplikacija uporablja RevenueCat (RevenueCat, Inc., ZDA) kot našega obdelovalca.
+    RevenueCat prejme naključen, anonimen ID uporabnika aplikacije, tvoja potrdila o nakupu in zgodovino nakupov ter
+    osnovne podatke o aplikaciji in napravi, kot sta različica aplikacije in država trgovine. Ne prejme tvojega imena,
+    e-poštnega naslova ali podatkov o plačilu, oglaševalski ID pa se ne uporablja. Pravna podlaga: izvajanje pogodbe
+    (točka (b) člena 6(1) Splošne uredbe) in zakonske obveznosti glede davčnih evidenc (točka (c) člena 6(1)).
+  </p>
+
+  <h3>Poročila o zrušitvah in analitika v aplikaciji</h3>
+  <p>Ni jih. Echo ne vsebuje analitike, poročanja o zrušitvah ali oglaševanja.</p>
+</section>
+
+<section aria-labelledby="website">
+  <h2 id="website">3. To spletno mesto</h2>
+  <p>
+    Spletno mesto gosti Vercel (Vercel Inc., ZDA). Njihovi strežniki obdelujejo tvoj naslov IP, da posredujejo strani,
+    in za varnost ter preprečevanje zlorab kratek čas hranijo dnevnike. Pravna podlaga: naš zakoniti interes za
+    delovanje varnega spletnega mesta (točka (f) člena 6(1) Splošne uredbe).
+  </p>
+  <p>
+    Obiske štejemo s PostHogom, podatki pa so shranjeni na PostHogovih strežnikih v EU v Frankfurtu. Deluje v načinu
+    brez piškotkov: ne nastavlja piškotkov in v tvoji napravi ne shranjuje ničesar. Da loči obiske v enem dnevu,
+    PostHog iz tvojega naslova IP in podatkov o brskalniku izračuna zgoščeno vrednost s soljo, ki se vsak dan
+    spremeni, nato pa naslov IP zavrže. Vidimo vsote, kot so ogledi strani, napotitvena spletna mesta in kliki na
+    gumbe za prenos. Pravna podlaga: naš zakoniti interes, da vemo, kako se spletno mesto uporablja (točka (f)
+    člena 6(1) Splošne uredbe).
+  </p>
+  <p>
+    Če pritisneš stikalo za svetlo/temno temo, se tvoja izbira shrani v lokalno shrambo brskalnika, da se naslednja
+    stran odpre enako. Nikoli ne zapusti tvoje naprave in obstaja samo zato, ker jo izbereš ti. Ker se ne
+    uporabljajo piškotki ali sledilne tehnologije, pasice za piškotke ni.
+  </p>
+</section>
+
+<section aria-labelledby="email">
+  <h2 id="email">4. Ko nam pošlješ e-pošto</h2>
+  <p>
+    Če nam pišeš ali v aplikaciji uporabiš Pošlji povratne informacije, tvoj e-poštni naslov in sporočilo uporabimo
+    samo za odgovor in ju izbrišemo 12 mesecev {/* keep in sync with site.legal.emailRetention */}po koncu pogovora. Našo e-pošto upravlja
+    Proton AG (Švica). {/* keep in sync with site.legal.emailProvider */}
+    Pravna podlaga: izvajanje pogodbe, kadar se pozanimaš o svojem nakupu (točka (b) člena 6(1) Splošne uredbe),
+    sicer naš zakoniti interes, da ti odgovorimo (točka (f) člena 6(1) Splošne uredbe).
+  </p>
+</section>
+
+<section aria-labelledby="retention">
+  <h2 id="retention">5. Kako dolgo hranimo podatke</h2>
+  <ul>
+    <li>Tvoji zapiski: v tvojem telefonu, dokler jih ne izbrišeš. Mi jih nikoli ne hranimo.</li>
+    <li>E-pošta: 12 mesecev po koncu pogovora. {/* keep in sync with site.legal.emailRetention */}</li>
+    <li>Štetje obiskov spletnega mesta v PostHogu: 12 mesecev, nato se izbriše. {/* keep in sync with site.legal.analyticsRetention */}</li>
+    <li>Evidence nakupov pri RevenueCat: dokler Echo uporablja RevenueCat ali dokler ne zahtevaš njihovega izbrisa, razen če davčna zakonodaja zahteva daljše hranjenje.</li>
+    <li>Dnevniki gostovanja pri Vercelu: največ nekaj dni, v skladu s Vercelovimi pravili o hrambi.</li>
+  </ul>
+  <p>
+    Za uporabo Echa ali tega spletnega mesta nam ni treba posredovati nobenih osebnih podatkov. Če nam pošlješ
+    e-pošto, potrebujemo tvoj naslov, da ti odgovorimo. O tebi ne sprejemamo avtomatiziranih odločitev in ne
+    izvajamo profiliranja.
+  </p>
+</section>
+
+<section aria-labelledby="recipients">
+  <h2 id="recipients">6. Kdo še prejme podatke</h2>
+  <p>Samo zgoraj navedeni ponudniki:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Ponudnik</th><th scope="col">Namen</th><th scope="col">Vloga</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Google (Google Play)</td><td>Plačila za Pro</td><td>Samostojni upravljavec</td></tr>
+        <tr><td>RevenueCat, Inc.</td><td>Preverjanje nakupov različice Pro</td><td>Obdelovalec</td></tr>
+        <tr><td>Hugging Face, Inc. in GitHub, Inc.</td><td>Prenosi modelov</td><td>Samostojna upravljavca</td></tr>
+        <tr><td>Vercel Inc.</td><td>Gostovanje spletnega mesta</td><td>Obdelovalec</td></tr>
+        <tr><td>PostHog, Inc. (gostovanje v EU)</td><td>Štetje obiskov spletnega mesta</td><td>Obdelovalec</td></tr>
+        <tr><td>Proton AG (Švica)</td><td>E-pošta</td><td>Obdelovalec</td></tr>
+      </tbody>
+    </table>
+  </div>
+  {/* keep in sync with site.legal.emailProvider */}
+  <p>
+    Z vsakim obdelovalcem imamo sklenjeno pogodbo o obdelavi podatkov. Več teh podjetij ima sedež v ZDA. Kadar osebni
+    podatki zapustijo EU/EGP, se prenos opira na okvir EU–ZDA za varstvo podatkov (Data Privacy Framework) ali na
+    standardne pogodbene klavzule Evropske komisije. Proton je v Švici, za katero Evropska komisija priznava, da
+    zagotavlja ustrezno raven varstva. Podatkov nikoli ne prodajamo.
+  </p>
+</section>
+
+<section aria-labelledby="rights">
+  <h2 id="rights">7. Tvoje pravice</h2>
+  <p>
+    Od nas lahko zahtevaš dostop do svojih osebnih podatkov, njihov popravek, izbris ali kopijo, zahtevaš omejitev
+    njihove obdelave in ugovarjaš obdelavi, ki temelji na zakonitem interesu. Piši na <a href={`mailto:${email.privacy}`}
+      >{email.privacy}</a
+    >; odgovorimo v enem mesecu. Ker tvoji zapiski nikoli ne pridejo do nas, jih najhitreje izbrišeš v aplikaciji.
+  </p>
+  <p>
+    Pritožiš se lahko tudi pri nadzornem organu. V Sloveniji je to Informacijski pooblaščenec, Dunajska cesta 22,
+    1000 Ljubljana, <a href="https://www.ip-rs.si">ip-rs.si</a>, ali organ v tvoji državi članici EU.
+  </p>
+</section>
+
+<section aria-labelledby="children">
+  <h2 id="children">8. Otroci</h2>
+  <p>Echo je namenjen osebam, starim {legal.minAge} let ali več.</p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">9. Spremembe</h2>
+  <p>
+    Če se ta politika spremeni, posodobimo zgornji datum. O pomembnih spremembah obvestimo tudi v opombah ob izdaji
+    aplikacije.
+  </p>
+</section>

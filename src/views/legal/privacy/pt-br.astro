@@ -1,0 +1,174 @@
+---
+import { site } from '../../../config/site';
+import { countryName } from '../../../i18n';
+
+const { company, email, legal } = site;
+---
+
+<section class="summary" aria-labelledby="short">
+  <h2 id="short">Em resumo</h2>
+  <ul>
+    <li>Suas gravações, transcrições, resumos e tarefas são processados e armazenados somente no seu celular. Nós nunca os recebemos.</li>
+    <li>O Echo não tem contas. Os pagamentos são processados pelo Google Play.</li>
+    <li>Este site não usa cookies e conta visitas sem identificar você.</li>
+    <li>Você pode falar conosco a qualquer momento em <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="controller">
+  <h2 id="controller">1. Quem é o responsável</h2>
+  <p>
+    O controlador, nos termos do RGPD, é {company.name}, {company.address}, {countryName('pt-br')}{company.regNo && `, n.º de registro ${company.regNo}`}{company.vatId && `, n.º de IVA ${company.vatId}`}. E-mail: <a href={`mailto:${email.privacy}`}>{email.privacy}</a>.
+  </p>
+</section>
+
+<section aria-labelledby="app">
+  <h2 id="app">2. O app Echo</h2>
+
+  <h3>Suas gravações e notas</h3>
+  <p>
+    Áudios, transcrições, nomes de falantes, resumos, tarefas e pastas são criados e armazenados no seu dispositivo. O
+    reconhecimento de fala, a detecção de falantes e a IA de notas são executados no próprio celular. Para gravações
+    em um idioma que o seu celular aceita offline, o Echo pode usar o reconhecedor de fala integrado ao Android, que
+    também funciona sem conexão. Nada é enviado a nós nem a terceiros,
+    a menos que você mesmo compartilhe ou exporte. O Echo está excluído do backup na nuvem e da transferência de
+    dispositivo do Android, portanto suas notas também não são copiadas para o Google. Os backups feitos no app são
+    arquivos sob o seu controle. Desinstalar o app ou usar Excluir todos os dados nas Configurações remove tudo.
+  </p>
+
+  <h3>Permissões</h3>
+  <ul>
+    <li>Microfone, para gravar quando você toca em Gravar.</li>
+    <li>
+      Notificações, alarmes exatos e inicialização após reiniciar o aparelho, para lembrar você das tarefas no horário que mencionou.
+    </li>
+    <li>Serviço em primeiro plano, para que a gravação e a transcrição continuem com a tela desligada.</li>
+    <li>Internet e estado da rede, somente para baixar modelos, comprar o Pro e verificar se você tem o Pro.</li>
+  </ul>
+
+  <h3>Download de modelos</h3>
+  <p>
+    Os modelos de fala, de falantes e de IA de notas são baixados quando você configura o Echo pela primeira vez ou
+    escolhe outro modelo. Seu celular os obtém do Hugging Face (Hugging Face, Inc., EUA) e, para um dos modelos de
+    falantes, do GitHub (GitHub, Inc., EUA). Como em qualquer download, esses servidores veem seu endereço IP e dados
+    básicos da requisição, conforme as próprias políticas de privacidade deles. Nada sobre você ou suas notas é enviado
+    com a requisição, e nós não recebemos esses registros.
+  </p>
+
+  <h3>Compras</h3>
+  <p>
+    O Pro é vendido pelo Google Play, que processa seu pagamento conforme a <a
+      href="https://policies.google.com/privacy">política de privacidade do Google</a
+    >. Para saber se você tem o Pro, o app usa a RevenueCat (RevenueCat, Inc., EUA) como nosso operador. A RevenueCat
+    recebe um ID de usuário do app aleatório e anônimo, seus recibos e histórico de compras e informações básicas do
+    app e do dispositivo, como a versão do app e o país da loja. Ela não recebe seu nome, endereço de e-mail nem dados
+    de pagamento, e nenhum ID de publicidade é usado. Base legal: execução de um contrato (art. 6.º, n.º 1, alínea b),
+    do RGPD) e cumprimento de obrigações legais relativas a registros fiscais (art. 6.º, n.º 1, alínea c)).
+  </p>
+
+  <h3>Relatórios de falhas e análises no app</h3>
+  <p>Nenhum. O Echo não contém ferramentas de análise, relatório de falhas nem publicidade.</p>
+</section>
+
+<section aria-labelledby="website">
+  <h2 id="website">3. Este site</h2>
+  <p>
+    O site é hospedado pela Vercel (Vercel Inc., EUA). Os servidores deles processam seu endereço IP para entregar as
+    páginas e mantêm registros de curta duração para segurança e prevenção de abusos. Base legal: nosso legítimo
+    interesse em operar um site seguro (art. 6.º, n.º 1, alínea f), do RGPD).
+  </p>
+  <p>
+    Contamos as visitas com o PostHog, com dados armazenados nos servidores da UE do PostHog, em Frankfurt. Ele
+    funciona em modo sem cookies: não define cookies e não armazena nada no seu dispositivo. Para distinguir visitas
+    ao longo de um dia, o PostHog calcula um hash a partir do seu endereço IP e de dados do navegador, com um salt
+    que muda diariamente, e depois descarta o endereço IP. Vemos totais como visualizações de página, sites de origem
+    e cliques nos botões de download. Base legal: nosso legítimo interesse em saber como o site é usado (art. 6.º,
+    n.º 1, alínea f), do RGPD).
+  </p>
+  <p>
+    Se você usar a chave de tema claro/escuro, sua escolha é salva no armazenamento local do navegador para que a
+    próxima página abra do mesmo modo. Ela nunca sai do seu dispositivo e só existe porque você a solicitou. Como não
+    são usados cookies nem tecnologias de rastreamento, não há banner de cookies.
+  </p>
+</section>
+
+<section aria-labelledby="email">
+  <h2 id="email">4. Quando você nos envia um e-mail</h2>
+  <p>
+    Se você nos escrever ou usar Enviar feedback no app, usamos seu endereço de e-mail e sua mensagem somente para
+    responder a você e os excluímos 12 meses {/* keep in sync with site.legal.emailRetention */}após o fim da conversa. Nosso e-mail é gerido pela
+    Proton AG (Suíça). {/* keep in sync with site.legal.emailProvider */}
+    Base legal: execução de um contrato, quando você pergunta sobre sua compra (art. 6.º, n.º 1, alínea b), do RGPD);
+    nos demais casos, nosso legítimo interesse em responder a você (art. 6.º, n.º 1, alínea f), do RGPD).
+  </p>
+</section>
+
+<section aria-labelledby="retention">
+  <h2 id="retention">5. Por quanto tempo guardamos os dados</h2>
+  <ul>
+    <li>Suas notas: no seu celular, até você excluí-las. Nós nunca as guardamos.</li>
+    <li>E-mails: 12 meses após o fim da conversa. {/* keep in sync with site.legal.emailRetention */}</li>
+    <li>Contagem de visitas ao site no PostHog: 12 meses, depois excluída. {/* keep in sync with site.legal.analyticsRetention */}</li>
+    <li>Registros de compra na RevenueCat: enquanto o Echo usar a RevenueCat ou até você nos pedir a exclusão, salvo se a legislação fiscal exigir que os guardemos por mais tempo.</li>
+    <li>Registros de hospedagem na Vercel: no máximo alguns dias, conforme as regras de retenção da Vercel.</li>
+  </ul>
+  <p>
+    Você não precisa nos fornecer nenhum dado pessoal para usar o Echo ou este site. Se você nos enviar um e-mail,
+    precisamos do seu endereço para responder. Não tomamos decisões automatizadas sobre você nem fazemos perfilamento.
+  </p>
+</section>
+
+<section aria-labelledby="recipients">
+  <h2 id="recipients">6. Quem mais recebe dados</h2>
+  <p>Somente os provedores citados acima:</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th scope="col">Provedor</th><th scope="col">Finalidade</th><th scope="col">Papel</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Google (Google Play)</td><td>Pagamentos do Pro</td><td>Controlador independente</td></tr>
+        <tr><td>RevenueCat, Inc.</td><td>Verificação das compras do Pro</td><td>Operador</td></tr>
+        <tr><td>Hugging Face, Inc. e GitHub, Inc.</td><td>Download de modelos</td><td>Controladores independentes</td></tr>
+        <tr><td>Vercel Inc.</td><td>Hospedagem do site</td><td>Operador</td></tr>
+        <tr><td>PostHog, Inc. (hospedagem na UE)</td><td>Contagem de visitas ao site</td><td>Operador</td></tr>
+        <tr><td>Proton AG (Suíça)</td><td>E-mail</td><td>Operador</td></tr>
+      </tbody>
+    </table>
+  </div>
+  {/* keep in sync with site.legal.emailProvider */}
+  <p>
+    Temos contratos de tratamento de dados com todos os operadores. Várias dessas empresas têm sede nos EUA. Quando
+    dados pessoais saem da UE/EEE, a transferência se baseia no Quadro de Privacidade de Dados UE-EUA ou nas Cláusulas
+    Contratuais-Padrão da Comissão Europeia. A Proton fica na Suíça, país que a Comissão Europeia reconhece como
+    garantidor de um nível de proteção adequado. Nunca vendemos dados.
+  </p>
+</section>
+
+<section aria-labelledby="rights">
+  <h2 id="rights">7. Seus direitos</h2>
+  <p>
+    Você pode solicitar a nós acesso, retificação, exclusão ou uma cópia dos seus dados pessoais, solicitar a
+    limitação do uso deles e se opor ao tratamento baseado em legítimo interesse. Escreva para <a href={`mailto:${email.privacy}`}
+      >{email.privacy}</a
+    >; respondemos em até um mês. Como suas notas nunca chegam até nós, a forma mais rápida de excluí-las é no app.
+  </p>
+  <p>
+    Você também pode apresentar reclamação a uma autoridade de controle. Na Eslovênia, é o Informacijski pooblaščenec
+    (Comissário de Informação), Dunajska cesta 22, 1000 Ljubljana, <a href="https://www.ip-rs.si">ip-rs.si</a>, ou a
+    autoridade do seu próprio país da UE.
+  </p>
+</section>
+
+<section aria-labelledby="children">
+  <h2 id="children">8. Crianças</h2>
+  <p>O Echo é destinado a pessoas com {legal.minAge} anos ou mais.</p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">9. Alterações</h2>
+  <p>
+    Se esta política mudar, atualizaremos a data acima. Alterações significativas também são anunciadas nas notas de
+    versão do app.
+  </p>
+</section>

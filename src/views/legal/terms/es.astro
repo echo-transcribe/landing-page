@@ -1,0 +1,102 @@
+---
+import { countryName, localizePath, type Locale } from '../../../i18n';
+import { site } from '../../../config/site';
+
+const { company, email } = site;
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<section aria-labelledby="who">
+  <h2 id="who">1. Quiénes somos</h2>
+  <p>
+    Echo es proporcionada por {company.name}, {company.address}, {countryName('es')} («nosotros»). Al instalar o usar
+    Echo aceptas estos términos. Nada de lo aquí dispuesto limita los derechos que te correspondan como consumidor
+    conforme a la legislación de tu país.
+  </p>
+</section>
+
+<section aria-labelledby="licence">
+  <h2 id="licence">2. Tu licencia</h2>
+  <p>
+    Te concedemos una licencia personal, no exclusiva e intransferible para usar Echo en dispositivos de tu propiedad o
+    bajo tu control. No puedes revender la app ni copiarla, modificarla o aplicarle ingeniería inversa, salvo en la
+    medida en que la ley lo permita. Los componentes de código abierto mantienen sus propias licencias, indicadas en la
+    página de <a href={localizePath('/licenses', locale)}>licencias de código abierto</a>.
+  </p>
+</section>
+
+<section aria-labelledby="free-pro">
+  <h2 id="free-pro">3. Gratis y Pro</h2>
+  <p>
+    Echo es gratuita de descargar. La versión gratuita transcribe los dos primeros minutos de cada nota. Echo Pro
+    elimina ese límite y desbloquea las funciones descritas en la app, mediante una suscripción mensual o anual o una
+    compra única de por vida.
+  </p>
+  <ul>
+    <li>Pro se compra, se factura y se reembolsa a través de Google Play, conforme a los términos de Google Play.</li>
+    <li>
+      Las suscripciones se renuevan automáticamente hasta que las canceles en Google Play. Al cancelar se detiene la
+      siguiente renovación; conservas Pro hasta el final del período que hayas pagado.
+    </li>
+    <li>
+      De por vida significa mientras ofrezcamos Echo, en cualquier dispositivo con la sesión iniciada en la misma cuenta
+      de Google.
+    </li>
+    <li>
+      Pro es contenido digital que se entrega de inmediato. En la UE normalmente dispones de 14 días para ejercer el
+      derecho de desistimiento en una compra en línea, pero en el caso del contenido digital ese derecho se extingue
+      una vez que comienza la entrega, si así lo aceptaste al pagar. Google Play solicita esa aceptación al finalizar
+      la compra. En cualquier caso se aplica la política de reembolso de Google Play.
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="content">
+  <h2 id="content">4. Tus grabaciones</h2>
+  <p>
+    Tus grabaciones y notas te pertenecen y permanecen en tu dispositivo. Eres responsable de contar con el derecho a
+    grabar. Muchos países exigen el consentimiento de todas las personas grabadas, así que informa a las personas
+    cuando las grabes.
+  </p>
+</section>
+
+<section aria-labelledby="accuracy">
+  <h2 id="accuracy">5. Exactitud</h2>
+  <p>
+    Las transcripciones, las etiquetas de interlocutor, los resúmenes y las tareas se generan automáticamente y pueden
+    contener errores. Compruébalos antes de confiar en ellos, especialmente en asuntos médicos, jurídicos, financieros
+    o de seguridad. Los recordatorios dependen de los ajustes de notificaciones y alarmas de tu teléfono.
+  </p>
+</section>
+
+<section aria-labelledby="liability">
+  <h2 id="liability">6. Responsabilidad</h2>
+  <p>
+    Respondemos sin limitación por dolo y negligencia grave, y por daños a la vida, la integridad física o la salud. En
+    los demás casos respondemos solo por el incumplimiento de obligaciones esenciales, y limitado al daño típico y
+    previsible para este tipo de app. Haz copias de seguridad de las notas que te importen; no podemos recuperar datos
+    almacenados únicamente en tu teléfono.
+  </p>
+</section>
+
+<section aria-labelledby="changes">
+  <h2 id="changes">7. Cambios y finalización</h2>
+  <p>
+    Podemos actualizar Echo y estos términos. Si un cambio te afecta de forma sustancial, lo anunciaremos en la app
+    antes de que surta efecto. Puedes dejar de usar Echo en cualquier momento desinstalándola; cancela cualquier
+    suscripción en Google Play.
+  </p>
+</section>
+
+<section aria-labelledby="law">
+  <h2 id="law">8. Ley aplicable y contacto</h2>
+  <p>
+    Se aplica la ley eslovena, sin privarte de la protección que te otorgan las normas imperativas de consumo de tu
+    país de residencia. Preguntas: <a href={`mailto:${email.hello}`}>{email.hello}</a>.
+  </p>
+</section>

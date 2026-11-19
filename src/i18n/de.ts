@@ -100,6 +100,8 @@ export const de: Dict = {
     lastUpdated: 'Zuletzt aktualisiert',
     draftNotice:
       'Entwurf. Jeder Wert in [Klammern] muss ausgefüllt und der Text vor dem Start von jemandem mit Fachkenntnis im EU-Recht geprüft werden.', // launch-check: ignore
+    translationNotice: 'Diese Übersetzung soll dir das Lesen erleichtern. Weicht sie von der englischen Fassung ab, gilt die englische Fassung.',
+    translationNoticeLink: 'Englische Fassung lesen',
   },
 
   notFound: {

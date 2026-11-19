@@ -77,3 +77,8 @@ export function formatDate(iso: string, locale: Locale): string {
     timeZone: 'UTC',
   });
 }
+
+/** The publisher's country in the page's language: `Slowenien`, `Slovénie`, `Slovenija`. */
+export function countryName(locale: Locale): string {
+  return new Intl.DisplayNames([localeInfo(locale).dateLocale], { type: 'region' }).of(site.company.countryCode) ?? site.company.country;
+}

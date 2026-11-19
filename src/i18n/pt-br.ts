@@ -98,6 +98,8 @@ export const ptBr: Dict = {
     lastUpdated: 'Última atualização',
     draftNotice:
       'Rascunho. Todo valor entre [colchetes] precisa ser preenchido, e o texto revisado por alguém qualificado em direito da UE, antes do lançamento.', // launch-check: ignore
+    translationNotice: 'Esta tradução é apenas para sua conveniência. Em caso de divergência, prevalece a versão em inglês.',
+    translationNoticeLink: 'Ler a versão em inglês',
   },
 
   notFound: {

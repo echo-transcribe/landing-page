@@ -1,6 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const pages = ['/', '/privacy', '/terms', '/legal-notice', '/licenses'];
+const routes = ['/', '/privacy', '/terms', '/legal-notice', '/licenses'];
+const prefixes = ['', '/de', '/es', '/fr', '/it', '/pt-br', '/sl'];
+const pages = prefixes.flatMap((p) => routes.map((r) => (r === '/' ? p || '/' : `${p}${r}`)));
 
 /** Records every request and every CSP violation from the moment the page starts loading. */
 async function watch(page: Page) {

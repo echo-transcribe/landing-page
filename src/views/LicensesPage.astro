@@ -3,6 +3,12 @@ import TextPageLayout from '../layouts/TextPageLayout.astro';
 import { site } from '../config/site';
 import { useDict, type Locale } from '../i18n';
 import En from './legal/licenses/en.astro';
+import De from './legal/licenses/de.astro';
+import Es from './legal/licenses/es.astro';
+import Fr from './legal/licenses/fr.astro';
+import It from './legal/licenses/it.astro';
+import PtBr from './legal/licenses/pt-br.astro';
+import Sl from './legal/licenses/sl.astro';
 
 interface Props {
   locale: Locale;
@@ -11,7 +17,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = useDict(locale);
 // One component per locale; a locale without its own text shows the English one.
-const bodies: Partial<Record<Locale, typeof En>> = { en: En };
+const bodies: Record<Locale, typeof En> = { en: En, de: De, es: Es, fr: Fr, it: It, 'pt-br': PtBr, sl: Sl };
 const Body = bodies[locale] ?? En;
 ---
 

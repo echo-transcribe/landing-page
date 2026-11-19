@@ -1,8 +1,5 @@
 # Echo landing page
 
-Marketing site for [Echo](https://play.google.com/store/apps/details?id=dev.andrej.echo), the offline speech to text app
-for Android. Static Astro site, hosted on Vercel. The design source is the canvas in `../echo/docs/design/landing-page`.
-
 ## Commands
 
 | Command             | What it does                                                                     |
@@ -21,10 +18,25 @@ First run of the tests: `pnpm exec playwright install chromium`.
 - `src/config/site.ts`: domain, company and legal details, emails, prices, navigation. Footer links with
   `live: false` stay hidden until their page exists.
 - `src/config/product.ts`: app facts (Android version, RAM tiers, formats), checked against the echo repo.
-- `src/config/faq.ts`: FAQ entries, used by the page and its FAQPage structured data.
+- `src/i18n/`: every piece of UI text per language, including the FAQ (also used for the FAQPage structured data).
+- `src/views/`: page bodies shared by the English and translated routes in `src/pages/` and `src/pages/[lang]/`.
 - `src/layouts/BaseLayout.astro`: head, SEO tags, theme bootstrap, header, footer, analytics.
 - `src/layouts/TextPageLayout.astro`: the text template for legal pages, and later help and blog posts.
 - `src/content.config.ts`: the blog collection schema. Posts go in `src/content/blog/` (no routes yet).
+
+## Languages
+
+The site is published in the app's UI languages: English at `/`, and German, Spanish, French, Italian, Portuguese
+(Brazil) and Slovenian under `/de`, `/es`, `/fr`, `/it`, `/pt-br` and `/sl`.
+
+- `src/i18n/locales.ts` lists the locales; `src/i18n/<code>.ts` holds each language's UI text. The `Dict` type makes a
+  missing or misshaped key a type error.
+- Legal text lives in one component per language: `src/views/legal/<page>/<code>.astro`. Translated legal pages say
+  the English version prevails. When you change an English legal page, change the six translations too. Some of them
+  spell out `site.legal` values in their own language (marked `keep in sync with site.legal.X`).
+- Wording follows the app's own translations in `../echo/app/src/main/res/values-*/`.
+- `tests/i18n.spec.ts` checks `lang`, canonical URLs, hreflang links, the language switcher, untranslated pages and
+  sideways scrolling on a 320 px phone, for every page in every language.
 
 ## Privacy rules
 
