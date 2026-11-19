@@ -23,7 +23,7 @@ First run of the tests: `pnpm exec playwright install chromium`.
 - `src/config/product.ts`: app facts (Android version, RAM tiers, formats), checked against the echo repo.
 - `src/i18n/`: every piece of UI text per language, including the FAQ (also used for the FAQPage structured data).
 - `src/views/`: page bodies shared by the English and translated routes in `src/pages/` and `src/pages/[lang]/`.
-- `src/i18n/pages/<code>.ts`: text of the help, use-case, voice-to-tasks, comparison, languages and phones pages.
+- `src/i18n/pages/<code>.ts`: text of the help, use-case, comparison, languages and phones pages.
   A language gets these routes (and links to them) only once its file is registered in `src/i18n/pages/index.ts`;
   until then its pages link to the English versions.
 - `src/config/languages.ts`: Whisper's 100 language codes for `/languages`.

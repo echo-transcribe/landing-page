@@ -1,7 +1,7 @@
 import { product } from '../../config/product';
 
 /** Pages a page can point to under "Read next" (routes in ./index.ts). */
-export type RelatedId = 'meetings' | 'lectures' | 'interviews' | 'voiceToTasks';
+export type RelatedId = 'meetings' | 'lectures' | 'interviews';
 
 // Text for the help, use-case, feature, comparison, languages and phones pages.
 // Facts checked against the echo repo on 2026-11-19 (implementation-notes.md, WhisperModels.kt,
@@ -224,7 +224,7 @@ export const enPages = {
           a: 'Yes. Ask everyone before you record. Rules differ by country, and recording people without their consent is illegal in many of them.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Transcribe lectures offline on Android — Echo',
@@ -293,7 +293,7 @@ export const enPages = {
           a: `Whisper transcribes ${product.transcriptionLanguages} languages and detects the language by itself. The languages page lists them.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'Private interview transcription app for Android — Echo',
@@ -366,56 +366,6 @@ export const enPages = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Turn your voice into tasks and reminders — Echo for Android',
-    description:
-      'Say what you need to do and Echo turns it into tasks, with reminders at the times you mentioned. It runs on your Android phone, offline.',
-    eyebrow: 'Voice to tasks',
-    heading: 'Say it out loud. It becomes a task.',
-    lead: 'Talk about your day, a meeting or a plan. Echo finds what needs doing, and if you said when, it reminds you then.',
-    stepsTitle: 'How it works',
-    steps: [
-      { title: 'Record or import', text: 'Tap the mic and talk, or import a recording you already have.' },
-      {
-        title: 'Echo checks for plans',
-        text: 'A small AI model on your phone first asks whether you talk about things you or others will do. Explanations and how-tos are usually left out.',
-      },
-      {
-        title: 'Tasks, with your times',
-        text: '“Tomorrow at 10” or “on Friday” is read from your own words and checked by fixed rules, so the time does not depend on the AI guessing.',
-      },
-      {
-        title: 'Reminders and the source',
-        text: "Echo reminds you at the time you mentioned. Today's tasks are on the home screen, the rest in the calendar, and each one links to the line it came from.",
-      },
-    ],
-    reminderTitle: 'When reminders arrive',
-    reminders: [
-      { when: 'You said a time', what: 'At that time' },
-      { when: 'You said a day only', what: 'At 9:00 that day' },
-      { when: 'You said no time', what: 'One hour after the task was made' },
-    ],
-    reminderNote: 'Change any time in the task, or mark it done. Completing or deleting a task cancels its reminder.',
-    limitsTitle: 'What to expect',
-    limits: [
-      `It needs a phone with about ${product.notesAiRamGb} GB of RAM and a one-time download of about 1 GB.`,
-      'The model is small enough to run on a phone, so it can miss a task or make an odd one. Every task can be edited, and links to its line so you can check it.',
-      'Notes in other languages get tasks written in English, with the quote in your language. The optional multilingual model (2.6 GB) writes them in the language of the note.',
-      'For reminders on the minute, allow Echo to set exact alarms. Otherwise Android may deliver them a little later.',
-      'In the free version, tasks come from the first 2 minutes of each note. Pro reads the whole recording.',
-    ],
-    faq: [
-      {
-        q: 'Does it work in my language?',
-        a: `Tasks are made for every language Whisper transcribes, ${product.transcriptionLanguages} in all. Times are read in every language; Slovenian has its own extra rules for them.`,
-      },
-      {
-        q: 'Are my tasks sent to a calendar or to the cloud?',
-        a: 'No. Tasks and reminders stay in Echo on your phone. Nothing is synced or uploaded.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote for Android? Echo vs LoroNote compared',

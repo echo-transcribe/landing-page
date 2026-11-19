@@ -20,7 +20,6 @@ const routes = [
   '/use-cases/meetings',
   '/use-cases/lectures',
   '/use-cases/interviews',
-  '/features/voice-to-tasks',
   '/compare/loronote',
   '/languages',
   '/phones',

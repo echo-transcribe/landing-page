@@ -12,7 +12,6 @@ const pages = [
   '/sl/privacy',
   '/help',
   '/use-cases/meetings',
-  '/features/voice-to-tasks',
   '/compare/loronote',
   '/languages',
   '/phones',

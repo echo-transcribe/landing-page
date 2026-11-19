@@ -220,7 +220,7 @@ export const slPages: PagesDict = {
           a: 'Da. Pred snemanjem vprašaj vse prisotne. Pravila se po državah razlikujejo, snemanje ljudi brez njihove privolitve pa je v mnogih nezakonito.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Prepisovanje predavanj brez povezave na Androidu — Echo',
@@ -289,7 +289,7 @@ export const slPages: PagesDict = {
           a: `Whisper prepisuje približno 100 jezikov in jezik zazna sam. Seznam je na strani Jeziki.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'Aplikacija za zasebno prepisovanje intervjujev na Androidu — Echo',
@@ -362,56 +362,6 @@ export const slPages: PagesDict = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Pretvori svoj glas v opravila in opomnike — Echo za Android',
-    description:
-      'Povej, kaj moraš narediti, in Echo to spremeni v opravila z opomniki ob omenjenih urah. Deluje na tvojem telefonu Android, brez povezave.',
-    eyebrow: 'Od glasu do opravil',
-    heading: 'Povej na glas. Postane opravilo.',
-    lead: 'Govori o svojem dnevu, sestanku ali načrtu. Echo poišče, kaj je treba narediti, in če si povedal kdaj, te takrat opomni.',
-    stepsTitle: 'Kako deluje',
-    steps: [
-      { title: 'Posnemi ali uvozi', text: 'Tapni mikrofon in govori ali uvozi posnetek, ki ga že imaš.' },
-      {
-        title: 'Echo preveri načrte',
-        text: 'Majhen model AI na tvojem telefonu najprej presodi, ali govoriš o stvareh, ki jih boš storil ti ali drugi. Razlage in navodila običajno izpusti.',
-      },
-      {
-        title: 'Opravila s tvojimi urami',
-        text: '„Jutri ob 10.“ ali „v petek“ se prebere iz tvojih besed in preveri s fiksnimi pravili, zato čas ni odvisen od ugibanja AI.',
-      },
-      {
-        title: 'Opomniki in vir',
-        text: 'Echo te opomni ob omenjeni uri. Današnja opravila so na začetnem zaslonu, ostala v koledarju, vsako pa vodi do vrstice, iz katere izhaja.',
-      },
-    ],
-    reminderTitle: 'Kdaj prispejo opomniki',
-    reminders: [
-      { when: 'Povedal si uro', what: 'Ob tej uri' },
-      { when: 'Povedal si samo dan', what: 'Ob 9.00 tisti dan' },
-      { when: 'Nisi povedal ure', what: 'Eno uro po nastanku opravila' },
-    ],
-    reminderNote: 'Uro v opravilu lahko kadar koli spremeniš ali pa ga označiš kot opravljenega. Z dokončanjem ali brisanjem opravila se opomnik prekliče.',
-    limitsTitle: 'Kaj pričakovati',
-    limits: [
-      `Potrebuje telefon s približno ${product.notesAiRamGb} GB RAM-a in enkratni prenos približno 1 GB.`,
-      'Model je dovolj majhen, da teče na telefonu, zato lahko spregleda opravilo ali ustvari nenavadno. Vsako opravilo lahko urediš in vodi do svoje vrstice, da ga preveriš.',
-      'Zapiski v drugih jezikih dobijo opravila, napisana v angleščini, s citatom v tvojem jeziku. Neobvezni večjezični model (2,6 GB) jih napiše v jeziku zapiska.',
-      'Za opomnike na minuto natančno Echu dovoli nastavljanje natančnih alarmov. Sicer jih lahko Android dostavi nekoliko pozneje.',
-      'V brezplačni različici opravila nastanejo iz prvih 2 minut vsakega zapiska. Pro prebere celoten posnetek.',
-    ],
-    faq: [
-      {
-        q: 'Ali deluje v mojem jeziku?',
-        a: `Opravila nastanejo za vse jezike, ki jih Whisper prepisuje, skupaj približno 100. Ure se berejo v vseh jezikih; slovenščina ima zanje dodatna pravila.`,
-      },
-      {
-        q: 'Ali se opravila pošljejo v koledar ali v oblak?',
-        a: 'Ne. Opravila in opomniki ostanejo v Echu na tvojem telefonu. Nič se ne sinhronizira ali naloži.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote za Android? Primerjava Echo in LoroNote',

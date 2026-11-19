@@ -36,4 +36,4 @@ Tasks need a phone with about 4 GB of RAM and a one-time download of about 1 GB.
 
 In the free version, tasks come from the first 2 minutes of each note. Pro reads the whole recording.
 
-Nothing is sent anywhere: tasks and reminders stay in Echo on your phone. More on the [voice to tasks page](/features/voice-to-tasks).
+Nothing is sent anywhere: tasks and reminders stay in Echo on your phone. More on the [home page](/#tasks).

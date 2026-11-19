@@ -7,7 +7,9 @@
       "source": "/download",
       "destination": "https://play.google.com/store/apps/details?id=dev.andrej.echo",
       "permanent": false
-    }
+    },
+    { "source": "/features/voice-to-tasks", "destination": "/#tasks", "permanent": true },
+    { "source": "/:lang/features/voice-to-tasks", "destination": "/:lang#tasks", "permanent": true }
   ],
   "rewrites": [
     { "source": "/ingest/static/:path(.*)", "destination": "https://eu-assets.i.posthog.com/static/:path" },

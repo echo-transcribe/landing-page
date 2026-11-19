@@ -78,7 +78,6 @@ export const footerNav: NavGroup[] = [
     links: [
       { id: 'features', href: '/#features', live: true },
       { id: 'pricing', href: '/#pricing', live: true },
-      { id: 'voiceToTasks', href: '/features/voice-to-tasks', live: true },
       { id: 'changelog', href: '/changelog', live: false },
       { id: 'phones', href: '/phones', live: true },
       { id: 'languages', href: '/languages', live: true },

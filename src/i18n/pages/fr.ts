@@ -221,7 +221,7 @@ export const frPages: PagesDict = {
           a: 'Oui. Demandez à tout le monde avant d’enregistrer. Les règles varient selon les pays, et enregistrer des personnes sans leur consentement est illégal dans beaucoup d’entre eux.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Transcrire des cours hors ligne sur Android — Echo',
@@ -290,7 +290,7 @@ export const frPages: PagesDict = {
           a: `Whisper transcrit environ 100 langues et détecte la langue tout seul. La page des langues les liste.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'Transcription d’entretiens privée pour Android — Echo',
@@ -363,56 +363,6 @@ export const frPages: PagesDict = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Transformez votre voix en tâches et rappels — Echo pour Android',
-    description:
-      'Dites ce que vous avez à faire et Echo en fait des tâches, avec des rappels aux heures mentionnées. Tout tourne hors ligne sur votre téléphone Android.',
-    eyebrow: 'De la voix aux tâches',
-    heading: 'Dites-le à voix haute. Ça devient une tâche.',
-    lead: 'Parlez de votre journée, d’une réunion ou d’un projet. Echo repère ce qu’il y a à faire, et si vous avez dit quand, il vous le rappelle à ce moment-là.',
-    stepsTitle: 'Comment ça marche',
-    steps: [
-      { title: 'Enregistrez ou importez', text: 'Touchez le micro et parlez, ou importez un enregistrement que vous avez déjà.' },
-      {
-        title: 'Echo cherche les projets',
-        text: 'Un petit modèle d’IA sur votre téléphone commence par vérifier si vous parlez de choses que vous ou d’autres allez faire. Les explications et les modes d’emploi sont en général écartés.',
-      },
-      {
-        title: 'Des tâches, avec vos heures',
-        text: 'Des mots comme  « demain à 10 h »  ou  « vendredi »  sont lus dans vos propres paroles et vérifiés par des règles fixes : l’heure ne dépend donc pas des suppositions de l’IA.',
-      },
-      {
-        title: 'Rappels et source',
-        text: 'Echo vous rappelle à l’heure mentionnée. Les tâches du jour sont sur l’écran d’accueil, le reste dans le calendrier, et chacune renvoie à la ligne d’où elle vient.',
-      },
-    ],
-    reminderTitle: 'Quand arrivent les rappels',
-    reminders: [
-      { when: 'Vous avez dit une heure', what: 'À cette heure-là' },
-      { when: 'Vous avez dit seulement un jour', what: 'À 9 h 00 ce jour-là' },
-      { when: 'Vous n’avez dit aucune heure', what: 'Une heure après la création de la tâche' },
-    ],
-    reminderNote: 'Modifiez l’heure à tout moment dans la tâche, ou marquez-la comme faite. Terminer ou supprimer une tâche annule son rappel.',
-    limitsTitle: 'À quoi s’attendre',
-    limits: [
-      `Il faut un téléphone avec environ ${product.notesAiRamGb} Go de RAM et un téléchargement unique d’environ 1 Go.`,
-      'Le modèle est assez petit pour tourner sur un téléphone : il peut donc manquer une tâche ou en créer une étrange. Chaque tâche peut être modifiée, et renvoie à sa ligne pour que vous puissiez la vérifier.',
-      'Les notes dans d’autres langues reçoivent des tâches rédigées en anglais, avec la citation dans votre langue. Le modèle multilingue optionnel (2,6 Go) les rédige dans la langue de la note.',
-      'Pour des rappels à la minute près, autorisez Echo à programmer des alarmes exactes. Sinon Android peut les remettre un peu plus tard.',
-      'Dans la version gratuite, les tâches viennent des 2 premières minutes de chaque note. Pro lit tout l’enregistrement.',
-    ],
-    faq: [
-      {
-        q: 'Cela marche-t-il dans ma langue ?',
-        a: `Les tâches sont créées pour chaque langue que Whisper transcrit, environ 100 au total. Les heures sont lues dans toutes les langues ; le slovène a ses propres règles supplémentaires pour elles.`,
-      },
-      {
-        q: 'Mes tâches sont-elles envoyées vers un calendrier ou le cloud ?',
-        a: 'Non. Les tâches et les rappels restent dans Echo, sur votre téléphone. Rien n’est synchronisé ni envoyé.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote pour Android ? Echo vs LoroNote',

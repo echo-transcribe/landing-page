@@ -1,6 +1,6 @@
 ---
 import { getLocale, linkTo, useDict } from '../../i18n';
-import { relatedRoutes, usePages } from '../../i18n/pages';
+import { relatedRoutes } from '../../i18n/pages';
 import type { RelatedId } from '../../i18n/pages/en';
 
 interface Props {
@@ -9,10 +9,9 @@ interface Props {
 
 const locale = getLocale(Astro);
 const t = useDict(locale);
-const p = usePages(locale);
 const links = Astro.props.ids.map((id) => {
   const route = relatedRoutes[id];
-  const copy = id === 'voiceToTasks' ? { title: t.footer.links.voiceToTasks, text: p.voiceToTasks.lead } : t.useCases.items[id];
+  const copy = t.useCases.items[id];
   return { href: linkTo(route, locale), ...copy };
 });
 ---

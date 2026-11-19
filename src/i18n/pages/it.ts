@@ -219,7 +219,7 @@ export const itPages: PagesDict = {
           a: 'Sì. Chiedi a tutti prima di registrare. Le regole cambiano da paese a paese, e registrare le persone senza il loro consenso è illegale in molti.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Trascrivi le lezioni offline su Android — Echo',
@@ -288,7 +288,7 @@ export const itPages: PagesDict = {
           a: `Whisper trascrive circa 100 lingue e rileva la lingua da solo. La pagina delle lingue le elenca.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'App per trascrivere interviste in privato su Android — Echo',
@@ -361,56 +361,6 @@ export const itPages: PagesDict = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Trasforma la voce in attività e promemoria — Echo per Android',
-    description:
-      'Di’ cosa devi fare e Echo lo trasforma in attività, con promemoria negli orari che hai indicato. Funziona sul tuo telefono Android, offline.',
-    eyebrow: 'Dalla voce alle attività',
-    heading: 'Dillo a voce. Diventa un’attività.',
-    lead: 'Parla della tua giornata, di una riunione o di un piano. Echo trova ciò che c’è da fare e, se hai detto quando, ti avvisa in quel momento.',
-    stepsTitle: 'Come funziona',
-    steps: [
-      { title: 'Registra o importa', text: 'Tocca il microfono e parla, oppure importa una registrazione che hai già.' },
-      {
-        title: 'Echo cerca i piani',
-        text: 'Un piccolo modello di IA sul tuo telefono verifica prima se parli di cose che farai tu o che faranno altri. Spiegazioni e istruzioni di solito restano fuori.',
-      },
-      {
-        title: 'Attività, con i tuoi orari',
-        text: '“Domani alle 10” o “venerdì” vengono letti dalle tue parole e controllati con regole fisse, così l’orario non dipende da un’ipotesi dell’IA.',
-      },
-      {
-        title: 'Promemoria e fonte',
-        text: 'Echo ti avvisa all’orario che hai indicato. Le attività di oggi sono nella schermata iniziale, le altre nel calendario, e ognuna rimanda alla riga da cui nasce.',
-      },
-    ],
-    reminderTitle: 'Quando arrivano i promemoria',
-    reminders: [
-      { when: 'Hai detto un orario', what: 'A quell’ora' },
-      { when: 'Hai detto solo il giorno', what: 'Alle 9:00 di quel giorno' },
-      { when: 'Non hai detto nessun orario', what: 'Un’ora dopo la creazione dell’attività' },
-    ],
-    reminderNote: 'Cambia l’orario quando vuoi dall’attività, oppure segnala l’attività come completata. Completare o eliminare un’attività annulla il suo promemoria.',
-    limitsTitle: 'Cosa aspettarti',
-    limits: [
-      `Serve un telefono con circa ${product.notesAiRamGb} GB di RAM e un download una tantum di circa 1 GB.`,
-      'Il modello è abbastanza piccolo da girare su un telefono, quindi può perdere un’attività o crearne una strana. Ogni attività si può modificare e rimanda alla sua riga, così puoi verificarla.',
-      'Per le note in altre lingue le attività vengono scritte in inglese, con la citazione nella tua lingua. Il modello multilingue opzionale (2,6 GB) le scrive nella lingua della nota.',
-      'Per promemoria puntuali al minuto, consenti a Echo di impostare sveglie esatte. Altrimenti Android può consegnarli un po’ più tardi.',
-      'Nella versione gratuita le attività nascono dai primi 2 minuti di ogni nota. Pro legge l’intera registrazione.',
-    ],
-    faq: [
-      {
-        q: 'Funziona nella mia lingua?',
-        a: `Le attività vengono create per ogni lingua che Whisper trascrive, circa 100 in tutto. Gli orari vengono letti in ogni lingua; lo sloveno ha regole aggiuntive tutte sue.`,
-      },
-      {
-        q: 'Le mie attività vengono inviate a un calendario o al cloud?',
-        a: 'No. Attività e promemoria restano in Echo sul tuo telefono. Non viene sincronizzato né caricato nulla.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote per Android? Echo e LoroNote a confronto',

@@ -220,7 +220,7 @@ export const ptBrPages: PagesDict = {
           a: 'Sim. Pergunte a todos antes de gravar. As regras variam de país para país, e gravar pessoas sem o consentimento delas é ilegal em muitos deles.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Transcreva aulas offline no Android — Echo',
@@ -289,7 +289,7 @@ export const ptBrPages: PagesDict = {
           a: `O Whisper transcreve cerca de 100 idiomas e detecta o idioma sozinho. A página de idiomas lista todos.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'App de transcrição privada de entrevistas para Android — Echo',
@@ -362,56 +362,6 @@ export const ptBrPages: PagesDict = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Transforme sua voz em tarefas e lembretes — Echo para Android',
-    description:
-      'Diga o que você precisa fazer e o Echo transforma em tarefas, com lembretes nos horários que você citou. Roda no seu celular Android, offline.',
-    eyebrow: 'Da voz às tarefas',
-    heading: 'Diga em voz alta. Vira tarefa.',
-    lead: 'Fale do seu dia, de uma reunião ou de um plano. O Echo encontra o que precisa ser feito e, se você disse quando, lembra você na hora.',
-    stepsTitle: 'Como funciona',
-    steps: [
-      { title: 'Grave ou importe', text: 'Toque no microfone e fale, ou importe uma gravação que você já tem.' },
-      {
-        title: 'O Echo procura planos',
-        text: 'Um modelo de IA pequeno no seu celular primeiro pergunta se você fala de coisas que você ou outras pessoas vão fazer. Explicações e passo a passo costumam ficar de fora.',
-      },
-      {
-        title: 'Tarefas, com os seus horários',
-        text: '“Amanhã às 10” ou “na sexta” é lido das suas próprias palavras e conferido por regras fixas, então o horário não depende de a IA adivinhar.',
-      },
-      {
-        title: 'Lembretes e a origem',
-        text: 'O Echo lembra você no horário que você citou. As tarefas de hoje ficam na tela inicial, o resto no calendário, e cada uma tem um link para a linha de onde veio.',
-      },
-    ],
-    reminderTitle: 'Quando os lembretes chegam',
-    reminders: [
-      { when: 'Você disse um horário', what: 'Naquele horário' },
-      { when: 'Você disse só o dia', what: 'Às 9:00 daquele dia' },
-      { when: 'Você não disse horário', what: 'Uma hora depois de a tarefa ser criada' },
-    ],
-    reminderNote: 'Mude o horário a qualquer momento na tarefa, ou marque-a como concluída. Concluir ou excluir uma tarefa cancela o lembrete dela.',
-    limitsTitle: 'O que esperar',
-    limits: [
-      `Exige um celular com cerca de ${product.notesAiRamGb} GB de RAM e um download único de cerca de 1 GB.`,
-      'O modelo é pequeno o bastante para rodar num celular, então pode deixar passar uma tarefa ou criar uma estranha. Toda tarefa pode ser editada e tem um link para a linha dela, para você conferir.',
-      'Notas em outros idiomas recebem tarefas escritas em inglês, com a citação no seu idioma. O modelo multilíngue opcional (2,6 GB) as escreve no idioma da nota.',
-      'Para lembretes no minuto exato, permita que o Echo defina alarmes exatos. Caso contrário, o Android pode entregá-los um pouco depois.',
-      'Na versão grátis, as tarefas vêm dos 2 primeiros minutos de cada nota. O Pro lê a gravação inteira.',
-    ],
-    faq: [
-      {
-        q: 'Funciona no meu idioma?',
-        a: `As tarefas são criadas para todos os idiomas que o Whisper transcreve, cerca de 100 no total. Os horários são lidos em todos os idiomas; o esloveno tem regras extras próprias para eles.`,
-      },
-      {
-        q: 'Minhas tarefas são enviadas a um calendário ou à nuvem?',
-        a: 'Não. Tarefas e lembretes ficam no Echo, no seu celular. Nada é sincronizado nem enviado.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote para Android? Echo vs LoroNote comparados',

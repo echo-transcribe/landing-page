@@ -222,7 +222,7 @@ export const dePages: PagesDict = {
           a: 'Ja. Frag vor der Aufnahme alle Beteiligten. Die Regeln unterscheiden sich von Land zu Land, und in vielen ist es illegal, Menschen ohne ihre Einwilligung aufzunehmen.',
         },
       ],
-      related: ['voiceToTasks', 'interviews'] as RelatedId[],
+      related: ['lectures', 'interviews'] as RelatedId[],
     },
     lectures: {
       title: 'Vorlesungen offline transkribieren auf Android — Echo',
@@ -292,7 +292,7 @@ export const dePages: PagesDict = {
           a: `Whisper transkribiert rund 100 Sprachen und erkennt die Sprache von selbst. Die Sprachen-Seite listet sie auf.`,
         },
       ],
-      related: ['voiceToTasks', 'meetings'] as RelatedId[],
+      related: ['meetings', 'interviews'] as RelatedId[],
     },
     interviews: {
       title: 'Interviews privat transkribieren auf Android — Echo',
@@ -366,56 +366,6 @@ export const dePages: PagesDict = {
     },
   },
 
-  voiceToTasks: {
-    title: 'Aus deiner Stimme werden Aufgaben und Erinnerungen — Echo für Android',
-    description:
-      'Sag, was du erledigen willst, und Echo macht daraus Aufgaben, mit Erinnerungen zu den genannten Zeiten. Läuft offline auf deinem Android-Handy.',
-    eyebrow: 'Aufgaben per Sprache',
-    heading: 'Sag es laut. Es wird zur Aufgabe.',
-    lead: 'Sprich über deinen Tag, ein Meeting oder einen Plan. Echo findet, was zu tun ist, und erinnert dich, wenn du gesagt hast, wann.',
-    stepsTitle: 'So funktioniert’s',
-    steps: [
-      { title: 'Aufnehmen oder importieren', text: 'Tippe auf das Mikrofon und sprich, oder importiere eine vorhandene Aufnahme.' },
-      {
-        title: 'Echo sucht nach Plänen',
-        text: 'Ein kleines KI-Modell auf deinem Handy prüft zuerst, ob du über Dinge sprichst, die du oder andere tun werden. Erklärungen und Anleitungen bleiben meist außen vor.',
-      },
-      {
-        title: 'Aufgaben mit deinen Zeiten',
-        text: '„Morgen um 10“ oder „am Freitag“ wird aus deinen eigenen Worten gelesen und nach festen Regeln geprüft, die Zeit hängt also nicht davon ab, dass die KI richtig rät.',
-      },
-      {
-        title: 'Erinnerungen und die Quelle',
-        text: 'Echo erinnert dich zur genannten Zeit. Heutige Aufgaben stehen auf dem Startbildschirm, die übrigen im Kalender, und jede verweist auf die Zeile, aus der sie stammt.',
-      },
-    ],
-    reminderTitle: 'Wann Erinnerungen kommen',
-    reminders: [
-      { when: 'Du hast eine Uhrzeit genannt', what: 'Zu dieser Uhrzeit' },
-      { when: 'Du hast nur einen Tag genannt', what: 'Um 9:00 Uhr an diesem Tag' },
-      { when: 'Du hast keine Zeit genannt', what: 'Eine Stunde nach dem Erstellen der Aufgabe' },
-    ],
-    reminderNote: 'Ändere die Zeit jederzeit in der Aufgabe oder hake sie ab. Wer eine Aufgabe erledigt oder löscht, bricht auch ihre Erinnerung ab.',
-    limitsTitle: 'Was du erwarten kannst',
-    limits: [
-      `Du brauchst ein Handy mit etwa ${product.notesAiRamGb} GB RAM und einen einmaligen Download von rund 1 GB.`,
-      'Das Modell ist klein genug für ein Handy, es kann also eine Aufgabe übersehen oder eine seltsame erzeugen. Jede Aufgabe lässt sich bearbeiten und verweist auf ihre Zeile, damit du sie prüfen kannst.',
-      'Bei Notizen in anderen Sprachen werden Aufgaben auf Englisch geschrieben, mit dem Zitat in deiner Sprache. Das optionale mehrsprachige Modell (2,6 GB) schreibt sie in der Sprache der Notiz.',
-      'Für minutengenaue Erinnerungen erlaube Echo, exakte Wecker zu stellen. Sonst kann Android sie etwas später zustellen.',
-      'In der kostenlosen Version stammen Aufgaben aus den ersten 2 Minuten jeder Notiz. Pro liest die ganze Aufnahme.',
-    ],
-    faq: [
-      {
-        q: 'Funktioniert es in meiner Sprache?',
-        a: `Aufgaben entstehen für jede Sprache, die Whisper transkribiert, insgesamt rund 100. Zeiten werden in jeder Sprache erkannt; für Slowenisch gibt es dafür zusätzliche eigene Regeln.`,
-      },
-      {
-        q: 'Werden meine Aufgaben an einen Kalender oder in die Cloud gesendet?',
-        a: 'Nein. Aufgaben und Erinnerungen bleiben in Echo auf deinem Handy. Nichts wird synchronisiert oder hochgeladen.',
-      },
-    ],
-    related: ['meetings', 'lectures'] as RelatedId[],
-  },
 
   loronote: {
     title: 'LoroNote für Android? Echo vs LoroNote im Vergleich',

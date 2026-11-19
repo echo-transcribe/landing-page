@@ -29,7 +29,6 @@ export const pageRoutes = [
   '/use-cases/meetings',
   '/use-cases/lectures',
   '/use-cases/interviews',
-  '/features/voice-to-tasks',
   '/compare/loronote',
   '/languages',
   '/phones',
@@ -43,7 +42,6 @@ export const relatedRoutes: Record<RelatedId, string> = {
   meetings: '/use-cases/meetings',
   lectures: '/use-cases/lectures',
   interviews: '/use-cases/interviews',
-  voiceToTasks: '/features/voice-to-tasks',
 };
 
 export function usePages(locale: Locale): PagesDict {
