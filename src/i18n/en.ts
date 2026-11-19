@@ -10,6 +10,7 @@ export const en = {
     logoLabel: 'Echo home',
     brandTagline: 'Offline speech to text for Android',
     ogImageAlt: 'Echo: say it once, Echo writes it down.',
+    ogTagline: 'Private, on-device notes, summaries and tasks.',
     switchToDark: 'Switch to dark mode',
     switchToLight: 'Switch to light mode',
   },
@@ -97,6 +98,7 @@ export const en = {
 
   textPage: {
     lastUpdated: 'Last updated',
+    contents: 'On this page',
     draftNotice: 'Draft. Every value in [brackets] must be filled in, and the text reviewed by someone qualified in EU law, before launch.', // launch-check: ignore
     translationNotice: 'This is a translation for your convenience. If it differs from the English version, the English version applies.',
     translationNoticeLink: 'Read the English version',
@@ -109,6 +111,8 @@ export const en = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} on Google Play · ${count} ratings`,
     pill: 'Offline speech to text for Android',
     headingLine1: 'Say it once.',
     headingLine2: 'Echo writes it down.',
@@ -194,6 +198,8 @@ export const en = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Screen recording of Echo: recording a meeting, the transcript filling in, then the summary and tasks.',
     eyebrow: 'How it works',
     title: 'Three steps, nothing to set up',
     steps: [

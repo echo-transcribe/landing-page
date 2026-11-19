@@ -10,6 +10,7 @@ export const fr: Dict = {
     logoLabel: 'Accueil Echo',
     brandTagline: 'Reconnaissance vocale hors ligne pour Android',
     ogImageAlt: 'Echo : dites-le une fois, Echo l’écrit.',
+    ogTagline: 'Notes, résumés et tâches privés, sur votre téléphone.',
     switchToDark: 'Passer en mode sombre',
     switchToLight: 'Passer en mode clair',
   },
@@ -98,6 +99,7 @@ export const fr: Dict = {
 
   textPage: {
     lastUpdated: 'Dernière mise à jour',
+    contents: 'Sur cette page',
     draftNotice:
       'Brouillon. Chaque valeur entre [crochets] doit être renseignée, et le texte relu par un spécialiste du droit européen, avant le lancement.', // launch-check: ignore
     translationNotice: 'Cette traduction vous est fournie pour faciliter la lecture. En cas de divergence, la version anglaise fait foi.',
@@ -111,6 +113,8 @@ export const fr: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} sur Google Play · ${count} avis`,
     pill: 'Reconnaissance vocale hors ligne pour Android',
     headingLine1: 'Dites-le une fois.',
     headingLine2: 'Echo l’écrit.',
@@ -197,6 +201,8 @@ export const fr: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Enregistrement d’écran d’Echo : on enregistre une réunion, la transcription s’affiche, puis le résumé et les tâches.',
     eyebrow: 'Comment ça marche',
     title: 'Trois étapes, rien à configurer',
     steps: [

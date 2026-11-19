@@ -42,6 +42,15 @@ export const site = {
     adr: 'We are not obliged to take part in out-of-court consumer dispute resolution and do not do so. If something goes wrong, write to us and we will sort it out with you directly.',
   },
 
+  /** Google Play rating, copied by hand from the Play Console. null hides it (hero and structured data). */
+  rating: null as { value: number; count: number } | null,
+
+  /**
+   * Demo screen recording for the How it works section, files in public/demo/. null hides it.
+   * Example: { mp4: '/demo/echo-demo.mp4', webm: '/demo/echo-demo.webm', poster: '/demo/echo-demo.jpg', width: 1080, height: 2340 }
+   */
+  demoVideo: null as { mp4: string; webm?: string; poster: string; width: number; height: number } | null,
+
   prices: {
     currency: 'EUR',
     monthly: 5,

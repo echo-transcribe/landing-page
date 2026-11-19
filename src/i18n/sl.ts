@@ -9,6 +9,7 @@ export const sl: Dict = {
     logoLabel: 'Domača stran Echo',
     brandTagline: 'Govor v besedilo brez povezave za Android',
     ogImageAlt: 'Echo: reci enkrat, Echo zapiše.',
+    ogTagline: 'Zasebni zapiski, povzetki in opravila na tvojem telefonu.',
     switchToDark: 'Preklopi na temni način',
     switchToLight: 'Preklopi na svetli način',
   },
@@ -96,6 +97,7 @@ export const sl: Dict = {
 
   textPage: {
     lastUpdated: 'Nazadnje posodobljeno',
+    contents: 'Na tej strani',
     draftNotice:
       'Osnutek. Vse vrednosti v [oglatih oklepajih] je treba izpolniti, besedilo pa mora pred objavo pregledati strokovnjak za pravo EU.', // launch-check: ignore
     translationNotice: 'Ta prevod je zgolj v pomoč. Če se razlikuje od angleške različice, velja angleška različica.',
@@ -109,6 +111,8 @@ export const sl: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} v Googlu Play · ${count} ${({ one: 'ocena', two: 'oceni', few: 'ocene' } as Record<string, string>)[new Intl.PluralRules('sl').select(Number(count.replace(/\D/g, '')))] ?? 'ocen'}`,
     pill: 'Govor v besedilo brez povezave za Android',
     headingLine1: 'Reci enkrat.',
     headingLine2: 'Echo zapiše.',
@@ -194,6 +198,8 @@ export const sl: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Posnetek zaslona Echa: snemanje sestanka, nastajanje prepisa, nato povzetek in opravila.',
     eyebrow: 'Kako deluje',
     title: 'Trije koraki, nič nastavljanja',
     steps: [

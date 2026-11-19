@@ -9,6 +9,7 @@ export const it: Dict = {
     logoLabel: 'Home di Echo',
     brandTagline: 'Da voce a testo offline per Android',
     ogImageAlt: 'Echo: dillo una volta, Echo lo scrive.',
+    ogTagline: 'Note, riepiloghi e attività privati, sul tuo telefono.',
     switchToDark: 'Passa alla modalità scura',
     switchToLight: 'Passa alla modalità chiara',
   },
@@ -96,6 +97,7 @@ export const it: Dict = {
 
   textPage: {
     lastUpdated: 'Ultimo aggiornamento',
+    contents: 'In questa pagina',
     draftNotice: 'Bozza. Ogni valore tra [parentesi quadre] va compilato e il testo rivisto da un esperto di diritto UE prima del lancio.', // launch-check: ignore
     translationNotice: 'Questa traduzione è solo per tua comodità. In caso di differenze, prevale la versione inglese.',
     translationNoticeLink: 'Leggi la versione inglese',
@@ -108,6 +110,8 @@ export const it: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} su Google Play · ${count} recensioni`,
     pill: 'Da voce a testo offline per Android',
     headingLine1: 'Dillo una volta.',
     headingLine2: 'Echo lo scrive.',
@@ -193,6 +197,8 @@ export const it: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Registrazione dello schermo di Echo: registrazione di una riunione, la trascrizione che si riempie, poi riepilogo e attività.',
     eyebrow: 'Come funziona',
     title: 'Tre passaggi, niente da configurare',
     steps: [

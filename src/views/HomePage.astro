@@ -44,6 +44,9 @@ const jsonLd = [
       offer(plans.yearly.name, prices.yearly),
       offer(plans.lifetime.name, prices.lifetime),
     ],
+    ...(site.rating && {
+      aggregateRating: { '@type': 'AggregateRating', ratingValue: site.rating.value, ratingCount: site.rating.count, bestRating: 5 },
+    }),
   },
   {
     '@context': 'https://schema.org',

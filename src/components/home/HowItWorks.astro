@@ -1,8 +1,10 @@
 ---
 import SectionHeading from '../SectionHeading.astro';
+import { site } from '../../config/site';
 import { getLocale, useDict } from '../../i18n';
 
 const t = useDict(getLocale(Astro));
+const video = site.demoVideo;
 ---
 
 <section id="how">
@@ -19,8 +21,41 @@ const t = useDict(getLocale(Astro));
         ))
       }
     </ol>
+    {
+      video && (
+        <figure class="demo">
+          <video
+            data-demo
+            muted
+            loop
+            playsinline
+            controls
+            preload="none"
+            poster={video.poster}
+            width={video.width}
+            height={video.height}
+            aria-label={t.howItWorks.videoLabel}
+          >
+            {video.webm && <source src={video.webm} type="video/webm" />}
+            <source src={video.mp4} type="video/mp4" />
+          </video>
+        </figure>
+      )
+    }
   </div>
 </section>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('[data-demo]');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  if (video && 'IntersectionObserver' in window) {
+    video.controls = still.matches;
+    new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !still.matches) video.play().catch(() => {});
+      else video.pause();
+    }, { threshold: 0.5 }).observe(video);
+  }
+</script>
 
 <style>
   section {
@@ -48,6 +83,21 @@ const t = useDict(getLocale(Astro));
     padding: 28px;
     border-radius: 18px;
     background: var(--cream);
+  }
+  .demo {
+    margin: 0 auto;
+    width: min(340px, 100%);
+    border-radius: 40px;
+    overflow: hidden;
+    background: var(--frame);
+    padding: 10px;
+    box-shadow: 0 40px 80px -24px rgba(58, 49, 37, 0.35);
+  }
+  .demo video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 32px;
   }
   .num {
     font-size: 44px;

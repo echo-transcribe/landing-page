@@ -3,9 +3,15 @@ import QRCode from 'qrcode';
 import { site } from '../../config/site';
 import PhoneMockup from '../PhoneMockup.astro';
 import DownloadButton from '../DownloadButton.astro';
-import { getLocale, useDict } from '../../i18n';
+import { getLocale, localeInfo, useDict } from '../../i18n';
 
-const t = useDict(getLocale(Astro));
+const locale = getLocale(Astro);
+const t = useDict(locale);
+const fmt = localeInfo(locale).dateLocale;
+const rating = site.rating && {
+  value: new Intl.NumberFormat(fmt, { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(site.rating.value),
+  count: new Intl.NumberFormat(fmt).format(site.rating.count),
+};
 const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
   type: 'svg',
   margin: 0,
@@ -28,6 +34,14 @@ const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
         </div>
       </div>
       <p class="note">{t.hero.note}</p>
+      {
+        rating && (
+          <p class="rating">
+            <span class="stars" aria-hidden="true">★★★★★</span>
+            {t.hero.rating(rating.value, rating.count)}
+          </p>
+        )
+      }
     </div>
     <div class="phone-col">
       <PhoneMockup />
@@ -128,6 +142,18 @@ const qrSvg = await QRCode.toString(new URL(site.downloadPath, site.url).href, {
     margin: 0;
     font-size: 14px;
     color: var(--text-2);
+  }
+  .rating {
+    margin: -8px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .stars {
+    color: #d4a373;
+    letter-spacing: 1px;
   }
   .phone-col {
     flex: 0 1 360px;

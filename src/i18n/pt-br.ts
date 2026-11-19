@@ -9,6 +9,7 @@ export const ptBr: Dict = {
     logoLabel: 'Página inicial do Echo',
     brandTagline: 'Fala em texto offline para Android',
     ogImageAlt: 'Echo: fale uma vez, o Echo escreve.',
+    ogTagline: 'Notas, resumos e tarefas privados, no seu celular.',
     switchToDark: 'Mudar para o modo escuro',
     switchToLight: 'Mudar para o modo claro',
   },
@@ -96,6 +97,7 @@ export const ptBr: Dict = {
 
   textPage: {
     lastUpdated: 'Última atualização',
+    contents: 'Nesta página',
     draftNotice:
       'Rascunho. Todo valor entre [colchetes] precisa ser preenchido, e o texto revisado por alguém qualificado em direito da UE, antes do lançamento.', // launch-check: ignore
     translationNotice: 'Esta tradução é apenas para sua conveniência. Em caso de divergência, prevalece a versão em inglês.',
@@ -109,6 +111,8 @@ export const ptBr: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} no Google Play · ${count} avaliações`,
     pill: 'Fala em texto offline para Android',
     headingLine1: 'Fale uma vez.',
     headingLine2: 'O Echo escreve.',
@@ -194,6 +198,8 @@ export const ptBr: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Gravação de tela do Echo: gravando uma reunião, a transcrição aparecendo e depois o resumo e as tarefas.',
     eyebrow: 'Como funciona',
     title: 'Três passos, nada para configurar',
     steps: [

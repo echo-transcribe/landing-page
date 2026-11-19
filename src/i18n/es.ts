@@ -9,6 +9,7 @@ export const es: Dict = {
     logoLabel: 'Inicio de Echo',
     brandTagline: 'Voz a texto sin conexión para Android',
     ogImageAlt: 'Echo: dilo una vez y Echo lo escribe.',
+    ogTagline: 'Notas, resúmenes y tareas privados, en tu teléfono.',
     switchToDark: 'Cambiar a modo oscuro',
     switchToLight: 'Cambiar a modo claro',
   },
@@ -96,6 +97,7 @@ export const es: Dict = {
 
   textPage: {
     lastUpdated: 'Última actualización',
+    contents: 'En esta página',
     draftNotice: 'Borrador. Hay que rellenar cada valor entre [corchetes] y que alguien cualificado en derecho de la UE revise el texto antes del lanzamiento.', // launch-check: ignore
     translationNotice: 'Esta traducción es solo para tu comodidad. Si difiere de la versión en inglés, prevalece la versión en inglés.',
     translationNoticeLink: 'Leer la versión en inglés',
@@ -108,6 +110,8 @@ export const es: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} en Google Play · ${count} valoraciones`,
     pill: 'Voz a texto sin conexión para Android',
     headingLine1: 'Dilo una vez.',
     headingLine2: 'Echo lo escribe.',
@@ -193,6 +197,8 @@ export const es: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Grabación de pantalla de Echo: grabar una reunión, la transcripción aparece y luego el resumen y las tareas.',
     eyebrow: 'Cómo funciona',
     title: 'Tres pasos, nada que configurar',
     steps: [

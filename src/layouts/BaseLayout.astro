@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 import { createHash } from 'node:crypto';
 import { site } from '../config/site';
-import { alternates, enabledLocales, getLocale, localeInfo, useDict, type Locale } from '../i18n';
+import { alternates, defaultLocale, enabledLocales, getLocale, localeInfo, useDict, type Locale } from '../i18n';
 
 interface Props {
   /** Full page title, written for the page's search phrase. */
@@ -32,7 +32,7 @@ const canonical = new URL(pathname, Astro.site ?? site.url).href;
 // hreflang only makes sense once there is more than one language to point at.
 const alternateLinks = path && enabledLocales.length > 1 ? alternates(path) : [];
 const otherLocales = enabledLocales.filter((l) => l.code !== locale);
-const ogImage = new URL('/og-image.png', Astro.site ?? site.url).href;
+const ogImage = new URL(locale === defaultLocale ? '/og-image.png' : `/og-image-${locale}.png`, Astro.site ?? site.url).href;
 
 // Sets the theme before first paint. localStorage holds only the visitor's own choice.
 // Astro doesn't hash is:inline scripts. Today the CSP <meta> lands after this script, so it isn't
@@ -72,6 +72,7 @@ Astro.csp?.insertScriptHash(`sha256-${createHash('sha256').update(themeScript).d
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
 

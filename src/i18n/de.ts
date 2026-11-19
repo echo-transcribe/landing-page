@@ -10,6 +10,7 @@ export const de: Dict = {
     logoLabel: 'Echo Startseite',
     brandTagline: 'Offline-Spracherkennung für Android',
     ogImageAlt: 'Echo: Einmal gesagt, schreibt Echo es auf.',
+    ogTagline: 'Private Notizen, Zusammenfassungen und Aufgaben, direkt auf dem Handy.',
     switchToDark: 'Zum dunklen Modus wechseln',
     switchToLight: 'Zum hellen Modus wechseln',
   },
@@ -98,6 +99,7 @@ export const de: Dict = {
 
   textPage: {
     lastUpdated: 'Zuletzt aktualisiert',
+    contents: 'Auf dieser Seite',
     draftNotice:
       'Entwurf. Jeder Wert in [Klammern] muss ausgefüllt und der Text vor dem Start von jemandem mit Fachkenntnis im EU-Recht geprüft werden.', // launch-check: ignore
     translationNotice: 'Diese Übersetzung soll dir das Lesen erleichtern. Weicht sie von der englischen Fassung ab, gilt die englische Fassung.',
@@ -111,6 +113,8 @@ export const de: Dict = {
   },
 
   hero: {
+
+    rating: (value: string, count: string) => `${value} bei Google Play · ${count} Bewertungen`,
     pill: 'Offline-Spracherkennung für Android',
     headingLine1: 'Einmal gesagt.',
     headingLine2: 'Echo schreibt es auf.',
@@ -197,6 +201,8 @@ export const de: Dict = {
   },
 
   howItWorks: {
+
+    videoLabel: 'Bildschirmaufnahme von Echo: ein Meeting aufnehmen, das Transkript entsteht, dann Zusammenfassung und Aufgaben.',
     eyebrow: 'So funktioniert’s',
     title: 'Drei Schritte, nichts einzurichten',
     steps: [

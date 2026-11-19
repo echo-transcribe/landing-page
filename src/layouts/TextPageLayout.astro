@@ -16,13 +16,24 @@ interface Props {
   locale?: Locale;
   /** The unprefixed route, for hreflang links. */
   path?: string;
+  /** Long pages: list the H2 sections (they need ids) at the top. */
+  toc?: boolean;
 }
 
-const { title, description, heading, updated, legal = false, jsonLd, path } = Astro.props;
+const { title, description, heading, updated, legal = false, jsonLd, path, toc = false } = Astro.props;
 const locale = Astro.props.locale ?? getLocale(Astro);
 const t = useDict(locale);
 const h1 = heading ?? title.split(' — ')[0];
 const updatedLabel = updated ? formatDate(updated, locale) : null;
+
+// The table of contents is read from the rendered body, so it always matches the headings.
+const body = await Astro.slots.render('default');
+const sections = toc
+  ? [...body.matchAll(/<h2[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>/g)].map(([, id, html]) => ({
+      id,
+      text: html.replace(/<[^>]+>/g, '').trim(),
+    }))
+  : [];
 ---
 
 <BaseLayout title={title} description={description} jsonLd={jsonLd} locale={locale} path={path}>
@@ -44,12 +55,60 @@ const updatedLabel = updated ? formatDate(updated, locale) : null;
           </p>
         )
       }
-      <slot />
+      {
+        sections.length > 1 && (
+          <nav class="toc" aria-labelledby="toc-title">
+            <h2 id="toc-title">{t.textPage.contents}</h2>
+            <ol>
+              {sections.map((s) => (
+                <li>
+                  <a href={`#${s.id}`}>{s.text}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        )
+      }
+      <Fragment set:html={body} />
     </article>
   </div>
 </BaseLayout>
 
 <style>
+  .toc {
+    border-radius: 18px;
+    background: var(--card);
+    box-shadow: var(--hairline);
+    padding: 20px 24px;
+  }
+  .toc h2 {
+    margin: 0 0 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .toc ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    columns: 2 220px;
+    column-gap: 32px;
+  }
+  .toc li {
+    break-inside: avoid;
+    padding: 4px 0;
+  }
+  .toc a {
+    color: var(--text-ctl);
+    text-decoration: none;
+    font-size: 15px;
+  }
+  .toc a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
   .page {
     padding: 64px 24px 104px;
   }
