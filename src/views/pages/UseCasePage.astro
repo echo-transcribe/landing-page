@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../../components/page/PageHero.astro';
+import UseCaseHero from '../../components/page/UseCaseHero.astro';
 import PageSection from '../../components/page/PageSection.astro';
 import Cards from '../../components/page/Cards.astro';
 import Related from '../../components/page/Related.astro';
@@ -22,15 +22,16 @@ const c = p.useCases[id];
 ---
 
 <BaseLayout title={c.title} description={c.description} locale={locale} path={`/use-cases/${id}`} jsonLd={[faqSchema(c.faq, locale)]}>
-  <PageHero eyebrow={c.eyebrow} heading={c.heading} lead={c.lead} placement={`use-case-${id}`}>
-    <PhoneMockup screen={c.phone} />
-  </PageHero>
-  <PageSection title={c.problemTitle} width="narrow" tone="sunken">
-    <p>{c.problem}</p>
-  </PageSection>
-  <PageSection title={c.featuresTitle}>
-    <Cards items={c.features} />
-  </PageSection>
+  <UseCaseHero id={id} heading={c.heading} lead={c.lead} problemTitle={c.problemTitle} problem={c.problem} />
+  <section class="result">
+    <div class="inner">
+      <div class="copy">
+        <h2>{c.featuresTitle}</h2>
+        <Cards items={c.features} stacked />
+      </div>
+      <div class="visual"><PhoneMockup screen={c.phone} /></div>
+    </div>
+  </section>
   <PageSection title={p.common.faqTitle} eyebrow={p.common.faqEyebrow} width="narrow">
     <FaqList items={c.faq} />
   </PageSection>
@@ -39,3 +40,45 @@ const c = p.useCases[id];
   </PageSection>
   <ClosingCta />
 </BaseLayout>
+
+<style>
+  .result {
+    padding: 88px 24px;
+  }
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 56px 72px;
+  }
+  .copy {
+    flex: 1 1 480px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  h2 {
+    margin: 0;
+    font-size: clamp(28px, 3.4vw, 40px);
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .visual {
+    flex: 0 1 360px;
+    min-width: min(300px, 100%);
+    display: flex;
+    justify-content: center;
+  }
+  @media (max-width: 700px) {
+    .result {
+      padding: 56px 20px;
+    }
+    .inner {
+      gap: 44px;
+    }
+  }
+</style>

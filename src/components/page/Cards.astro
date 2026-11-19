@@ -3,13 +3,15 @@ interface Props {
   items: readonly { title: string; text: string }[];
   /** Number the cards, for steps. */
   numbered?: boolean;
+  /** One card per row, for a narrow column. */
+  stacked?: boolean;
 }
 
-const { items, numbered = false } = Astro.props;
+const { items, numbered = false, stacked = false } = Astro.props;
 const Tag = numbered ? 'ol' : 'ul';
 ---
 
-<Tag class="grid">
+<Tag class:list={['grid', { stacked }]}>
   {
     items.map((item, i) => (
       <li class="card">
@@ -29,6 +31,9 @@ const Tag = numbered ? 'ol' : 'ul';
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
     gap: 16px;
+  }
+  .stacked {
+    grid-template-columns: minmax(0, 1fr);
   }
   .card {
     border-radius: 18px;

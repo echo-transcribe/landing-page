@@ -97,9 +97,11 @@ const icons = [
     background: rgba(255, 253, 245, 0.06);
     box-shadow: inset 0 0 0 1px rgba(255, 245, 220, 0.1);
     padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    grid-template-rows: auto 1fr;
+    gap: 10px 14px;
   }
   .icon {
     color: #e0bb96;
@@ -153,5 +155,9 @@ const icons = [
     .inner {
       gap: 36px;
     }
+  }
+  .card p {
+    grid-column: 1 / -1;
+    align-self: start;
   }
 </style>
